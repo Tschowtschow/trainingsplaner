@@ -359,16 +359,28 @@ class Zeichner:
                           "</g>", "</svg>"]) + "\n"
 
 
-def pruefen(d, name):
-    """Warnt, wenn Objekte weit außerhalb des Feldes liegen (Tippfehler bei Koordinaten)."""
+def pruefen(d) -> list[str]:
+    """Findet typische Fehler: Objekte außerhalb, überlappende Spieler, Pfeile ohne Länge."""
+    warnungen = []
     L, B = d["feld"]["laenge"], d["feld"]["breite"]
-    for o in d.get("objekte", []) or []:
+    k = max(1.0, max(L, B) / 28)          # wie Zeichner.k
+    objekte = d.get("objekte", []) or []
+    for o in objekte:
         if not (-RAND_M <= o["x"] <= L + RAND_M and -RAND_M <= o["y"] <= B + RAND_M):
-            print(f"  Warnung {name}: {o['typ']} bei ({o['x']}, {o['y']}) liegt außerhalb des Feldes {L}x{B}", file=sys.stderr)
+            warnungen.append(f"{o['typ']} bei ({o['x']}, {o['y']}) liegt außerhalb des Feldes {L}x{B}")
+    spieler = [o for o in objekte if o["typ"] in ("spieler", "torhueter")]
+    for i, a in enumerate(spieler):
+        for b in spieler[i + 1:]:
+            if math.hypot(a["x"] - b["x"], a["y"] - b["y"]) < 1.7 * k:
+                warnungen.append(f"Spieler bei ({a['x']}, {a['y']}) und ({b['x']}, {b['y']}) überlappen "
+                                 f"(Abstand < {1.7 * k:.1f} m)")
     for p in d.get("pfeile", []) or []:
         for x, y in (p["von"], p["nach"]):
             if not (-RAND_M <= x <= L + RAND_M and -RAND_M <= y <= B + RAND_M):
-                print(f"  Warnung {name}: Pfeil-Punkt ({x}, {y}) außerhalb des Feldes", file=sys.stderr)
+                warnungen.append(f"Pfeil-Punkt ({x}, {y}) außerhalb des Feldes")
+        if math.hypot(p["nach"][0] - p["von"][0], p["nach"][1] - p["von"][1]) < 2 * k:
+            warnungen.append(f"{p.get('typ', 'pass')}-Pfeil {p['von']} -> {p['nach']} ist zu kurz, um lesbar zu sein")
+    return warnungen
 
 
 def diagramme(data):
@@ -393,7 +405,8 @@ def render(kurzname, png=False):
         alt.unlink()
     ziele = []
     for d, name in zip(liste, svg_namen(len(liste))):
-        pruefen(d, kurzname)
+        for w in pruefen(d):
+            print(f"  Warnung {kurzname}: {w}", file=sys.stderr)
         ziel = pfad.parent / name
         ziel.write_text(Zeichner(d).svg(d))
         print(f"{kurzname}: {ziel.relative_to(ROOT)}")

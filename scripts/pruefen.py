@@ -10,6 +10,9 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from diagramm import diagramme, pruefen as diagramm_pruefen  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 PHASEN = {"Lauf-ABC", "Erweitertes Aufwärmen", "Hauptteil", "Schlussteil", "Abschlussspiel"}
 PFLICHT = ["name", "schwerpunkte", "phase", "spieler_min", "spieler_max", "torhueter", "feldgroesse",
@@ -18,6 +21,12 @@ PFLICHT = ["name", "schwerpunkte", "phase", "spieler_min", "spieler_max", "torhu
 OBJEKTE = {"spieler", "torhueter", "huetchen", "stange", "ring", "ball", "balldepot",
            "leiter", "tor", "minitor", "text"}
 PFEILE = {"pass", "lauf", "dribbling", "schuss", "flanke"}
+
+
+def hinweise(p: Path) -> list[str]:
+    """Warnungen zur Grafik (überlappende Spieler usw.) – kein Fehler, aber anschauen."""
+    u = yaml.safe_load(p.read_text())
+    return [w for d in diagramme(u) for w in diagramm_pruefen(d)]
 
 
 def pruefe(p: Path):
@@ -60,6 +69,9 @@ def pruefe(p: Path):
                 fehler.append(f"unbekannter Pfeiltyp {pf.get('typ')}")
     if not isinstance(u.get("unsicher", []), list):
         fehler.append("unsicher muss eine Liste sein")
+    gg = u.get("gruppengroesse")
+    if gg is not None and not (isinstance(gg, list) and len(gg) == 2 and gg[0] <= gg[1]):
+        fehler.append("gruppengroesse muss [min, max] sein")
     if not (p.parent / "diagramm.svg").exists():
         fehler.append("diagramm.svg fehlt (scripts/diagramm.py laufen lassen)")
     return fehler
@@ -79,6 +91,9 @@ def main():
                 print(f"    - {x}")
         else:
             print(f"✓ {p.parent.name}")
+        if not f:
+            for w in hinweise(p):
+                print(f"    ⚠ Grafik: {w}")
     sys.exit(0 if ok else 1)
 
 

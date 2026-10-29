@@ -17,7 +17,8 @@ python3 -m pip install -q --upgrade \
   pyyaml \
   ruamel.yaml \
   reportlab \
-  svglib
+  svglib \
+  pytest
 
 echo "==> Whisper-Modell vorladen (optional, braucht Zugriff auf huggingface.co)"
 python3 -c "from faster_whisper import WhisperModel; WhisperModel('small', device='cpu', compute_type='int8')" \
@@ -26,5 +27,5 @@ python3 -c "from faster_whisper import WhisperModel; WhisperModel('small', devic
 echo "==> Prüfung"
 ffmpeg -version | head -1
 yt-dlp --version
-python3 -c "import faster_whisper, yaml, ruamel.yaml, reportlab, svglib; print('Python-Pakete OK')"
+python3 -c "import faster_whisper, yaml, ruamel.yaml, reportlab, svglib, pytest; print('Python-Pakete OK')"
 echo "Setup fertig."

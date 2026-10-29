@@ -47,7 +47,7 @@ diagramm:
     - {typ: spieler, team: a, x: 27, y: 14}
     - {typ: spieler, team: a, x: 37, y: 10}
     - {typ: spieler, team: b, x: 22, y: 8}
-    - {typ: spieler, team: b, x: 40, y: 8}
+    - {typ: spieler, team: b, x: 42, y: 5.5}
     - {typ: spieler, team: b, x: 32, y: 18}
     - {typ: spieler, team: b, x: 20, y: 26}
     - {typ: spieler, team: b, x: 42, y: 28}

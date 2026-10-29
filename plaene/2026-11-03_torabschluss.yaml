@@ -1,4 +1,6 @@
 # Testplan – zeigt Format und Layout. Außer dem Rondo sind alle Übungen eigene Beispiele ([NEU]).
+# test: true = zählt nicht für die Abwechslungs-Historie.
+test: true
 datum: 2026-11-03
 trainingstag: Dienstag
 schwerpunkt: Torabschluss
@@ -19,6 +21,7 @@ teile:
     dauer_min: 15
     aufteilung:
       gruppen: 2 Gruppen à 7 = je 5 gegen 2, zwei Felder 12 x 12 m.
+      anzahl_gruppen: 2
       rollen: 5 Außenspieler, 2 Verteidiger in der Mitte.
       wechsel: Fehlerspieler geht rein; nach 3 x 4 min Gruppen neu mischen.
       torhueter: Separat – Fangen, Fallen, flache Bälle.
@@ -28,6 +31,7 @@ teile:
     neu: true
     aufteilung:
       gruppen: 2 Stationen spiegelverkehrt (links/rechts) auf ein Großtor, je 7 Spieler.
+      anzahl_gruppen: 2
       rollen: Je Station 1 Anspieler (B) an der Stange, Rest startet als A.
       wechsel: A wird nach dem Abschluss Anspieler, B stellt sich hinten an. Stationen abwechselnd.
       torhueter: Ab jetzt integriert – TW 1 und TW 2 wechseln alle 5 min.

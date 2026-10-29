@@ -11,6 +11,9 @@ Optionen:
   --frames N        Standbilder im Raster (Standard 24) – dazu kommen Bilder bei Szenenwechseln
   --whisper MODELL  tiny/base/small/medium (Standard small)
   --ohne-ton        keine Transkription
+  --trotzdem        auch laden, wenn es schon eine Übung aus diesem Video gibt
+
+Exit-Codes: 0 ok, 2 Download gescheitert, 4 Video schon in der Datenbank.
 """
 import argparse
 import json
@@ -21,7 +24,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from datenbank import ROOT, finde_quelle, quelle_normal  # noqa: E402
 
 
 def run(cmd):
@@ -155,9 +159,15 @@ def main():
     ap.add_argument("--frames", type=int, default=24)
     ap.add_argument("--whisper", default="small")
     ap.add_argument("--ohne-ton", action="store_true")
+    ap.add_argument("--trotzdem", action="store_true")
     a = ap.parse_args()
     if not a.url and not a.datei:
         ap.error("URL oder --datei angeben")
+    if a.url and not a.trotzdem:
+        schon = finde_quelle(a.url)
+        if schon:
+            print(f"SCHON VORHANDEN: {quelle_normal(a.url)} -> {', '.join(schon)}", file=sys.stderr)
+            sys.exit(4)
 
     ziel = ROOT / "arbeit" / a.kurzname
     ziel.mkdir(parents=True, exist_ok=True)
@@ -190,6 +200,8 @@ def main():
         print(f"Titel:   {meta.get('title')}")
         print(f"Kanal:   {meta.get('uploader')}")
         print(f"Quelle:  {meta.get('webpage_url')}")
+    if a.url:
+        print(f"quelle für die Karte: {quelle_normal(a.url)}")
         if meta.get("description"):
             print(f"Beschreibung:\n{meta['description'][:1500]}")
     print(f"Länge:   {laenge:.0f} s, {len(bilder)} Standbilder")

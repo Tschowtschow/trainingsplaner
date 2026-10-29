@@ -4,6 +4,7 @@ Der Trainer arbeitet **nur vom Handy** per Chat. Daraus folgt:
 - Antworten auf Deutsch, kurz, ohne Code-Blöcke und lange Tabellen. Grafiken (PNG-Vorschau) und PDFs immer als Datei schicken (`SendUserFile`), dazu den Repo-Pfad nennen.
 - Den Trainer nie etwas selbst ausführen lassen. Alles erledigst du.
 - Jede Änderung sofort committen und auf den aktuellen Branch pushen (`git push -u origin <branch>`). Der Container ist flüchtig.
+- **Vor jedem Commit:** `python3 scripts/uebersicht.py` (aktualisiert `UEBUNGEN.md`), bei geänderten Übungen zusätzlich `python3 scripts/katalog_pdf.py`, dann `python3 -m pytest -q`. Rote Tests erst beheben. GitHub prüft dasselbe bei jedem Push (`.github/workflows/pruefen.yml`).
 - Rückfragen nur, wenn wirklich nötig, gebündelt in **einer** Nachricht.
 
 ## Setup
@@ -19,6 +20,8 @@ Fehlt etwas: `bash setup.sh` (idempotent). Rohmaterial (Videos, Frames, Audio, V
 | „Rondo 5v2: Feld zu groß, mit 12 Leuten besser, 4/5“ | **Feedback** |
 | „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“ | **Trainingsplan** |
 | „Liste“, „Welche Übungen für Pressing?“ | `scripts/suche.py` mit Filtern, kurz zusammenfassen |
+| „Katalog“ / „Katalog Hauptteil“ | `scripts/katalog_pdf.py [--phase …] [--schwerpunkt …]` → PDF schicken |
+| „Wie teile ich 15 Leute auf?“ | `scripts/aufteilung.py 15 --teams 2` bzw. `--gruppen 6-8` / `--uebung <übung>` |
 | „Zeig <Übung>“ | Kurzfassung + PNG-Vorschau der Grafik(en) |
 | „Ändere <Übung>: …“ | YAML anpassen, Grafik neu, prüfen, pushen |
 | „Lösch <Übung>“ | erst nachfragen, dann löschen und pushen |
@@ -29,16 +32,17 @@ Fehlt etwas: `bash setup.sh` (idempotent). Rohmaterial (Videos, Frames, Audio, V
 
 Mehrere Links → **nacheinander** abarbeiten, jeden komplett (inkl. Commit/Push), dann der nächste. Ein gescheiterter Link hält die anderen nicht auf.
 
-1. Kurzname: klein, Bindestriche, ohne Umlaute, sprechend (`pressing-4gegen4-plus3`). Prüfen, dass es ihn und dieselbe `quelle` noch nicht gibt (`grep -r "<url>" uebungen/`).
+1. Kurzname: klein, Bindestriche, ohne Umlaute, sprechend (`pressing-4gegen4-plus3`), noch nicht vergeben.
 2. `python3 scripts/video_holen.py <kurzname> <url>` (oder `--datei <pfad>`).
+   - **Exit-Code 4 = Video schon in der Datenbank** (Link wird normalisiert, Tracking-Parameter egal): dem Trainer die vorhandene Übung nennen, nicht doppelt anlegen.
    - **Exit-Code 2 = Download gescheitert** (Bot-Sperre, Login, Netzwerksperre 403): dem Trainer in einem Satz Bescheid geben („Link X ging nicht: Instagram verlangt Login – schick mir die Datei“) und mit dem nächsten Link weitermachen. Nichts erfinden.
    - Ergebnis in `arbeit/<kurzname>/`: Titel/Beschreibung, `transkript.txt` (faster-whisper), Kontaktbögen `uebersicht_*.jpg` (je 9 Standbilder mit Zeitstempel; Raster + Szenenwechsel), Einzelbilder `frames/*.jpg` (960 px).
 3. **Alle Kontaktbögen ansehen** (Read auf die JPGs). **Eingeblendeten Text** (Übungsname, Regeln, Maße, Spielerzahlen, Pfeile/Grafiken im Video) auswerten – dafür die betreffenden Einzelbilder in voller Größe öffnen. Transkript und Beschreibung lesen.
-4. `uebungen/<kurzname>/uebung.yaml` nach dem Format unten schreiben – in eigenen Worten, auf Deutsch, so konkret, dass ein Co-Trainer die Übung **ohne Video** aufbauen kann. Auf unser Niveau (Kreisliga C) und unser Material einordnen (Material, das wir nicht haben, z. B. Dummies → Stangen; Profi-Varianten in `varianten.schwerer`).
+4. `uebungen/<kurzname>/uebung.yaml` nach dem Format unten schreiben (`quelle` = die von `video_holen.py` ausgegebene „quelle für die Karte“) – in eigenen Worten, auf Deutsch, so konkret, dass ein Co-Trainer die Übung **ohne Video** aufbauen kann. Auf unser Niveau (Kreisliga C) und unser Material einordnen (Material, das wir nicht haben, z. B. Dummies → Stangen; Profi-Varianten in `varianten.schwerer`).
    **Unsicheres kennzeichnen:** Alles, was du nicht sicher erkennst (geschätzte Maße, Spielerzahl, Regel nur vermutet), im Text mit „(unsicher)“ markieren **und** in der Liste `unsicher:` kurz aufführen.
 5. Diagramm(e) im YAML anlegen. Mehrere Phasen der Übung → mehrere Diagramme (Liste mit `titel`).
-   `python3 scripts/diagramm.py <kurzname> --png` und **jede Vorschau** `arbeit/vorschau/<kurzname>_diagramm*.png` ansehen. Überlappungen, falsche Pfeile, Spieler außerhalb korrigieren, bis es stimmt.
-6. `python3 scripts/pruefen.py <kurzname>` → ✓.
+   `python3 scripts/diagramm.py <kurzname> --png` und **jede Vorschau** `arbeit/vorschau/<kurzname>_diagramm*.png` ansehen. Das Skript warnt bei überlappenden Spielern, zu kurzen Pfeilen und Objekten außerhalb – alle Warnungen beheben; dann auch selbst auf falsche Pfeile achten.
+6. `python3 scripts/pruefen.py <kurzname>` → ✓ ohne ⚠.
 7. Commit („Übung: <name>“), Push.
 8. Ans Handy: **Name, Tags, Spielerzahl, 2–3 Sätze Ablauf**, ggf. „Unsicher: …“ + Diagramm-PNG(s) per `SendUserFile`.
 
@@ -57,8 +61,9 @@ Beispiel „Rondo 5v2: Feld zu groß, mit 12 Leuten besser, 4/5“:
 
 Eingabe z. B. „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“. Datum = nächster genannter Wochentag (ab heute). Der genannte Schwerpunkt ist der Wochenfokus.
 
-1. Kandidaten je Teil suchen: `python3 scripts/suche.py --phase <Phase> --spieler <n> --tw <t> [--schwerpunkt <S>]`.
-2. Auswahl **strikt nach dem Trainingsrahmen** (unten):
+1. **Entwurf erzeugen:** `python3 scripts/plan_vorschlag.py <Tag|Datum> <Schwerpunkt> <Feldspieler> <TW>`.
+   Das Skript wählt je Teil die beste Kombination (Phase, Spielerzahl, TW, Schwerpunkt, Bewertung, Abwechslung, Tagescharakter, Steigerung HT1 → HT2), verteilt die Minuten nach Tag und füllt `gruppen`/`anzahl_gruppen`/`torhueter` vor. Es zeigt die besten 3 Kandidaten je Teil.
+2. Den Entwurf **fachlich prüfen und verbessern** – das Skript ist nur der Ausgangspunkt. Kriterien **strikt nach dem Trainingsrahmen** (unten):
    - genau die 6 Teile in der Reihenfolge, Minuten wie vorgegeben verteilen;
    - **nur Übungen aus der Datenbank**, passend zu Phase, Spielerzahl, TW und Schwerpunkt;
    - Hauptteil 1 → Hauptteil 2 als Steigerung zum Schwerpunkt (z. B. ohne → mit Gegner, Unterzahl → Gleichzahl), Schlussteil 1 führt zum Abschlussspiel hin;
@@ -66,10 +71,11 @@ Eingabe z. B. „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“. Datum = näch
    - gut bewertete bevorzugen, Schnitt ≤ 2 meiden, Feedback-Notizen berücksichtigen (z. B. Feldgröße/Spielerzahl, die sich bewährt hat);
    - Übungen aus den letzten 2–3 Plänen (`plaene/*.yaml`) möglichst nicht wiederholen;
    - nur Vereinsmaterial (Liste unten).
-   **Fehlt etwas Passendes:** eine eigene Übung entwerfen, als normale Karte anlegen (mit Diagramm, `quelle: eigene Übung (neu)`), im Plan `neu: true` setzen. Im PDF und in der Antwort erscheint sie als **[NEU]**.
-3. Für **jede** Übung die konkrete `aufteilung` für die genannte Spielerzahl schreiben: `gruppen` (Teams/Gruppengrößen), `rollen`, `wechsel`, `torhueter` (nach Tagesregel).
-4. `plaene/<datum>_<schwerpunkt>.yaml` schreiben (Schwerpunkt klein, ohne Umlaute, Bindestriche).
-5. `python3 scripts/plan_pdf.py plaene/<datei>.yaml` – prüft den Rahmen (bricht mit FEHLER ab, Warnungen ernst nehmen) und erzeugt das PDF daneben. Deckblatt + eine Übungsseite mit `pdftoppm -png -r 50` ansehen.
+   Weitere Kandidaten: `python3 scripts/suche.py --phase <Phase> --spieler <n> --tw <t> [--schwerpunkt <S>]` (zeigt auch „zuletzt geplant“).
+   **Fehlt etwas Passendes** (`uebung: FEHLT`): eine eigene Übung entwerfen, als normale Karte anlegen (mit Diagramm, `quelle: eigene Übung (neu)`), im Plan `neu: true` setzen. Im PDF und in der Antwort erscheint sie als **[NEU]**.
+3. Alle **TODOs** füllen: `ziel` und für **jede** Übung die konkrete `aufteilung` für die genannte Spielerzahl: `gruppen` (Teams/Gruppengrößen), `rollen`, `wechsel`, `torhueter` (nach Tagesregel). `anzahl_gruppen` stimmt halten – daraus rechnet die Material-Checkliste („2-3 Bälle pro Gruppe“ x Gruppen).
+4. `python3 scripts/plan_pdf.py plaene/<datei>.yaml` – prüft den Rahmen (bricht bei FEHLER und bei übrigen TODOs ab; Warnungen, z. B. „war schon am … dran“, ernst nehmen) und erzeugt das PDF: Deckblatt (Infos, Zeitplan mit Intensität, Material-Checkliste), je Übung eine Seite, am Ende die **Platzkarte** (alle 6 Teile auf einer Seite). Deckblatt + eine Übungsseite mit `pdftoppm -png -r 50` ansehen.
+5. `python3 scripts/uebersicht.py`, Tests.
 6. Commit („Plan: <datum> <schwerpunkt>“), Push. PDF per `SendUserFile` + Pfad + 6 Zeilen Überblick (Teil, Übung, Minuten, [NEU]).
 
 ## Trainingsrahmen
@@ -90,7 +96,7 @@ Eingabe z. B. „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“. Datum = näch
 - **Material** (nur damit planen): Hütchen, Leibchen, Bälle, Minitore, Stangen, Koordinationsleiter, Ringe.
 - **Torhüter:** dienstags anfangs separat (Lauf-ABC + Aufwärmen mit eigenem Programm), dann integriert; donnerstags meist komplett integriert.
 
-Diese Regeln stehen zusätzlich als Konstanten in `scripts/plan_pdf.py` (`TEILE`, `GESAMT_MIN`, `BEGINN`, `TAGE`, `MATERIAL`). Ändert der Trainer den Rahmen, **beides** anpassen.
+Diese Regeln stehen zusätzlich als Konstanten in `scripts/rahmen.py` (Teile, Minutenverteilung je Tag, Beginn, Torhüter-Regel, Material). Ändert der Trainer den Rahmen, **beides** anpassen.
 
 ## Format: Übungskarte (`uebungen/<kurzname>/uebung.yaml`)
 
@@ -104,6 +110,7 @@ spieler_min: 7                        # Feldspieler
 spieler_max: 21
 torhueter: nein                       # ja | nein | optional
 feldgroesse: 12 x 12 m pro Gruppe
+gruppengroesse: [6, 8]                # optional: Spieler pro Gruppe, wenn in mehreren Gruppen parallel gespielt wird
 material: [4 Hütchen pro Gruppe, 2-3 Bälle pro Gruppe, Leibchen]   # nur Vereinsmaterial; Großtor nicht aufführen
 dauer_min: 12
 intensitaet: 3                        # 1 locker – 5 maximal
@@ -184,6 +191,8 @@ teile:                       # genau 6, in dieser Reihenfolge
 hinweise: [optional, Deckblatt]
 ```
 Uhrzeiten rechnet `plan_pdf.py` aus `beginn` + Minuten; Material wird aus den Karten zusammengefasst.
+`test: true` markiert Beispiel-/Testpläne: Sie zählen nicht für die Abwechslung („zuletzt geplant“). Echte Pläne nie so markieren.
+In `aufteilung` zusätzlich `anzahl_gruppen: <n>` (Zahl paralleler Gruppen/Stationen, Standard 1).
 
 ## Skripte
 
@@ -194,4 +203,11 @@ Uhrzeiten rechnet `plan_pdf.py` aus `beginn` + Minuten; Material wird aus den Ka
 | `scripts/pruefen.py [<kurz>]` | Karten prüfen |
 | `scripts/feedback.py "<übung>" --bewertung N --notiz "…"` | Feedback anhängen (Formatierung bleibt erhalten) |
 | `scripts/suche.py [--phase --schwerpunkt --spieler --tw --text]` / `--details <übung>` | Datenbank durchsuchen |
-| `scripts/plan_pdf.py plaene/<datei>.yaml` | Rahmen prüfen + PDF |
+| `scripts/plan_vorschlag.py <Tag> <Schwerpunkt> <Feldsp.> <TW>` | Planentwurf nach Rahmen |
+| `scripts/plan_pdf.py plaene/<datei>.yaml` | Rahmen prüfen + PDF (inkl. Checkliste, Platzkarte) |
+| `scripts/aufteilung.py <n> --gruppen a-b / --teams k / --uebung <übung>` | Gruppen/Teams ausrechnen |
+| `scripts/katalog_pdf.py [--phase] [--schwerpunkt]` | Übungskatalog als PDF (`katalog/`) |
+| `scripts/uebersicht.py [--check]` | `UEBUNGEN.md` (Übersicht für GitHub am Handy) |
+| `scripts/rahmen.py` | Trainingsrahmen als Konstanten |
+| `scripts/datenbank.py` | Laden, ungefähre Namen, Link-Normalisierung, Historie |
+| `python3 -m pytest -q` | Tests (Karten, Grafiken, Plan-Regeln, Feedback, Übersicht) |

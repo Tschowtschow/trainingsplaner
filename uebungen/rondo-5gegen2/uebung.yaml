@@ -6,6 +6,7 @@ spieler_max: 21
 torhueter: nein
 feldgroesse: 12 x 12 m pro Gruppe (8 x 8 m bei 4 gegen 2)
 material: [4 Hütchen pro Gruppe, 2-3 Bälle pro Gruppe, Leibchen]
+gruppengroesse: [6, 8]   # 4 gegen 2 bis 6 gegen 2
 dauer_min: 12
 intensitaet: 3
 ablauf:
