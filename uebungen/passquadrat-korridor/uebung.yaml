@@ -1,0 +1,114 @@
+name: Passquadrat im Korridor (3 Stufen)
+schwerpunkte: [Passspiel, Koordination]
+phase: [Erweitertes Aufwärmen, Hauptteil]
+spieler_min: 5
+spieler_max: 24
+torhueter: nein
+feldgroesse: "Außenquadrat 20 x 20 m, Innenquadrat 12 x 12 m (Korridor ca. 4 m breit) pro Gruppe (unsicher)"
+material: [4 Hütchen pro Gruppe (Außenecken), 4 Stangen pro Gruppe (Innenecken), 2 Bälle pro Gruppe]
+dauer_min: 15
+intensitaet: 2
+ablauf:
+  - Pro Gruppe ein Außenquadrat (Hütchen) und darin ein Innenquadrat (Stangen) aufbauen. Gespielt wird nur im Korridor dazwischen, das Innenquadrat bleibt frei.
+  - In jeder der 4 Ecken des Korridors steht ein Spieler, an der Startecke zwei (mit Ball). Der Ball läuft immer in dieselbe Richtung ums Quadrat.
+  - "Stufe 1 – Passen und nachlaufen: Pass flach in die nächste Ecke, dem Pass hinterherlaufen und dort anstellen. Der Empfänger nimmt in Laufrichtung mit und spielt weiter."
+  - "Stufe 2 – Pass in den Lauf: Der Ballführende dribbelt die Seite entlang. Der Spieler in der nächsten Ecke startet die nächste Seite hinauf und bekommt den Ball diagonal in den Lauf. Der Passgeber übernimmt die freie Ecke."
+  - "Stufe 3 – Klatschen und tief: Der Ballführende spielt in die nächste Ecke, der Eckspieler lässt direkt zurückprallen und startet die nächste Seite hinauf. Dritter Pass in seinen Lauf, der Passgeber übernimmt die Ecke."
+  - Je Stufe ca. 4-5 min, nach der Hälfte die Laufrichtung wechseln (anderer Fuß).
+regeln:
+  - Nur flache Pässe, maximal 2 Kontakte (Stufe 3 Klatschen direkt).
+  - Innenquadrat wird nicht betreten.
+  - Mit 2 Bällen gleichzeitig spielen, sobald es flüssig läuft (Start in gegenüberliegenden Ecken).
+coachingpunkte:
+  - Offene Stellung, Ball mit dem hinteren (ballfernen) Fuß in Laufrichtung annehmen.
+  - Pass scharf und flach auf den Fuß bzw. in den Lauf – nicht hinter den Mann.
+  - Timing beim Freilaufen (Stufe 2/3) – erst starten, wenn der Passgeber den Kopf hebt.
+  - Blickkontakt und Ansage vor jedem Pass.
+varianten:
+  leichter: [3 Kontakte, Korridor 5 m breit, nur ein Ball]
+  schwerer: [Direktspiel, nur schwacher Fuß, 2 Bälle gleichzeitig, Wettkampf zwischen zwei Gruppen (wer schafft zuerst 20 Pässe ohne Fehler)]
+  spielerzahl:
+    - Ideal 6-8 Spieler pro Quadrat (an der Startecke 2-3 Spieler, sonst 1 pro Ecke).
+    - 14 Spieler = 2 Quadrate à 7; 16 = 2 à 8; ab 18 drei Quadrate.
+    - Mit 5 Spielern geht es nur mit einem Ball.
+quelle: https://www.instagram.com/reel/De3it5is6Nl/
+unsicher:
+  - Maße nur aus der Animation geschätzt (Außenquadrat ca. 20 x 20 m, Korridor ca. 4 m).
+  - "Stufe 2: ob der Diagonalpass über die Ecke des Innenquadrats gehen darf oder im Korridor bleiben muss."
+  - Video zeigt nur den Ballweg ohne Text oder Sprache – Kontaktzahl und Wechsel sind eigene Vorgaben.
+feedback: []
+diagramm:
+  - titel: "Stufe 1: Passen und nachlaufen"
+    feld: {laenge: 20, breite: 20, linien: ["linie: 4,4,16,4", "linie: 16,4,16,16", "linie: 16,16,4,16", "linie: 4,16,4,4"]}
+    zonen:
+      - {x: 4, y: 4, b: 12, h: 12, label: "frei", farbe: grau}
+    objekte:
+      - {typ: huetchen, x: 0, y: 0}
+      - {typ: huetchen, x: 20, y: 0}
+      - {typ: huetchen, x: 0, y: 20}
+      - {typ: huetchen, x: 20, y: 20}
+      - {typ: stange, x: 4, y: 4}
+      - {typ: stange, x: 16, y: 4}
+      - {typ: stange, x: 4, y: 16}
+      - {typ: stange, x: 16, y: 16}
+      - {typ: spieler, team: a, x: 2, y: 18, label: "1"}
+      - {typ: spieler, team: a, x: 2, y: 14, label: "5"}
+      - {typ: spieler, team: a, x: 18, y: 18, label: "2"}
+      - {typ: spieler, team: a, x: 18, y: 2, label: "3"}
+      - {typ: spieler, team: a, x: 2, y: 2, label: "4"}
+      - {typ: ball, x: 3.3, y: 17.2}
+    pfeile:
+      - {typ: pass, von: [2, 18], nach: [18, 18], nr: 1}
+      - {typ: lauf, von: [3.5, 19.4], nach: [16, 19.4], ab_spieler: false}
+      - {typ: pass, von: [18, 18], nach: [18, 2], nr: 2}
+      - {typ: lauf, von: [19.4, 16.5], nach: [19.4, 4], ab_spieler: false}
+      - {typ: pass, von: [18, 2], nach: [2, 2], nr: 3}
+  - titel: "Stufe 2: Freilaufen, Pass in den Lauf"
+    feld: {laenge: 20, breite: 20, linien: ["linie: 4,4,16,4", "linie: 16,4,16,16", "linie: 16,16,4,16", "linie: 4,16,4,4"]}
+    zonen:
+      - {x: 4, y: 4, b: 12, h: 12, label: "frei", farbe: grau}
+    objekte:
+      - {typ: huetchen, x: 0, y: 0}
+      - {typ: huetchen, x: 20, y: 0}
+      - {typ: huetchen, x: 0, y: 20}
+      - {typ: huetchen, x: 20, y: 20}
+      - {typ: stange, x: 4, y: 4}
+      - {typ: stange, x: 16, y: 4}
+      - {typ: stange, x: 4, y: 16}
+      - {typ: stange, x: 16, y: 16}
+      - {typ: spieler, team: a, x: 2, y: 18, label: "1"}
+      - {typ: spieler, team: a, x: 2, y: 14, label: "5"}
+      - {typ: spieler, team: a, x: 18, y: 18, label: "2"}
+      - {typ: spieler, team: a, x: 18, y: 2, label: "3"}
+      - {typ: spieler, team: a, x: 2, y: 2, label: "4"}
+      - {typ: ball, x: 3.3, y: 17.2}
+    pfeile:
+      - {typ: dribbling, von: [2, 18], nach: [10, 18], nr: 1}
+      - {typ: lauf, von: [18, 18], nach: [18, 10], nr: 2}
+      - {typ: pass, von: [10, 18], nach: [18, 10.5], nr: 3, ab_spieler: false}
+      - {typ: lauf, von: [10.5, 18.8], nach: [17, 19.2], ab_spieler: false}
+  - titel: "Stufe 3: Pass, Klatschen, Pass in den Lauf"
+    feld: {laenge: 20, breite: 20, linien: ["linie: 4,4,16,4", "linie: 16,4,16,16", "linie: 16,16,4,16", "linie: 4,16,4,4"]}
+    zonen:
+      - {x: 4, y: 4, b: 12, h: 12, label: "frei", farbe: grau}
+    objekte:
+      - {typ: huetchen, x: 0, y: 0}
+      - {typ: huetchen, x: 20, y: 0}
+      - {typ: huetchen, x: 0, y: 20}
+      - {typ: huetchen, x: 20, y: 20}
+      - {typ: stange, x: 4, y: 4}
+      - {typ: stange, x: 16, y: 4}
+      - {typ: stange, x: 4, y: 16}
+      - {typ: stange, x: 16, y: 16}
+      - {typ: spieler, team: a, x: 7.5, y: 18, label: "1"}
+      - {typ: spieler, team: a, x: 2, y: 18, label: "5"}
+      - {typ: spieler, team: a, x: 18, y: 18, label: "2"}
+      - {typ: spieler, team: a, x: 18, y: 2, label: "3"}
+      - {typ: spieler, team: a, x: 2, y: 2, label: "4"}
+      - {typ: ball, x: 6.2, y: 16.8}
+    pfeile:
+      - {typ: pass, von: [7.5, 18], nach: [18, 18], nr: 1, kurve: 0.2}
+      - {typ: pass, von: [18, 18], nach: [7.5, 18], nr: 2, kurve: 0.2}
+      - {typ: lauf, von: [18, 18], nach: [18, 10], kurve: 0.05}
+      - {typ: pass, von: [7.5, 18], nach: [18, 10.5], nr: 3}
+      - {typ: lauf, von: [8.5, 19.5], nach: [16.5, 19.5], ab_spieler: false}

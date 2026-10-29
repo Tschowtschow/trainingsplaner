@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="980" viewBox="0 0 900 980">
+<rect x="0" y="0" width="900.0" height="40" fill="#1f6f2b"/>
+<text x="12" y="27" font-family="Helvetica" font-size="20" font-weight="bold" fill="#ffffff">Stufe 2: Freilaufen, Pass in den Lauf</text>
+<g transform="translate(0,40)">
+<rect x="0" y="0" width="900.0" height="900.0" fill="#2f7d32"/>
+<rect x="0.0" y="0" width="225.0" height="900.0" fill="#358a38"/>
+<rect x="450.0" y="0" width="225.0" height="900.0" fill="#358a38"/>
+<rect x="90.0" y="90.0" width="720.0" height="720.0" fill="none" stroke="#ffffff" stroke-width="5.4"/>
+<line x1="234.0" y1="234.0" x2="666.0" y2="234.0" fill="none" stroke="#ffffff" stroke-dasharray="6,5" stroke-width="5.4"/>
+<line x1="666.0" y1="234.0" x2="666.0" y2="666.0" fill="none" stroke="#ffffff" stroke-dasharray="6,5" stroke-width="5.4"/>
+<line x1="666.0" y1="666.0" x2="234.0" y2="666.0" fill="none" stroke="#ffffff" stroke-dasharray="6,5" stroke-width="5.4"/>
+<line x1="234.0" y1="666.0" x2="234.0" y2="234.0" fill="none" stroke="#ffffff" stroke-dasharray="6,5" stroke-width="5.4"/>
+<rect x="234.0" y="234.0" width="432.0" height="432.0" fill="#e5e7eb" fill-opacity="0.28" stroke="#ffffff" stroke-width="3.6" stroke-dasharray="8,6"/>
+<text x="252.0" y="291.6" font-family="Helvetica" font-size="46.8" font-weight="bold" fill="#ffffff" text-anchor="start">frei</text>
+<polygon points="90.0,73.8 106.2,103.0 73.8,103.0" fill="#f97316" stroke="#111827" stroke-width="1.8"/>
+<polygon points="810.0,73.8 826.2,103.0 793.8,103.0" fill="#f97316" stroke="#111827" stroke-width="1.8"/>
+<polygon points="90.0,793.8 106.2,823.0 73.8,823.0" fill="#f97316" stroke="#111827" stroke-width="1.8"/>
+<polygon points="810.0,793.8 826.2,823.0 793.8,823.0" fill="#f97316" stroke="#111827" stroke-width="1.8"/>
+<rect x="228.6" y="201.6" width="10.8" height="64.8" fill="#facc15" stroke="#111827" stroke-width="2.2"/>
+<rect x="660.6" y="201.6" width="10.8" height="64.8" fill="#facc15" stroke="#111827" stroke-width="2.2"/>
+<rect x="228.6" y="633.6" width="10.8" height="64.8" fill="#facc15" stroke="#111827" stroke-width="2.2"/>
+<rect x="660.6" y="633.6" width="10.8" height="64.8" fill="#facc15" stroke="#111827" stroke-width="2.2"/>
+<circle cx="208.8" cy="709.2" r="12.6" fill="#ffffff" stroke="#111827" stroke-width="2.9"/>
+<circle cx="208.8" cy="709.2" r="4.3" fill="#111827"/>
+<polyline points="194.4,738.0 201.4,749.4 208.3,747.9 215.3,735.2 222.3,725.7 229.3,730.1 236.2,743.5 243.2,750.6 250.2,743.5 257.2,730.1 264.2,725.7 271.1,735.2 278.1,747.9 285.1,749.4 292.0,738.0 299.0,726.6 306.0,728.1 313.0,740.8 319.9,750.3 326.9,745.9 333.9,732.5 340.9,725.4 347.8,732.5 354.8,745.9 361.8,750.3 368.8,740.8 375.8,728.1 382.7,726.6 389.7,738.0 396.7,749.4 403.6,738.0 410.6,738.0 417.6,738.0" fill="none" stroke="#111827" stroke-width="5.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="417.6,738.0 381.6,721.8 381.6,754.2" fill="#111827"/>
+<circle cx="306.0" cy="738.0" r="21.6" fill="#ffffff" stroke="#111827" stroke-width="2.9"/>
+<text x="306.0" y="748.8" font-family="Helvetica" font-size="30.6" font-weight="bold" fill="#111827" text-anchor="middle">1</text>
+<polyline points="738.0,705.6 738.0,698.6 738.0,691.7 738.0,684.7 738.0,677.7 738.0,670.7 738.0,663.8 738.0,656.8 738.0,649.8 738.0,642.8 738.0,635.9 738.0,628.9 738.0,621.9 738.0,614.9 738.0,608.0 738.0,601.0 738.0,594.0 738.0,587.0 738.0,580.0 738.0,573.1 738.0,566.1 738.0,559.1 738.0,552.1 738.0,545.2 738.0,538.2 738.0,531.2 738.0,524.2 738.0,517.3 738.0,510.3 738.0,503.3 738.0,496.4 738.0,489.4 738.0,482.4" fill="none" stroke="#111827" stroke-width="5.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="21.6,14.4"/>
+<polygon points="738.0,482.4 721.8,518.4 754.2,518.4" fill="#111827"/>
+<circle cx="738.0" cy="594.0" r="21.6" fill="#ffffff" stroke="#111827" stroke-width="2.9"/>
+<text x="738.0" y="604.8" font-family="Helvetica" font-size="30.6" font-weight="bold" fill="#111827" text-anchor="middle">2</text>
+<polyline points="450.0,738.0 456.1,732.2 462.3,726.5 468.4,720.7 474.6,714.9 480.7,709.2 486.9,703.4 493.0,697.7 499.2,691.9 505.3,686.1 511.5,680.4 517.6,674.6 523.8,668.8 529.9,663.1 536.1,657.3 542.2,651.5 548.4,645.8 554.5,640.0 560.7,634.3 566.8,628.5 573.0,622.7 579.1,617.0 585.3,611.2 591.4,605.4 597.6,599.7 603.7,593.9 609.8,588.1 616.0,582.4 622.1,576.6 628.3,570.9 634.4,565.1 640.6,559.3 646.7,553.6 652.9,547.8 659.0,542.0 665.2,536.3 671.3,530.5 677.5,524.7 683.6,519.0 689.8,513.2 695.9,507.5 702.1,501.7 708.2,495.9 714.4,490.2" fill="none" stroke="#111827" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="714.4,490.2 677.0,503.0 699.2,526.6" fill="#111827"/>
+<circle cx="594.0" cy="603.0" r="21.6" fill="#ffffff" stroke="#111827" stroke-width="2.9"/>
+<text x="594.0" y="613.8" font-family="Helvetica" font-size="30.6" font-weight="bold" fill="#111827" text-anchor="middle">3</text>
+<polyline points="468.0,766.8 475.8,767.3 483.5,767.8 491.3,768.2 499.0,768.7 506.8,769.2 514.5,769.7 522.3,770.1 530.0,770.6 537.8,771.1 545.6,771.6 553.3,772.1 561.1,772.5 568.8,773.0 576.6,773.5 584.3,774.0 592.1,774.4 599.9,774.9 607.6,775.4 615.4,775.9 623.1,776.3 630.9,776.8 638.6,777.3 646.4,777.8 654.1,778.3 661.9,778.7 669.7,779.2" fill="none" stroke="#111827" stroke-width="5.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="21.6,14.4"/>
+<polygon points="669.7,779.2 634.7,760.8 632.7,793.2" fill="#111827"/>
+<circle cx="162.0" cy="738.0" r="32.4" fill="#d62828" stroke="#111827" stroke-width="4.3"/>
+<text x="162.0" y="753.1" font-family="Helvetica" font-size="39.6" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<circle cx="162.0" cy="594.0" r="32.4" fill="#d62828" stroke="#111827" stroke-width="4.3"/>
+<text x="162.0" y="609.1" font-family="Helvetica" font-size="39.6" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<circle cx="738.0" cy="738.0" r="32.4" fill="#d62828" stroke="#111827" stroke-width="4.3"/>
+<text x="738.0" y="753.1" font-family="Helvetica" font-size="39.6" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<circle cx="738.0" cy="162.0" r="32.4" fill="#d62828" stroke="#111827" stroke-width="4.3"/>
+<text x="738.0" y="177.1" font-family="Helvetica" font-size="39.6" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<circle cx="162.0" cy="162.0" r="32.4" fill="#d62828" stroke="#111827" stroke-width="4.3"/>
+<text x="162.0" y="177.1" font-family="Helvetica" font-size="39.6" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<rect x="0" y="900.0" width="900.0" height="40.0" fill="#ffffff"/>
+<polygon points="18.0,911.0 25.0,924.0 11.0,924.0" fill="#f97316" stroke="#111827" stroke-width="0.8"/>
+<text x="42.0" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Hütchen</text>
+<rect x="118.5" y="909.0" width="4" height="18" fill="#facc15" stroke="#111827" stroke-width="0.8"/>
+<text x="144.5" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Stange</text>
+<circle cx="215.5" cy="918.0" r="6" fill="#ffffff" stroke="#111827" stroke-width="1.2"/>
+<text x="239.5" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Ball</text>
+<polyline points="287.5,918.0 289.5,919.9 291.5,920.9 293.5,920.7 295.5,919.4 297.5,917.4 299.5,915.7 301.5,915.0 303.5,915.6 305.5,917.2 307.5,919.1" fill="none" stroke="#111827" stroke-width="2"/><polygon points="315.5,918.0 308.5,914.0 308.5,922.0" fill="#111827"/>
+<text x="319.5" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Dribbling</text>
+<line x1="405.0" y1="918.0" x2="427.0" y2="918.0" stroke="#111827" stroke-width="2.5" stroke-dasharray="5,3"/><polygon points="433.0,918.0 426.0,914.0 426.0,922.0" fill="#111827"/>
+<text x="437.0" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Laufweg ohne Ball</text>
+<line x1="582.5" y1="918.0" x2="604.5" y2="918.0" stroke="#111827" stroke-width="2.5"/><polygon points="610.5,918.0 603.5,914.0 603.5,922.0" fill="#111827"/>
+<text x="614.5" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Pass</text>
+<circle cx="670.5" cy="918.0" r="7" fill="#d62828" stroke="#111827" stroke-width="1"/>
+<text x="694.5" y="923.0" font-family="Helvetica" font-size="15" fill="#111827">Team A</text>
+</g>
+</svg>

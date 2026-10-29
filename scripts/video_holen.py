@@ -137,10 +137,16 @@ def uebersichten(bilder, ziel: Path, pro_blatt: int = 9) -> list[Path]:
 def transkribieren(video: Path, ziel: Path, modell: str) -> str:
     audio = ziel / "audio.wav"
     run(["ffmpeg", "-y", "-i", str(video), "-vn", "-ac", "1", "-ar", "16000", str(audio)])
+    import wave
+
+    import numpy as np
     from faster_whisper import WhisperModel
 
+    # WAV selbst einlesen: neuere PyAV-Versionen vertragen sich nicht mit faster-whisper.
+    with wave.open(str(audio)) as w:
+        pcm = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16)
     m = WhisperModel(modell, device="cpu", compute_type="int8")
-    segmente, info = m.transcribe(str(audio), vad_filter=True)
+    segmente, info = m.transcribe(pcm.astype(np.float32) / 32768.0, vad_filter=True)
     zeilen = [f"[{int(s.start // 60)}:{int(s.start % 60):02d}] {s.text.strip()}" for s in segmente]
     text = f"# Sprache: {info.language} ({info.language_probability:.0%})\n" + "\n".join(zeilen)
     (ziel / "transkript.txt").write_text(text)
