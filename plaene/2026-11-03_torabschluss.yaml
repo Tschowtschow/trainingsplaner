@@ -1,0 +1,30 @@
+# Beispielplan – zeigt das Format. Kann gelöscht werden.
+datum: 2026-11-03
+trainingstag: Dienstag
+schwerpunkt: Torabschluss
+feldspieler: 14
+torhueter: 2
+beginn: "19:30"
+ort: Kunstrasen
+ziel: Mehr Abschlüsse aus der zweiten Reihe, schnelles Umschalten nach Ballgewinn in Tornähe.
+einheiten:
+  - phase: Lauf-ABC
+    uebung: lauf-abc-grundform
+    dauer_min: 10
+    organisation: 4 Bahnen, TW machen parallel eigenes Aufwärmen.
+  - phase: Erweitertes Aufwärmen
+    uebung: rondo-5gegen2
+    dauer_min: 15
+    organisation: 2 Gruppen à 7 (5 gegen 2), 3 Durchgänge à 4 min.
+  - phase: Hauptteil
+    uebung: torabschluss-doppelpass
+    dauer_min: 25
+    organisation: 2 Stationen spiegelverkehrt auf ein Tor (je 7 Spieler), TW wechseln nach 6 min.
+    hinweis: Bälle vorher aufpumpen, mindestens 15 Bälle bereitlegen.
+  - phase: Abschlussspiel
+    uebung: abschlussspiel-grosstore
+    dauer_min: 25
+    organisation: 7 gegen 7 auf 50 x 40 m, Torregel "3 Kontakte = doppelt".
+hinweise:
+  - Trinkpause nach dem Rondo (2 min) ist in den Zeiten enthalten.
+  - Auslaufen 5 min locker nach dem Abschlussspiel.

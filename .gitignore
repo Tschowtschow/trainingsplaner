@@ -1,0 +1,17 @@
+# Rohmaterial – nie ins Repo
+arbeit/
+*.mp4
+*.webm
+*.mkv
+*.mov
+*.m4a
+*.mp3
+*.wav
+*.opus
+*.part
+*.info.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/

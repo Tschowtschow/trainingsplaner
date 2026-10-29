@@ -1,0 +1,50 @@
+name: Lauf-ABC Grundform
+schwerpunkte: [Koordination, Athletik]
+phase: [Lauf-ABC]
+spieler_min: 4
+spieler_max: 24
+torhueter: optional
+feldgroesse: 4 Bahnen à 20 m
+material: [8 Hütchen]
+dauer_min: 10
+intensitaet: 2
+ablauf:
+  - 4 Bahnen à 20 m, Spieler verteilen sich gleichmäßig auf die Startpositionen.
+  - Jede Übung auf 15 m, zurück locker traben.
+  - "Reihenfolge: Fußgelenksarbeit, Skippings, Anfersen, Kniehebelauf, Hopserlauf, Seitgalopp (beide Seiten), Überkreuzlauf, Rückwärtslauf."
+  - Zum Abschluss 2 Steigerungsläufe auf 20 m (ca. 80 %).
+regeln:
+  - Nächster startet, wenn der Vordermann 5 m entfernt ist.
+coachingpunkte:
+  - Aufrechter Oberkörper, aktiver Armeinsatz.
+  - Auf dem Vorfuß landen, kurze Bodenkontakte.
+  - Qualität vor Tempo.
+varianten:
+  leichter: [Nur 5 Grundübungen, keine Steigerungsläufe]
+  schwerer: [Mit Ball in den Händen, Richtungswechsel auf Zuruf am Ende der Bahn]
+  spielerzahl:
+    - Bis 8 Spieler 2 Bahnen, ab 16 Spielern 5-6 Bahnen.
+quelle: eigene Übung (Beispiel)
+feedback: []
+diagramm:
+  feld: {laenge: 24, breite: 16}
+  objekte:
+    - {typ: huetchen, x: 2, y: 2}
+    - {typ: huetchen, x: 22, y: 2}
+    - {typ: huetchen, x: 2, y: 6}
+    - {typ: huetchen, x: 22, y: 6}
+    - {typ: huetchen, x: 2, y: 10}
+    - {typ: huetchen, x: 22, y: 10}
+    - {typ: huetchen, x: 2, y: 14}
+    - {typ: huetchen, x: 22, y: 14}
+    - {typ: spieler, team: a, x: 0.5, y: 2}
+    - {typ: spieler, team: a, x: 0.5, y: 6}
+    - {typ: spieler, team: a, x: 0.5, y: 10}
+    - {typ: spieler, team: a, x: 0.5, y: 14}
+    - {typ: spieler, team: a, x: 8, y: 2}
+    - {typ: spieler, team: a, x: 12, y: 10}
+  pfeile:
+    - {typ: lauf, von: [8, 2], nach: [17, 2], ab_spieler: true}
+    - {typ: lauf, von: [12, 10], nach: [19, 10]}
+    - {typ: lauf, von: [22, 4], nach: [3, 4], ab_spieler: false}
+    - {typ: lauf, von: [22, 12], nach: [3, 12], ab_spieler: false}

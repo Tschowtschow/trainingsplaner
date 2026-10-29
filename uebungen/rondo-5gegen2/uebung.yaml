@@ -1,0 +1,51 @@
+name: Rondo 5 gegen 2
+schwerpunkte: [Passspiel, Pressing]
+phase: [Erweitertes Aufwärmen]
+spieler_min: 7
+spieler_max: 21
+torhueter: nein
+feldgroesse: 12 x 12 m pro Gruppe
+material: [4 Hütchen pro Gruppe, 2-3 Bälle pro Gruppe, Leibchen]
+dauer_min: 12
+intensitaet: 3
+ablauf:
+  - 5 Spieler am Rand des Quadrats, 2 Verteidiger in der Mitte.
+  - Außenspieler halten den Ball mit maximal 2 Kontakten in den eigenen Reihen.
+  - Erobert ein Verteidiger den Ball oder spielt ihn ins Aus, wechselt er mit dem Spieler, der den Fehler gemacht hat.
+  - Nach 10 Pässen in Folge müssen die Verteidiger 5 Liegestütze machen (oder bleiben eine weitere Runde drin).
+regeln:
+  - Maximal 2 Ballkontakte für Außenspieler.
+  - Kein Pass über Kopfhöhe.
+  - Außenspieler dürfen sich auf ihrer Linie frei bewegen.
+coachingpunkte:
+  - Offene Stellung zum Ball, Ball mit dem richtigen (ballfernen) Fuß annehmen.
+  - Pass durch die Mitte zwischen den Verteidigern sucht man zuerst.
+  - "Verteidiger arbeiten zu zweit: einer läuft an, der zweite schließt die Passlinie durch die Mitte."
+  - Schnelles Umschalten nach Ballgewinn.
+varianten:
+  leichter: [3 Kontakte erlaubt, Feld 15 x 15 m]
+  schwerer: [Direktspiel, Feld 10 x 10 m, 4 gegen 2]
+  spielerzahl:
+    - 7 Spieler = 1 Gruppe; 14 Spieler = 2 Gruppen; Rest als 6. Außenspieler (6 gegen 2) einbauen.
+    - Ungerade Zahl - Gruppen mit 4 gegen 2 und 5 gegen 2 mischen.
+quelle: eigene Übung (Beispiel)
+feedback: []
+diagramm:
+  feld: {laenge: 12, breite: 12}
+  objekte:
+    - {typ: huetchen, x: 0, y: 0}
+    - {typ: huetchen, x: 12, y: 0}
+    - {typ: huetchen, x: 0, y: 12}
+    - {typ: huetchen, x: 12, y: 12}
+    - {typ: spieler, team: a, x: 6, y: 0, label: "1"}
+    - {typ: spieler, team: a, x: 12, y: 4, label: "2"}
+    - {typ: spieler, team: a, x: 9, y: 12, label: "3"}
+    - {typ: spieler, team: a, x: 2.5, y: 12, label: "4"}
+    - {typ: spieler, team: a, x: 0, y: 5, label: "5"}
+    - {typ: spieler, team: b, x: 5.5, y: 5}
+    - {typ: spieler, team: b, x: 8, y: 6.5}
+    - {typ: ball, x: 6.9, y: 0.9}
+  pfeile:
+    - {typ: pass, von: [6, 0], nach: [12, 4], nr: 1}
+    - {typ: pass, von: [12, 4], nach: [9, 12], nr: 2}
+    - {typ: lauf, von: [8, 6.5], nach: [5, 9.5], kurve: -0.2}
