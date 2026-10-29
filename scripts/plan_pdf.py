@@ -20,7 +20,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import (KeepInFrame, KeepTogether, ListFlowable, ListItem, PageBreak, Paragraph,
+from reportlab.platypus import (KeepInFrame, ListFlowable, ListItem, PageBreak, Paragraph,
                                 SimpleDocTemplate, Spacer, Table, TableStyle)
 from svglib.svglib import svg2rlg
 
@@ -248,7 +248,7 @@ def uebungsseite(nr, von, bis, e, u, haupt_story, breite, hoehe):
         unten.append(P(f"Erfahrung vom {notizen[-1]['datum']}: {notizen[-1]['notiz']}", "klein"))
     if unten:
         story.append(Spacer(1, 6))
-        story.append(KeepTogether(unten))
+        story += unten  # KeepInFrame hält die Seite ohnehin zusammen
     haupt_story.append(PageBreak())
     haupt_story.append(KeepInFrame(breite, hoehe, story, mode="shrink"))
 
