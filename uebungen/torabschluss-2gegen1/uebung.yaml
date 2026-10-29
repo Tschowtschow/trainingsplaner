@@ -1,0 +1,56 @@
+name: Torabschluss 2 gegen 1 nach Doppelpass
+schwerpunkte: [Torabschluss, Passspiel, Umschalten]
+phase: [Hauptteil]
+spieler_min: 8
+spieler_max: 18
+torhueter: ja
+feldgroesse: 30 x 40 m vor dem Großtor
+material: [4 Hütchen, 2 Stangen, 15 Bälle, Leibchen]   # Großtor ist am Platz
+dauer_min: 20
+intensitaet: 4
+ablauf:
+  - Zwei Angreifer starten 30 m vor dem Tor, ein Verteidiger wartet an der Strafraumgrenze.
+  - Angreifer 1 spielt einen Doppelpass mit Angreifer 2 und dribbelt an.
+  - Der Verteidiger startet beim ersten Pass und versucht, den Abschluss zu verhindern.
+  - Die Angreifer spielen das 2 gegen 1 bis zum Abschluss aus (max. 8 Sekunden).
+  - Erobert der Verteidiger den Ball, kontert er auf zwei Minitore an der Startlinie.
+regeln:
+  - Abschluss innerhalb von 8 Sekunden nach dem ersten Pass.
+  - Tor nach Direktabschluss zählt doppelt.
+coachingpunkte:
+  - Ballführender geht auf den Verteidiger zu und bindet ihn, bevor er abspielt.
+  - Mitspieler bietet sich in die Tiefe an, nicht auf gleicher Höhe.
+  - Abschluss früh suchen, wenn der Verteidiger falsch steht.
+  - Verteidiger lenkt nach außen und bleibt lange auf den Beinen.
+varianten:
+  leichter: [Verteidiger startet 2 Sekunden später, 12 Sekunden Zeit]
+  schwerer: [3 gegen 2, zweiter Verteidiger läuft von hinten nach]
+  spielerzahl:
+    - Ab 12 Feldspielern zwei Startgruppen links und rechts, abwechselnd starten.
+    - Verteidiger nach 3 Durchgängen tauschen.
+quelle: eigene Übung (Beispiel, neu)
+unsicher: []
+feedback: []
+diagramm:
+  feld:
+    laenge: 46
+    breite: 35
+    linien: [strafraum_oben, fuenfer_oben, elfmeter_oben]
+  objekte:
+    - {typ: tor, x: 23, y: 0, richtung: unten}
+    - {typ: torhueter, x: 23, y: 1.2}
+    - {typ: minitor, x: 12, y: 35, richtung: oben}
+    - {typ: minitor, x: 34, y: 35, richtung: oben}
+    - {typ: balldepot, x: 25, y: 33}
+    - {typ: spieler, team: a, x: 30, y: 31, label: "1"}
+    - {typ: spieler, team: a, x: 18, y: 23, label: "2"}
+    - {typ: spieler, team: b, x: 36, y: 13}
+  pfeile:
+    - {typ: pass, von: [30, 31], nach: [18, 23], nr: 1}
+    - {typ: pass, von: [18, 23], nach: [28, 21], nr: 2}
+    - {typ: lauf, von: [30, 31], nach: [29.5, 21.5], kurve: 0.1}
+    - {typ: lauf, von: [18, 23], nach: [15.5, 9], kurve: -0.15}
+    - {typ: lauf, von: [36, 13], nach: [29.5, 14]}
+    - {typ: dribbling, von: [28, 21], nach: [26, 15], ab_spieler: false}
+    - {typ: pass, von: [26, 15], nach: [16.5, 9], nr: 3, ab_spieler: false}
+    - {typ: schuss, von: [16.5, 8.5], nach: [21, 0], nr: 4, ab_spieler: false}

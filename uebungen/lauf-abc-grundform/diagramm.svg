@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="692" viewBox="0 0 900 692">
+<g transform="translate(0,0)">
 <rect x="0" y="0" width="900.0" height="651.7" fill="#2f7d32"/>
 <rect x="0.0" y="0" width="180.0" height="651.7" fill="#358a38"/>
 <rect x="360.0" y="0" width="180.0" height="651.7" fill="#358a38"/>
@@ -33,4 +34,5 @@
 <text x="144.5" y="674.7" font-family="Helvetica" font-size="15" fill="#111827">Laufweg ohne Ball</text>
 <circle cx="298.0" cy="669.7" r="7" fill="#d62828" stroke="#111827" stroke-width="1"/>
 <text x="322.0" y="674.7" font-family="Helvetica" font-size="15" fill="#111827">Team A</text>
+</g>
 </svg>

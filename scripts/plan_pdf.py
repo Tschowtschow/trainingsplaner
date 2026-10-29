@@ -2,11 +2,11 @@
 """Erzeugt aus plaene/<datum>_<schwerpunkt>.yaml das PDF für den Co-Trainer.
 
 Aufruf:
-  python3 scripts/plan_pdf.py plaene/2026-11-03_torabschluss.yaml
+  python3 scripts/plan_pdf.py plaene/2026-11-05_umschalten.yaml
 
-Das PDF ist so gebaut, dass niemand ein Video schauen muss:
-Seite 1 = Ablauf mit Uhrzeiten, Organisation und Materialliste,
-danach je Übung Grafik, Aufbau, Ablauf, Regeln, Coachingpunkte, Varianten.
+Prüft den Plan gegen den Trainingsrahmen (6 Teile, 120 min, Lauf-ABC 10, Abschlussspiel >= 20)
+und bricht bei Verstößen ab. Das PDF ist so gebaut, dass niemand ein Video schauen muss:
+Deckblatt mit Zeitplan aller 6 Teile, danach je Übung eine Seite.
 """
 import argparse
 import datetime as dt
@@ -15,41 +15,57 @@ from pathlib import Path
 
 import yaml
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import (KeepTogether, ListFlowable, ListItem, PageBreak,
-                                Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle)
+from reportlab.platypus import (KeepInFrame, KeepTogether, ListFlowable, ListItem, PageBreak, Paragraph,
+                                SimpleDocTemplate, Spacer, Table, TableStyle)
 from svglib.svglib import svg2rlg
 
-ROOT = Path(__file__).resolve().parent.parent
-UEBUNGEN = ROOT / "uebungen"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from datenbank import ROOT, UEBUNGEN  # noqa: E402
+from diagramm import diagramme, svg_namen  # noqa: E402
 
+# ---------- Trainingsrahmen (siehe CLAUDE.md) ----------
+TEILE = ["Lauf-ABC", "Erweitertes Aufwärmen", "Hauptteil 1", "Hauptteil 2", "Schlussteil 1", "Abschlussspiel"]
+PHASE_ZU_TEIL = {"Lauf-ABC": "Lauf-ABC", "Erweitertes Aufwärmen": "Erweitertes Aufwärmen",
+                 "Hauptteil 1": "Hauptteil", "Hauptteil 2": "Hauptteil",
+                 "Schlussteil 1": "Schlussteil", "Abschlussspiel": "Abschlussspiel"}
+GESAMT_MIN = 120
+BEGINN = "19:45"
+PLATZ = "Halber Kunstrasenplatz (+ 2 DFB-Käfige)"
+TAGE = {
+    "Dienstag": ("eher technisch / athletisch", "anfangs separat, dann integriert"),
+    "Donnerstag": ("eher spielerisch", "meist komplett integriert"),
+}
+MATERIAL = ["hütchen", "leibchen", "ball", "bälle", "minitor", "stange", "leiter", "ring", "markier"]
+WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+
+# ---------- Stil ----------
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 pdfmetrics.registerFont(TTFont("DV", str(FONT_DIR / "DejaVuSans.ttf")))
 pdfmetrics.registerFont(TTFont("DV-B", str(FONT_DIR / "DejaVuSans-Bold.ttf")))
 
 GRUEN = colors.HexColor("#1f6f2b")
 HELL = colors.HexColor("#e8f3ea")
-GRAU = colors.HexColor("#6b7280")
+GRAU = colors.HexColor("#4b5563")
 
 S = {
-    "titel": ParagraphStyle("titel", fontName="DV-B", fontSize=20, leading=24, textColor=GRUEN, spaceAfter=4),
-    "unter": ParagraphStyle("unter", fontName="DV", fontSize=11, leading=14, textColor=GRAU, spaceAfter=10),
-    "h2": ParagraphStyle("h2", fontName="DV-B", fontSize=15, leading=19, textColor=GRUEN, spaceBefore=4, spaceAfter=3),
-    "h3": ParagraphStyle("h3", fontName="DV-B", fontSize=10.5, leading=13, spaceBefore=6, spaceAfter=2),
-    "text": ParagraphStyle("text", fontName="DV", fontSize=9.5, leading=12.5, alignment=TA_LEFT),
-    "klein": ParagraphStyle("klein", fontName="DV", fontSize=8.5, leading=11, textColor=GRAU),
-    "zelle": ParagraphStyle("zelle", fontName="DV", fontSize=9, leading=11.5),
-    "zelle_b": ParagraphStyle("zelle_b", fontName="DV-B", fontSize=9, leading=11.5),
-    "kasten": ParagraphStyle("kasten", fontName="DV", fontSize=9.5, leading=12.5, backColor=HELL,
-                             borderPadding=(5, 6, 5, 6), spaceBefore=6, spaceAfter=6),
+    "titel": ParagraphStyle("titel", fontName="DV-B", fontSize=22, leading=27, textColor=GRUEN, spaceAfter=2),
+    "unter": ParagraphStyle("unter", fontName="DV", fontSize=12, leading=15, textColor=GRAU, spaceAfter=8),
+    "h1": ParagraphStyle("h1", fontName="DV-B", fontSize=17, leading=21, textColor=GRUEN, spaceAfter=2),
+    "h2": ParagraphStyle("h2", fontName="DV-B", fontSize=13, leading=16, textColor=GRUEN, spaceBefore=8, spaceAfter=4),
+    "h3": ParagraphStyle("h3", fontName="DV-B", fontSize=11, leading=14, spaceBefore=6, spaceAfter=2),
+    "text": ParagraphStyle("text", fontName="DV", fontSize=10.5, leading=13.5),
+    "klein": ParagraphStyle("klein", fontName="DV", fontSize=9.5, leading=12, textColor=GRAU),
+    "zelle": ParagraphStyle("zelle", fontName="DV", fontSize=10, leading=12.5),
+    "zelle_b": ParagraphStyle("zelle_b", fontName="DV-B", fontSize=10, leading=12.5),
+    "kopf": ParagraphStyle("kopf", fontName="DV-B", fontSize=10, leading=12.5, textColor=colors.white),
+    "balken": ParagraphStyle("balken", fontName="DV-B", fontSize=11, leading=14, textColor=colors.white,
+                             backColor=GRUEN, borderPadding=(4, 6, 4, 6), spaceAfter=8),
 }
-
-WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
 
 
 def esc(t):
@@ -60,140 +76,186 @@ def P(t, stil="text"):
     return Paragraph(esc(t), S[stil])
 
 
+def titel_neu(name, neu, stil="h1"):
+    marke = ' <font color="#c2410c">[NEU]</font>' if neu else ""
+    return Paragraph(esc(name) + marke, S[stil])
+
+
 def liste(punkte, nummeriert=False):
-    punkte = punkte or []
-    if isinstance(punkte, str):
-        punkte = [punkte]
-    items = [ListItem(P(p), leftIndent=12) for p in punkte]
+    punkte = punkte if isinstance(punkte, list) else [punkte] if punkte else []
+    items = [ListItem(P(p), leftIndent=14) for p in punkte]
     if nummeriert:
-        return ListFlowable(items, bulletType="1", bulletFontName="DV-B", bulletFontSize=9, leftIndent=14)
-    return ListFlowable(items, bulletType="bullet", start="•", bulletFontName="DV", bulletFontSize=9, leftIndent=12)
+        return ListFlowable(items, bulletType="1", bulletFontName="DV-B", bulletFontSize=10, leftIndent=16)
+    return ListFlowable(items, bulletType="bullet", start="•", bulletFontName="DV", bulletFontSize=10, leftIndent=14)
 
 
 def grafik(svg: Path, max_b, max_h):
     d = svg2rlg(str(svg))
-    if d is None:
-        return P("(Grafik konnte nicht geladen werden)", "klein")
     f = min(max_b / d.width, max_h / d.height)
     d.width, d.height = d.width * f, d.height * f
     d.scale(f, f)
+    d.hAlign = "CENTER"
     return d
 
 
-def lade_uebung(kurzname):
-    pfad = UEBUNGEN / kurzname / "uebung.yaml"
-    if not pfad.exists():
-        sys.exit(f"Übung '{kurzname}' nicht gefunden ({pfad})")
-    return yaml.safe_load(pfad.read_text())
+def tabelle(daten, breiten, kopf=True):
+    t = Table(daten, colWidths=breiten, repeatRows=1 if kopf else 0)
+    stil = [("VALIGN", (0, 0), (-1, -1), "TOP"), ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#c7d7ca")),
+            ("TOPPADDING", (0, 0), (-1, -1), 4), ("BOTTOMPADDING", (0, 0), (-1, -1), 4)]
+    if kopf:
+        stil += [("BACKGROUND", (0, 0), (-1, 0), GRUEN), ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, HELL])]
+    else:
+        stil += [("BACKGROUND", (0, 0), (0, -1), HELL)]
+    t.setStyle(TableStyle(stil))
+    return t
 
 
+# ---------- Prüfung gegen den Trainingsrahmen ----------
+def pruefe(plan, uebungen):
+    fehler, warnungen = [], []
+    teile = [e.get("teil") for e in plan["teile"]]
+    if teile != TEILE:
+        fehler.append(f"Teile müssen genau sein: {', '.join(TEILE)} (ist: {', '.join(map(str, teile))})")
+    summe = sum(int(e["dauer_min"]) for e in plan["teile"])
+    if summe != GESAMT_MIN:
+        fehler.append(f"Summe der Minuten ist {summe}, muss {GESAMT_MIN} sein")
+    for e in plan["teile"]:
+        if e.get("teil") == "Lauf-ABC" and int(e["dauer_min"]) != 10:
+            fehler.append("Lauf-ABC muss 10 min dauern")
+        if e.get("teil") == "Abschlussspiel" and int(e["dauer_min"]) < 20:
+            fehler.append("Abschlussspiel muss mindestens 20 min dauern")
+        if not e.get("aufteilung"):
+            fehler.append(f"{e.get('teil')}: Aufteilung für die Spielerzahl fehlt")
+        u = uebungen[e["uebung"]]
+        phase = PHASE_ZU_TEIL.get(e.get("teil"))
+        if phase and phase not in (u.get("phase") or []):
+            warnungen.append(f"{e['uebung']}: Phase '{phase}' steht nicht in der Karte")
+        for m in u.get("material") or []:
+            if not any(w in m.lower() for w in MATERIAL):
+                warnungen.append(f"{e['uebung']}: Material '{m}' gehört nicht zum Vereinsmaterial")
+        if plan["feldspieler"] < u.get("spieler_min", 0):
+            warnungen.append(f"{e['uebung']}: braucht mind. {u['spieler_min']} Feldspieler")
+    if plan.get("trainingstag") not in TAGE:
+        warnungen.append(f"Trainingstag '{plan.get('trainingstag')}' ist kein regulärer Tag (Di/Do)")
+    return fehler, warnungen
+
+
+# ---------- Seiten ----------
 def zeitplan(plan):
-    start = dt.datetime.strptime(str(plan.get("beginn", "19:00")), "%H:%M")
-    zeilen, t = [], start
-    for e in plan["einheiten"]:
-        zeilen.append((t.strftime("%H:%M"), e))
-        t += dt.timedelta(minutes=int(e["dauer_min"]))
-    return zeilen, t
+    t = dt.datetime.strptime(str(plan.get("beginn", BEGINN)), "%H:%M")
+    zeilen = []
+    for e in plan["teile"]:
+        ende = t + dt.timedelta(minutes=int(e["dauer_min"]))
+        zeilen.append((t.strftime("%H:%M"), ende.strftime("%H:%M"), e))
+        t = ende
+    return zeilen
 
 
-def seite_uebersicht(plan, uebungen, story, breite):
+def deckblatt(plan, uebungen, story, breite):
     datum = dt.date.fromisoformat(str(plan["datum"]))
-    story.append(P(f"Trainingsplan – {plan['schwerpunkt']}", "titel"))
-    story.append(P(f"{plan.get('trainingstag', WOCHENTAGE[datum.weekday()])}, {datum.strftime('%d.%m.%Y')}"
-                   f"  ·  {plan.get('mannschaft', 'Herren')}", "unter"))
+    tag = plan.get("trainingstag", WOCHENTAGE[datum.weekday()])
+    charakter, tw_regel = TAGE.get(tag, ("", ""))
+    zeilen = zeitplan(plan)
 
-    zeilen, ende = zeitplan(plan)
-    gesamt = sum(int(e["dauer_min"]) for e in plan["einheiten"])
+    story.append(P(f"Training {tag}, {datum.strftime('%d.%m.%Y')}", "titel"))
+    story.append(P(f"Schwerpunkt: {plan['schwerpunkt']}", "unter"))
+
     info = [
-        [P("Schwerpunkt", "zelle_b"), P(plan["schwerpunkt"], "zelle"),
-         P("Spieler", "zelle_b"), P(f"{plan['feldspieler']} Feldspieler + {plan['torhueter']} TW", "zelle")],
-        [P("Zeit", "zelle_b"), P(f"{zeilen[0][0]} – {ende.strftime('%H:%M')} Uhr ({gesamt} min)", "zelle"),
-         P("Ort", "zelle_b"), P(plan.get("ort", "–"), "zelle")],
+        ("Datum", f"{tag}, {datum.strftime('%d.%m.%Y')}" + (f" – {charakter}" if charakter else "")),
+        ("Schwerpunkt", plan["schwerpunkt"]),
+        ("Spieler", f"{plan['feldspieler']} Feldspieler + {plan['torhueter']} Torhüter"),
+        ("Zeit", f"{zeilen[0][0]} – {zeilen[-1][1]} Uhr ({GESAMT_MIN} min)"),
+        ("Platz", plan.get("platz", PLATZ)),
     ]
-    t = Table(info, colWidths=[31 * mm, breite / 2 - 31 * mm, 20 * mm, breite / 2 - 20 * mm])
-    t.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), HELL), ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                           ("BOX", (0, 0), (-1, -1), 0.5, GRUEN), ("TOPPADDING", (0, 0), (-1, -1), 4)]))
-    story += [t, Spacer(1, 6)]
-
+    if plan["torhueter"] and tw_regel:
+        info.append(("Torhüter", tw_regel))
     if plan.get("ziel"):
-        story.append(P(f"Ziel der Einheit: {plan['ziel']}", "kasten"))
+        info.append(("Ziel", plan["ziel"]))
+    story.append(tabelle([[P(k, "zelle_b"), P(v, "zelle")] for k, v in info],
+                         [34 * mm, breite - 34 * mm], kopf=False))
 
-    story.append(P("Ablauf", "h2"))
-    kopf = [P(h, "zelle_b") for h in ("Uhrzeit", "Phase", "Übung", "Min", "Organisation heute")]
-    daten = [kopf]
-    for nr, (uhr, e) in enumerate(zeilen, 1):
-        u = uebungen[e["uebung"]] if e.get("uebung") else {"name": e.get("titel", "Pause")}
-        daten.append([P(uhr, "zelle"), P(e["phase"], "zelle"), P(f"{nr}. {u['name']}", "zelle_b"),
-                      P(str(e["dauer_min"]), "zelle"), P(e.get("organisation", ""), "zelle")])
-    t = Table(daten, colWidths=[19 * mm, 30 * mm, 50 * mm, 11 * mm, breite - 110 * mm], repeatRows=1)
-    t.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), GRUEN), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, HELL]), ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("GRID", (0, 0), (-1, -1), 0.3, colors.HexColor("#c7d7ca")),
-    ]))
-    # Kopfzeile weiß: Paragraph-Farbe überschreiben
-    for zelle in daten[0]:
-        zelle.style = ParagraphStyle("kopf", parent=S["zelle_b"], textColor=colors.white)
-    story += [t, Spacer(1, 4)]
+    story.append(P("Zeitplan", "h2"))
+    daten = [[P(h, "kopf") for h in ("Zeit", "Teil", "Übung", "Min")]]
+    for nr, (von, bis, e) in enumerate(zeilen, 1):
+        daten.append([P(f"{von}–{bis}", "zelle"), P(f"{nr}. {e['teil']}", "zelle_b"),
+                      titel_neu(uebungen[e["uebung"]]["name"], e.get("neu"), "zelle"), P(str(e["dauer_min"]), "zelle")])
+    story.append(tabelle(daten, [29 * mm, 43 * mm, breite - 84 * mm, 12 * mm]))
+    if any(e.get("neu") for e in plan["teile"]):
+        story.append(Spacer(1, 3))
+        story.append(P("[NEU] = eigene Übung, noch nicht im Training getestet.", "klein"))
 
     material = []
-    for e in plan["einheiten"]:
-        if e.get("uebung"):
-            for m in uebungen[e["uebung"]].get("material") or []:
-                if m not in material:
-                    material.append(m)
-    material += [m for m in plan.get("material_zusaetzlich", []) or [] if m not in material]
-    if material:
-        story.append(P("Material (gesamt)", "h3"))
-        story.append(P(" · ".join(material)))
+    for e in plan["teile"]:
+        for m in uebungen[e["uebung"]].get("material") or []:
+            if m not in material:
+                material.append(m)
+    story.append(P("Material (alle Übungen zusammen)", "h2"))
+    story.append(P(" · ".join(material)))
     if plan.get("hinweise"):
-        story.append(P("Hinweise", "h3"))
+        story.append(P("Hinweise", "h2"))
         story.append(liste(plan["hinweise"]))
 
 
-def seite_uebung(nr, uhr, e, u, story, breite):
-    story.append(P(f"{nr}. {u['name']}", "h2"))
-    meta = (f"{uhr} Uhr · {e['phase']} · {e['dauer_min']} min · Intensität {u.get('intensitaet', '–')}/5 · "
-            f"Feld: {u.get('feldgroesse', '–')}")
-    story.append(P(meta, "klein"))
-    if e.get("organisation"):
-        story.append(P(f"Heute: {e['organisation']}", "kasten"))
+def uebungsseite(nr, von, bis, e, u, haupt_story, breite, hoehe):
+    """Eine Seite pro Übung – wird zu lang, wird alles gleichmäßig verkleinert."""
+    story = []
+    story.append(P(f"{nr}. {e['teil']}   ·   {von}–{bis} Uhr   ·   {e['dauer_min']} min", "balken"))
+    story.append(titel_neu(u["name"], e.get("neu")))
+    story.append(P(f"Intensität {u.get('intensitaet', '–')}/5   ·   {', '.join(u.get('schwerpunkte') or [])}", "klein"))
+    story.append(Spacer(1, 5))
 
-    svg = UEBUNGEN / e["uebung"] / "diagramm.svg"
-    if svg.exists():
-        story.append(grafik(svg, breite, 125 * mm))
-        story.append(Spacer(1, 4))
+    ordner = UEBUNGEN / e["uebung"]
+    svgs = [ordner / n for n in svg_namen(len(diagramme(u))) if (ordner / n).exists()]
+    if len(svgs) == 1:
+        story.append(grafik(svgs[0], breite, 110 * mm))
+    elif svgs:  # mehrere Phasen: je zwei nebeneinander
+        b = (breite - 4 * mm) / 2
+        bilder = [grafik(s, b, 80 * mm) for s in svgs]
+        reihen = [bilder[i:i + 2] + [""] * (2 - len(bilder[i:i + 2])) for i in range(0, len(bilder), 2)]
+        t = Table(reihen, colWidths=[b + 2 * mm, b + 2 * mm])
+        t.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0)]))
+        story.append(t)
 
-    links = [P("Ablauf", "h3"), liste(u.get("ablauf"), nummeriert=True)]
+    story.append(P("Aufbau und Aufteilung heute", "h3"))
+    aufbau = [[P("Feld", "zelle_b"), P(u.get("feldgroesse", "–"), "zelle")],
+              [P("Material", "zelle_b"), P(", ".join(u.get("material") or []), "zelle")],
+              [P("Dauer", "zelle_b"), P(f"{e['dauer_min']} min", "zelle")]]
+    a = e.get("aufteilung") or {}
+    for key, label in (("gruppen", "Teams / Gruppen"), ("rollen", "Rollen"), ("wechsel", "Wechsel"),
+                       ("torhueter", "Torhüter")):
+        if a.get(key):
+            aufbau.append([P(label, "zelle_b"), P(a[key], "zelle")])
+    story.append(tabelle(aufbau, [32 * mm, breite - 32 * mm], kopf=False))
+
+    story += [P("Ablauf", "h3"), liste(u.get("ablauf"), nummeriert=True)]
     if u.get("regeln"):
-        links += [P("Regeln", "h3"), liste(u["regeln"])]
-    rechts = [P("Coachingpunkte", "h3"), liste(u.get("coachingpunkte"))]
+        story += [P("Regeln", "h3"), liste(u["regeln"])]
+    story += [P("Coachingpunkte", "h3"), liste(u.get("coachingpunkte"))]
     var = u.get("varianten") or {}
+    zeilen = []
     if var.get("leichter"):
-        rechts += [P("Leichter", "h3"), liste(var["leichter"])]
+        zeilen.append(f"Leichter: {'; '.join(var['leichter'])}")
     if var.get("schwerer"):
-        rechts += [P("Schwerer", "h3"), liste(var["schwerer"])]
-    t = Table([[links, rechts]], colWidths=[breite * 0.55, breite * 0.45])
-    t.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                           ("RIGHTPADDING", (0, 0), (0, -1), 10)]))
-    story.append(t)
+        zeilen.append(f"Schwerer: {'; '.join(var['schwerer'])}")
+    if zeilen:
+        story += [P("Varianten", "h3"), liste(zeilen)]
 
     unten = []
-    if u.get("material"):
-        unten.append(P(f"Material: {', '.join(u['material'])}", "klein"))
     if e.get("hinweis"):
-        unten.append(P(f"Hinweis: {e['hinweis']}", "kasten"))
-    fb = [f for f in u.get("feedback") or [] if f.get("notiz")]
-    if fb:
-        letzte = fb[-1]
-        unten.append(P(f"Erfahrung ({letzte['datum']}): {letzte['notiz']}", "klein"))
+        unten.append(P(f"Hinweis: {e['hinweis']}", "zelle_b"))
+    notizen = [f for f in u.get("feedback") or [] if f.get("notiz")]
+    if notizen:
+        unten.append(P(f"Erfahrung vom {notizen[-1]['datum']}: {notizen[-1]['notiz']}", "klein"))
     if unten:
+        story.append(Spacer(1, 6))
         story.append(KeepTogether(unten))
+    haupt_story.append(PageBreak())
+    haupt_story.append(KeepInFrame(breite, hoehe, story, mode="shrink"))
 
 
 def fusszeile(canvas, doc):
     canvas.saveState()
-    canvas.setFont("DV", 7.5)
+    canvas.setFont("DV", 8)
     canvas.setFillColor(GRAU)
     canvas.drawString(15 * mm, 9 * mm, doc.title)
     canvas.drawRightString(A4[0] - 15 * mm, 9 * mm, f"Seite {doc.page}")
@@ -206,22 +268,32 @@ def main():
     a = ap.parse_args()
     pfad = Path(a.plan).resolve()
     plan = yaml.safe_load(pfad.read_text())
-    uebungen = {e["uebung"]: lade_uebung(e["uebung"]) for e in plan["einheiten"] if e.get("uebung")}
+
+    uebungen = {}
+    for e in plan["teile"]:
+        p = UEBUNGEN / str(e.get("uebung")) / "uebung.yaml"
+        if not p.exists():
+            sys.exit(f"Übung '{e.get('uebung')}' ({e.get('teil')}) nicht in der Datenbank")
+        uebungen[e["uebung"]] = yaml.safe_load(p.read_text())
+
+    fehler, warnungen = pruefe(plan, uebungen)
+    for w in warnungen:
+        print(f"Warnung: {w}", file=sys.stderr)
+    if fehler:
+        for f in fehler:
+            print(f"FEHLER: {f}", file=sys.stderr)
+        sys.exit(1)
 
     ziel = pfad.with_suffix(".pdf")
     doc = SimpleDocTemplate(str(ziel), pagesize=A4, leftMargin=15 * mm, rightMargin=15 * mm,
                             topMargin=13 * mm, bottomMargin=15 * mm,
                             title=f"Training {plan['datum']} – {plan['schwerpunkt']}", author="Trainerteam")
     breite = A4[0] - 30 * mm
+    hoehe = A4[1] - 28 * mm - 12  # Rahmenhöhe abzüglich Innenabstand
     story = []
-    seite_uebersicht(plan, uebungen, story, breite)
-    zeilen, _ = zeitplan(plan)
-    nr = 0
-    for uhr, e in zeilen:
-        nr += 1
-        if e.get("uebung"):
-            story.append(PageBreak())
-            seite_uebung(nr, uhr, e, uebungen[e["uebung"]], story, breite)
+    deckblatt(plan, uebungen, story, breite)
+    for nr, (von, bis, e) in enumerate(zeitplan(plan), 1):
+        uebungsseite(nr, von, bis, e, uebungen[e["uebung"]], story, breite, hoehe)
     doc.build(story, onFirstPage=fusszeile, onLaterPages=fusszeile)
     print(ziel.relative_to(ROOT))
 

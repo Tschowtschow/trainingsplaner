@@ -4,7 +4,7 @@ phase: [Erweitertes Aufwärmen]
 spieler_min: 7
 spieler_max: 21
 torhueter: nein
-feldgroesse: 12 x 12 m pro Gruppe
+feldgroesse: 12 x 12 m pro Gruppe (8 x 8 m bei 4 gegen 2)
 material: [4 Hütchen pro Gruppe, 2-3 Bälle pro Gruppe, Leibchen]
 dauer_min: 12
 intensitaet: 3
@@ -29,23 +29,45 @@ varianten:
     - 7 Spieler = 1 Gruppe; 14 Spieler = 2 Gruppen; Rest als 6. Außenspieler (6 gegen 2) einbauen.
     - Ungerade Zahl - Gruppen mit 4 gegen 2 und 5 gegen 2 mischen.
 quelle: eigene Übung (Beispiel)
+unsicher: []
 feedback: []
 diagramm:
-  feld: {laenge: 12, breite: 12}
-  objekte:
-    - {typ: huetchen, x: 0, y: 0}
-    - {typ: huetchen, x: 12, y: 0}
-    - {typ: huetchen, x: 0, y: 12}
-    - {typ: huetchen, x: 12, y: 12}
-    - {typ: spieler, team: a, x: 6, y: 0, label: "1"}
-    - {typ: spieler, team: a, x: 12, y: 4, label: "2"}
-    - {typ: spieler, team: a, x: 9, y: 12, label: "3"}
-    - {typ: spieler, team: a, x: 2.5, y: 12, label: "4"}
-    - {typ: spieler, team: a, x: 0, y: 5, label: "5"}
-    - {typ: spieler, team: b, x: 5.5, y: 5}
-    - {typ: spieler, team: b, x: 8, y: 6.5}
-    - {typ: ball, x: 6.9, y: 0.9}
-  pfeile:
-    - {typ: pass, von: [6, 0], nach: [12, 4], nr: 1}
-    - {typ: pass, von: [12, 4], nach: [9, 12], nr: 2}
-    - {typ: lauf, von: [8, 6.5], nach: [5, 9.5], kurve: -0.2}
+  - titel: "Phase 1: Ballzirkulation"
+    feld: {laenge: 12, breite: 12}
+    objekte:
+      - {typ: huetchen, x: 0, y: 0}
+      - {typ: huetchen, x: 12, y: 0}
+      - {typ: huetchen, x: 0, y: 12}
+      - {typ: huetchen, x: 12, y: 12}
+      - {typ: spieler, team: a, x: 6, y: 0, label: "1"}
+      - {typ: spieler, team: a, x: 12, y: 4, label: "2"}
+      - {typ: spieler, team: a, x: 9, y: 12, label: "3"}
+      - {typ: spieler, team: a, x: 2.5, y: 12, label: "4"}
+      - {typ: spieler, team: a, x: 0, y: 5, label: "5"}
+      - {typ: spieler, team: b, x: 5.5, y: 5}
+      - {typ: spieler, team: b, x: 8, y: 6.5}
+      - {typ: ball, x: 6.9, y: 0.9}
+    pfeile:
+      - {typ: pass, von: [6, 0], nach: [12, 4], nr: 1}
+      - {typ: pass, von: [12, 4], nach: [9, 12], nr: 2}
+      - {typ: lauf, von: [8, 6.5], nach: [5, 9.5], kurve: -0.2}
+  - titel: "Phase 2: Ballgewinn – Fehlerspieler geht rein"
+    feld: {laenge: 12, breite: 12}
+    objekte:
+      - {typ: huetchen, x: 0, y: 0}
+      - {typ: huetchen, x: 12, y: 0}
+      - {typ: huetchen, x: 0, y: 12}
+      - {typ: huetchen, x: 12, y: 12}
+      - {typ: spieler, team: a, x: 6, y: 0, label: "1"}
+      - {typ: spieler, team: a, x: 12, y: 4, label: "2"}
+      - {typ: spieler, team: a, x: 9, y: 12, label: "3"}
+      - {typ: spieler, team: a, x: 2.5, y: 12, label: "4"}
+      - {typ: spieler, team: a, x: 0, y: 5, label: "5"}
+      - {typ: spieler, team: b, x: 8, y: 6.5}
+      - {typ: spieler, team: b, x: 5, y: 3.5}
+      - {typ: ball, x: 8.9, y: 7.2}
+      - {typ: text, x: 9.4, y: 9.8, text: "Tausch", groesse: 0.8}
+    pfeile:
+      - {typ: pass, von: [2.5, 12], nach: [8, 6.5], nr: 1}
+      - {typ: lauf, von: [8, 6.5], nach: [3.4, 11.3], kurve: -0.3}
+      - {typ: lauf, von: [2.5, 12], nach: [6.5, 5.5], kurve: -0.35}

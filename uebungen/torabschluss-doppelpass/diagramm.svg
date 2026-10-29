@@ -1,81 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1214" viewBox="0 0 900 1214">
-<rect x="0" y="0" width="900.0" height="1147.5" fill="#2f7d32"/>
-<rect x="0.0" y="0" width="128.6" height="1147.5" fill="#358a38"/>
-<rect x="257.1" y="0" width="128.6" height="1147.5" fill="#358a38"/>
-<rect x="514.3" y="0" width="128.6" height="1147.5" fill="#358a38"/>
-<rect x="771.4" y="0" width="128.6" height="1147.5" fill="#358a38"/>
-<rect x="56.2" y="56.2" width="787.5" height="1035.0" fill="none" stroke="#ffffff" stroke-width="3.4"/>
-<rect x="472.5" y="120.1" width="371.2" height="907.2" fill="none" stroke="#ffffff" stroke-width="3.4"/>
-<rect x="720.0" y="367.6" width="123.8" height="412.2" fill="none" stroke="#ffffff" stroke-width="3.4"/>
-<circle cx="596.2" cy="573.8" r="5.6" fill="#ffffff"/>
-<rect x="843.8" y="491.4" width="40.5" height="164.7" fill="#e5e7eb" fill-opacity="0.55" stroke="#ffffff" stroke-width="2.7"/>
-<line x1="855.0" y1="491.4" x2="855.0" y2="656.1" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="866.2" y1="491.4" x2="866.2" y2="656.1" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="877.5" y1="491.4" x2="877.5" y2="656.1" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="502.6" x2="884.2" y2="502.6" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="513.9" x2="884.2" y2="513.9" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="525.1" x2="884.2" y2="525.1" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="536.4" x2="884.2" y2="536.4" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="547.6" x2="884.2" y2="547.6" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="558.9" x2="884.2" y2="558.9" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="570.1" x2="884.2" y2="570.1" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="581.4" x2="884.2" y2="581.4" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="592.6" x2="884.2" y2="592.6" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="603.9" x2="884.2" y2="603.9" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="615.1" x2="884.2" y2="615.1" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="626.4" x2="884.2" y2="626.4" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="637.6" x2="884.2" y2="637.6" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="648.9" x2="884.2" y2="648.9" stroke="#9ca3af" stroke-width="0.7"/>
-<line x1="843.8" y1="491.4" x2="843.8" y2="656.1" stroke="#ffffff" stroke-width="5.6"/>
-<circle cx="88.3" cy="663.8" r="11.1" fill="#ffffff" stroke="#111827" stroke-width="2.6"/>
-<circle cx="114.2" cy="663.8" r="11.1" fill="#ffffff" stroke="#111827" stroke-width="2.6"/>
-<circle cx="101.2" cy="645.3" r="11.1" fill="#ffffff" stroke="#111827" stroke-width="2.6"/>
-<rect x="410.7" y="349.2" width="11.1" height="66.5" fill="#facc15" stroke="#111827" stroke-width="2.2"/>
-<polyline points="168.8,706.8 172.0,703.3 175.2,699.8 178.5,696.4 181.7,692.9 184.9,689.4 188.1,685.9 191.3,682.4 194.5,679.0 197.7,675.5 200.9,672.0 204.2,668.5 207.4,665.0 210.6,661.6 213.8,658.1 217.0,654.6 220.2,651.1 223.4,647.6 226.6,644.2 229.9,640.7 233.1,637.2 236.3,633.7 239.5,630.2 242.7,626.8 245.9,623.3 249.1,619.8 252.3,616.3 255.6,612.8 258.8,609.4 262.0,605.9 265.2,602.4 268.4,598.9 271.6,595.4 274.8,592.0 278.0,588.5 281.2,585.0 284.5,581.5 287.7,578.0 290.9,574.6 294.1,571.1 297.3,567.6 300.5,564.1 303.7,560.6 306.9,557.2 310.2,553.7 313.4,550.2 316.6,546.7 319.8,543.2 323.0,539.8 326.2,536.3 329.4,532.8 332.6,529.3 335.9,525.8 339.1,522.4 342.3,518.9 345.5,515.4 348.7,511.9 351.9,508.4 355.1,505.0 358.3,501.5 361.6,498.0 364.8,494.5 368.0,491.0 371.2,487.6 374.4,484.1 377.6,480.6 380.8,477.1 384.0,473.6 387.3,470.2 390.5,466.7 393.7,463.2" fill="none" stroke="#111827" stroke-width="6.7" stroke-linecap="round" stroke-linejoin="round"/>
-<polygon points="393.7,463.2 356.4,479.1 380.8,501.6" fill="#111827"/>
-<circle cx="281.2" cy="585.0" r="22.2" fill="#ffffff" stroke="#111827" stroke-width="3.0"/>
-<text x="281.2" y="596.1" font-family="Helvetica" font-size="31.4" font-weight="bold" fill="#111827" text-anchor="middle">1</text>
-<polyline points="179.9,728.9 184.3,728.4 188.6,728.0 193.0,727.5 197.3,727.0 201.6,726.5 205.9,725.9 210.3,725.4 214.6,724.8 218.9,724.1 223.1,723.5 227.4,722.8 231.7,722.1 236.0,721.3 240.2,720.6 244.5,719.8 248.8,719.0 253.0,718.1 257.2,717.3 261.5,716.4 265.7,715.5 269.9,714.5 274.1,713.5 278.3,712.5 282.5,711.5 286.7,710.5 290.9,709.4 295.1,708.3 299.3,707.2 303.4,706.0 307.6,704.8 311.7,703.6 315.9,702.4 320.0,701.1 324.2,699.9 328.3,698.6 332.4,697.2 336.5,695.9 340.6,694.5 344.7,693.1 348.8,691.6 352.9,690.2 357.0,688.7 361.1,687.2 365.1,685.6 369.2,684.0 373.3,682.4 377.3,680.8 381.4,679.2 385.4,677.5" fill="none" stroke="#111827" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22.2,14.8"/>
-<polygon points="385.4,677.5 344.9,676.0 357.4,706.8" fill="#111827"/>
-<polyline points="421.7,471.6 422.4,475.4 423.0,479.2 423.6,483.0 424.3,486.8 424.9,490.6 425.5,494.4 426.2,498.2 426.8,502.0 427.4,505.8 428.1,509.6 428.7,513.4 429.3,517.2 430.0,521.0 430.6,524.8 431.2,528.6 431.9,532.4 432.5,536.2 433.1,540.0 433.8,543.8 434.4,547.6 435.0,551.4 435.7,555.2 436.3,559.0 436.9,562.8 437.6,566.6 438.2,570.4 438.8,574.2 439.5,578.0 440.1,581.8 440.7,585.6 441.4,589.4 442.0,593.2 442.6,597.0 443.3,600.8 443.9,604.6 444.5,608.4" fill="none" stroke="#111827" stroke-width="6.7" stroke-linecap="round" stroke-linejoin="round"/>
-<polygon points="444.5,608.4 454.9,569.2 422.0,574.7" fill="#111827"/>
-<circle cx="433.1" cy="540.0" r="22.2" fill="#ffffff" stroke="#111827" stroke-width="3.0"/>
-<text x="433.1" y="551.1" font-family="Helvetica" font-size="31.4" font-weight="bold" fill="#111827" text-anchor="middle">2</text>
-<polyline points="450.0,641.2 455.6,648.6 460.5,652.1 464.2,649.9 466.9,642.5 469.1,633.0 471.8,625.5 475.5,623.1 480.3,626.6 485.9,633.9 491.5,641.3 496.4,644.9 500.1,642.8 502.8,635.5 505.1,626.0 507.7,618.4 511.4,615.9 516.2,619.2 521.9,626.9 525.9,626.1 529.9,625.3" fill="none" stroke="#111827" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
-<polygon points="529.9,625.3 490.4,616.2 496.9,648.8" fill="#111827"/>
-<polyline points="562.5,618.8 567.2,617.1 571.9,615.4 576.6,613.7 581.4,612.0 586.1,610.3 590.8,608.6 595.5,606.9 600.2,605.2 604.9,603.5 609.7,601.8 614.4,600.1 619.1,598.4 623.8,596.7 628.5,595.0 633.2,593.3 638.0,591.6 642.7,589.9 647.4,588.2 652.1,586.5 656.8,584.8 661.5,583.1 666.3,581.4 671.0,579.7 675.7,578.0 680.4,576.3 685.1,574.6 689.8,572.9 694.5,571.2 699.3,569.5 704.0,567.8 708.7,566.1 713.4,564.4 718.1,562.7 722.8,561.0 727.6,559.3 732.3,557.6 737.0,555.9 741.7,554.2 746.4,552.5 751.1,550.8 755.9,549.1 760.6,547.4 765.3,545.7 770.0,544.0 774.7,542.4 779.4,540.7 784.2,539.0 788.9,537.3 793.6,535.6 798.3,533.9 803.0,532.2 807.7,530.5 812.4,528.8" fill="none" stroke="#d62828" stroke-width="9.6" stroke-linecap="round" stroke-linejoin="round"/>
-<polygon points="812.4,528.8 772.0,525.6 783.3,556.9" fill="#d62828"/>
-<circle cx="703.1" cy="568.1" r="22.2" fill="#ffffff" stroke="#d62828" stroke-width="3.0"/>
-<text x="703.1" y="579.2" font-family="Helvetica" font-size="31.4" font-weight="bold" fill="#111827" text-anchor="middle">3</text>
-<circle cx="816.7" cy="573.8" r="33.3" fill="#16a34a" stroke="#111827" stroke-width="4.4"/>
-<text x="816.7" y="589.3" font-family="Helvetica" font-size="31.4" font-weight="bold" fill="#ffffff" text-anchor="middle">TW</text>
-<circle cx="146.2" cy="731.2" r="33.3" fill="#d62828" stroke="#111827" stroke-width="4.4"/>
-<text x="146.2" y="746.8" font-family="Helvetica" font-size="40.7" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
-<circle cx="101.2" cy="798.8" r="33.3" fill="#d62828" stroke="#111827" stroke-width="4.4"/>
-<text x="101.2" y="814.3" font-family="Helvetica" font-size="40.7" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
-<circle cx="67.5" cy="866.2" r="33.3" fill="#d62828" stroke="#111827" stroke-width="4.4"/>
-<text x="67.5" y="881.8" font-family="Helvetica" font-size="40.7" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
-<circle cx="416.2" cy="438.8" r="33.3" fill="#facc15" stroke="#111827" stroke-width="4.4"/>
-<text x="416.2" y="454.3" font-family="Helvetica" font-size="40.7" font-weight="bold" fill="#111827" text-anchor="middle">B</text>
-<rect x="0" y="1147.5" width="900.0" height="66.0" fill="#ffffff"/>
-<rect x="10.0" y="1158.5" width="22" height="14" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/>
-<text x="42.0" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Großtor</text>
-<circle cx="120.5" cy="1165.5" r="6" fill="#ffffff" stroke="#111827" stroke-width="1.2"/>
-<text x="144.5" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Ball</text>
-<rect x="198.5" y="1156.5" width="4" height="18" fill="#facc15" stroke="#111827" stroke-width="0.8"/>
-<text x="224.5" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Stange</text>
-<line x1="287.5" y1="1165.5" x2="309.5" y2="1165.5" stroke="#111827" stroke-width="2.5"/><polygon points="315.5,1165.5 308.5,1161.5 308.5,1169.5" fill="#111827"/>
-<text x="319.5" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Pass</text>
-<line x1="367.5" y1="1165.5" x2="389.5" y2="1165.5" stroke="#111827" stroke-width="2.5" stroke-dasharray="5,3"/><polygon points="395.5,1165.5 388.5,1161.5 388.5,1169.5" fill="#111827"/>
-<text x="399.5" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Laufweg ohne Ball</text>
-<polyline points="545.0,1165.5 547.0,1167.4 549.0,1168.4 551.0,1168.2 553.0,1166.9 555.0,1164.9 557.0,1163.2 559.0,1162.5 561.0,1163.1 563.0,1164.7 565.0,1166.6" fill="none" stroke="#111827" stroke-width="2"/><polygon points="573.0,1165.5 566.0,1161.5 566.0,1169.5" fill="#111827"/>
-<text x="577.0" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Dribbling</text>
-<line x1="662.5" y1="1165.5" x2="684.5" y2="1165.5" stroke="#d62828" stroke-width="2.5"/><polygon points="690.5,1165.5 683.5,1161.5 683.5,1169.5" fill="#d62828"/>
-<text x="694.5" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Torschuss</text>
-<circle cx="788.0" cy="1165.5" r="7" fill="#16a34a" stroke="#111827" stroke-width="1"/>
-<text x="812.0" y="1170.5" font-family="Helvetica" font-size="15" fill="#111827">Torhüter</text>
-<circle cx="18.0" cy="1191.5" r="7" fill="#d62828" stroke="#111827" stroke-width="1"/>
-<text x="42.0" y="1196.5" font-family="Helvetica" font-size="15" fill="#111827">Team A</text>
-<circle cx="113.0" cy="1191.5" r="7" fill="#facc15" stroke="#111827" stroke-width="1"/>
-<text x="137.0" y="1196.5" font-family="Helvetica" font-size="15" fill="#111827">Neutral / Joker</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="772" viewBox="0 0 900 772">
+<g transform="translate(0,0)">
+<rect x="0" y="0" width="900.0" height="705.9" fill="#2f7d32"/>
+<rect x="0.0" y="0" width="100.0" height="705.9" fill="#358a38"/>
+<rect x="200.0" y="0" width="100.0" height="705.9" fill="#358a38"/>
+<rect x="400.0" y="0" width="100.0" height="705.9" fill="#358a38"/>
+<rect x="600.0" y="0" width="100.0" height="705.9" fill="#358a38"/>
+<rect x="800.0" y="0" width="100.0" height="705.9" fill="#358a38"/>
+<rect x="44.1" y="44.1" width="811.8" height="617.6" fill="none" stroke="#ffffff" stroke-width="2.6"/>
+<rect x="94.2" y="44.1" width="711.5" height="291.2" fill="none" stroke="#ffffff" stroke-width="2.6"/>
+<rect x="288.4" y="44.1" width="323.3" height="97.1" fill="none" stroke="#ffffff" stroke-width="2.6"/>
+<circle cx="450.0" cy="238.2" r="4.4" fill="#ffffff"/>
+<rect x="385.4" y="12.4" width="129.2" height="31.8" fill="#e5e7eb" fill-opacity="0.55" stroke="#ffffff" stroke-width="2.1"/>
+<line x1="394.2" y1="12.4" x2="394.2" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="403.1" y1="12.4" x2="403.1" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="411.9" y1="12.4" x2="411.9" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="420.7" y1="12.4" x2="420.7" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="429.5" y1="12.4" x2="429.5" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="438.4" y1="12.4" x2="438.4" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="447.2" y1="12.4" x2="447.2" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="456.0" y1="12.4" x2="456.0" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="464.8" y1="12.4" x2="464.8" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="473.6" y1="12.4" x2="473.6" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="482.5" y1="12.4" x2="482.5" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="491.3" y1="12.4" x2="491.3" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="500.1" y1="12.4" x2="500.1" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="508.9" y1="12.4" x2="508.9" y2="44.1" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="385.4" y1="21.2" x2="514.6" y2="21.2" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="385.4" y1="30.0" x2="514.6" y2="30.0" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="385.4" y1="38.8" x2="514.6" y2="38.8" stroke="#9ca3af" stroke-width="0.5"/>
+<line x1="385.4" y1="44.1" x2="514.6" y2="44.1" stroke="#ffffff" stroke-width="4.4"/>
+<circle cx="510.4" cy="626.5" r="8.7" fill="#ffffff" stroke="#111827" stroke-width="2.0"/>
+<circle cx="530.7" cy="626.5" r="8.7" fill="#ffffff" stroke="#111827" stroke-width="2.0"/>
+<circle cx="520.6" cy="612.0" r="8.7" fill="#ffffff" stroke="#111827" stroke-width="2.0"/>
+<rect x="295.7" y="353.3" width="8.7" height="52.2" fill="#facc15" stroke="#111827" stroke-width="1.7"/>
+<polyline points="554.4,573.5 551.6,571.0 548.9,568.4 546.2,565.9 543.4,563.4 540.7,560.9 538.0,558.4 535.2,555.8 532.5,553.3 529.8,550.8 527.1,548.3 524.3,545.8 521.6,543.2 518.9,540.7 516.1,538.2 513.4,535.7 510.7,533.2 508.0,530.6 505.2,528.1 502.5,525.6 499.8,523.1 497.0,520.6 494.3,518.0 491.6,515.5 488.8,513.0 486.1,510.5 483.4,508.0 480.7,505.5 477.9,502.9 475.2,500.4 472.5,497.9 469.7,495.4 467.0,492.9 464.3,490.3 461.6,487.8 458.8,485.3 456.1,482.8 453.4,480.3 450.6,477.7 447.9,475.2 445.2,472.7 442.4,470.2 439.7,467.7 437.0,465.1 434.3,462.6 431.5,460.1 428.8,457.6 426.1,455.1 423.3,452.5 420.6,450.0 417.9,447.5 415.2,445.0 412.4,442.5 409.7,439.9 407.0,437.4 404.2,434.9 401.5,432.4 398.8,429.9 396.0,427.3 393.3,424.8 390.6,422.3 387.9,419.8 385.1,417.3 382.4,414.7 379.7,412.2 376.9,409.7 374.2,407.2 371.5,404.7 368.7,402.1 366.0,399.6 363.3,397.1" fill="none" stroke="#111827" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="363.3,397.1 375.7,426.4 393.4,407.2" fill="#111827"/>
+<circle cx="458.8" cy="485.3" r="17.4" fill="#ffffff" stroke="#111827" stroke-width="2.3"/>
+<text x="458.8" y="494.0" font-family="Helvetica" font-size="24.6" font-weight="bold" fill="#111827" text-anchor="middle">1</text>
+<polyline points="571.7,564.7 571.3,561.3 571.0,557.9 570.6,554.5 570.2,551.1 569.8,547.7 569.4,544.4 568.9,541.0 568.4,537.6 567.9,534.2 567.4,530.9 566.9,527.5 566.3,524.2 565.8,520.8 565.2,517.5 564.5,514.1 563.9,510.8 563.2,507.5 562.6,504.1 561.9,500.8 561.1,497.5 560.4,494.2 559.6,490.9 558.9,487.6 558.1,484.3 557.2,481.0 556.4,477.7 555.5,474.4 554.6,471.2 553.7,467.9 552.8,464.6 551.9,461.4 550.9,458.1 549.9,454.9 548.9,451.6 547.9,448.4 546.8,445.2 545.8,441.9 544.7,438.7 543.6,435.5 542.5,432.3 541.3,429.1 540.1,425.9 538.9,422.7 537.7,419.5 536.5,416.3 535.2,413.1 534.0,409.9 532.7,406.8 531.4,403.6" fill="none" stroke="#111827" stroke-width="4.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="17.4,11.6"/>
+<polygon points="531.4,403.6 530.2,435.4 554.4,425.6" fill="#111827"/>
+<polyline points="369.9,375.1 372.8,374.6 375.8,374.1 378.8,373.6 381.8,373.1 384.8,372.6 387.7,372.1 390.7,371.6 393.7,371.1 396.7,370.6 399.7,370.2 402.7,369.7 405.6,369.2 408.6,368.7 411.6,368.2 414.6,367.7 417.6,367.2 420.5,366.7 423.5,366.2 426.5,365.7 429.5,365.2 432.5,364.7 435.5,364.2 438.4,363.7 441.4,363.2 444.4,362.7 447.4,362.2 450.4,361.7 453.3,361.2 456.3,360.7 459.3,360.2 462.3,359.7 465.3,359.2 468.3,358.7 471.2,358.2 474.2,357.7 477.2,357.2" fill="none" stroke="#111827" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="477.2,357.2 446.5,349.1 450.8,374.9" fill="#111827"/>
+<circle cx="423.5" cy="366.2" r="17.4" fill="#ffffff" stroke="#111827" stroke-width="2.3"/>
+<text x="423.5" y="374.9" font-family="Helvetica" font-size="24.6" font-weight="bold" fill="#111827" text-anchor="middle">2</text>
+<polyline points="502.9,352.9 508.7,348.5 511.5,344.7 509.7,341.8 503.9,339.7 496.5,337.9 490.6,335.9 488.7,333.0 491.4,329.2 497.2,324.8 502.9,320.4 505.8,316.5 504.1,313.6 498.4,311.5 491.0,309.7 485.1,307.7 483.1,304.8 485.7,301.0 491.7,296.6 491.0,293.4 490.4,290.3" fill="none" stroke="#111827" stroke-width="4.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="490.4,290.3 483.3,321.3 508.9,316.2" fill="#111827"/>
+<polyline points="485.3,264.7 484.0,261.0 482.6,257.3 481.3,253.6 480.0,249.9 478.6,246.2 477.3,242.5 476.0,238.8 474.6,235.1 473.3,231.4 472.0,227.7 470.6,224.0 469.3,220.3 468.0,216.6 466.7,212.9 465.3,209.2 464.0,205.5 462.7,201.8 461.3,198.1 460.0,194.4 458.7,190.7 457.3,187.0 456.0,183.3 454.7,179.6 453.3,175.9 452.0,172.2 450.7,168.5 449.3,164.8 448.0,161.1 446.7,157.4 445.3,153.7 444.0,150.0 442.7,146.3 441.4,142.6 440.0,138.9 438.7,135.2 437.4,131.5 436.0,127.8 434.7,124.2 433.4,120.5 432.0,116.8 430.7,113.1 429.4,109.4 428.0,105.7 426.7,102.0 425.4,98.3 424.0,94.6 422.7,90.9 421.4,87.2 420.0,83.5 418.7,79.8 417.4,76.1 416.1,72.4 414.7,68.7" fill="none" stroke="#d62828" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="414.7,68.7 412.3,100.4 436.8,91.5" fill="#d62828"/>
+<circle cx="445.6" cy="154.4" r="17.4" fill="#ffffff" stroke="#d62828" stroke-width="2.3"/>
+<text x="445.6" y="163.1" font-family="Helvetica" font-size="24.6" font-weight="bold" fill="#111827" text-anchor="middle">3</text>
+<circle cx="450.0" cy="65.3" r="26.1" fill="#16a34a" stroke="#111827" stroke-width="3.5"/>
+<text x="450.0" y="77.5" font-family="Helvetica" font-size="24.6" font-weight="bold" fill="#ffffff" text-anchor="middle">TW</text>
+<circle cx="573.5" cy="591.2" r="26.1" fill="#d62828" stroke="#111827" stroke-width="3.5"/>
+<text x="573.5" y="603.4" font-family="Helvetica" font-size="31.9" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
+<circle cx="626.5" cy="626.5" r="26.1" fill="#d62828" stroke="#111827" stroke-width="3.5"/>
+<text x="626.5" y="638.6" font-family="Helvetica" font-size="31.9" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
+<circle cx="679.4" cy="652.9" r="26.1" fill="#d62828" stroke="#111827" stroke-width="3.5"/>
+<text x="679.4" y="665.1" font-family="Helvetica" font-size="31.9" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
+<circle cx="344.1" cy="379.4" r="26.1" fill="#facc15" stroke="#111827" stroke-width="3.5"/>
+<text x="344.1" y="391.6" font-family="Helvetica" font-size="31.9" font-weight="bold" fill="#111827" text-anchor="middle">B</text>
+<rect x="0" y="705.9" width="900.0" height="66.0" fill="#ffffff"/>
+<rect x="10.0" y="716.9" width="22" height="14" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/>
+<text x="42.0" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Großtor</text>
+<circle cx="120.5" cy="723.9" r="6" fill="#ffffff" stroke="#111827" stroke-width="1.2"/>
+<text x="144.5" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Ball</text>
+<rect x="198.5" y="714.9" width="4" height="18" fill="#facc15" stroke="#111827" stroke-width="0.8"/>
+<text x="224.5" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Stange</text>
+<line x1="287.5" y1="723.9" x2="309.5" y2="723.9" stroke="#111827" stroke-width="2.5"/><polygon points="315.5,723.9 308.5,719.9 308.5,727.9" fill="#111827"/>
+<text x="319.5" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Pass</text>
+<line x1="367.5" y1="723.9" x2="389.5" y2="723.9" stroke="#111827" stroke-width="2.5" stroke-dasharray="5,3"/><polygon points="395.5,723.9 388.5,719.9 388.5,727.9" fill="#111827"/>
+<text x="399.5" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Laufweg ohne Ball</text>
+<polyline points="545.0,723.9 547.0,725.7 549.0,726.8 551.0,726.6 553.0,725.3 555.0,723.3 557.0,721.6 559.0,720.9 561.0,721.4 563.0,723.0 565.0,725.0" fill="none" stroke="#111827" stroke-width="2"/><polygon points="573.0,723.9 566.0,719.9 566.0,727.9" fill="#111827"/>
+<text x="577.0" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Dribbling</text>
+<line x1="662.5" y1="723.9" x2="684.5" y2="723.9" stroke="#d62828" stroke-width="2.5"/><polygon points="690.5,723.9 683.5,719.9 683.5,727.9" fill="#d62828"/>
+<text x="694.5" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Torschuss</text>
+<circle cx="788.0" cy="723.9" r="7" fill="#16a34a" stroke="#111827" stroke-width="1"/>
+<text x="812.0" y="728.9" font-family="Helvetica" font-size="15" fill="#111827">Torhüter</text>
+<circle cx="18.0" cy="749.9" r="7" fill="#d62828" stroke="#111827" stroke-width="1"/>
+<text x="42.0" y="754.9" font-family="Helvetica" font-size="15" fill="#111827">Team A</text>
+<circle cx="113.0" cy="749.9" r="7" fill="#facc15" stroke="#111827" stroke-width="1"/>
+<text x="137.0" y="754.9" font-family="Helvetica" font-size="15" fill="#111827">Neutral / Joker</text>
+</g>
 </svg>

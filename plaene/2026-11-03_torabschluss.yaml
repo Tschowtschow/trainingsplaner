@@ -1,30 +1,63 @@
-# Beispielplan – zeigt das Format. Kann gelöscht werden.
+# Testplan – zeigt Format und Layout. Außer dem Rondo sind alle Übungen eigene Beispiele ([NEU]).
 datum: 2026-11-03
 trainingstag: Dienstag
 schwerpunkt: Torabschluss
 feldspieler: 14
 torhueter: 2
-beginn: "19:30"
-ort: Kunstrasen
-ziel: Mehr Abschlüsse aus der zweiten Reihe, schnelles Umschalten nach Ballgewinn in Tornähe.
-einheiten:
-  - phase: Lauf-ABC
+beginn: "19:45"
+ziel: Mehr und schnellere Abschlüsse – vom Doppelpass über die Überzahl bis ins Spiel.
+teile:
+  - teil: Lauf-ABC
     uebung: lauf-abc-grundform
     dauer_min: 10
-    organisation: 4 Bahnen, TW machen parallel eigenes Aufwärmen.
-  - phase: Erweitertes Aufwärmen
+    neu: true
+    aufteilung:
+      gruppen: 4 Bahnen mit je 3–4 Spielern.
+      torhueter: Separat mit Co-Trainer (TW-Aufwärmen).
+  - teil: Erweitertes Aufwärmen
     uebung: rondo-5gegen2
     dauer_min: 15
-    organisation: 2 Gruppen à 7 (5 gegen 2), 3 Durchgänge à 4 min.
-  - phase: Hauptteil
+    aufteilung:
+      gruppen: 2 Gruppen à 7 = je 5 gegen 2, zwei Felder 12 x 12 m.
+      rollen: 5 Außenspieler, 2 Verteidiger in der Mitte.
+      wechsel: Fehlerspieler geht rein; nach 3 x 4 min Gruppen neu mischen.
+      torhueter: Separat – Fangen, Fallen, flache Bälle.
+  - teil: Hauptteil 1
     uebung: torabschluss-doppelpass
+    dauer_min: 20
+    neu: true
+    aufteilung:
+      gruppen: 2 Stationen spiegelverkehrt (links/rechts) auf ein Großtor, je 7 Spieler.
+      rollen: Je Station 1 Anspieler (B) an der Stange, Rest startet als A.
+      wechsel: A wird nach dem Abschluss Anspieler, B stellt sich hinten an. Stationen abwechselnd.
+      torhueter: Ab jetzt integriert – TW 1 und TW 2 wechseln alle 5 min.
+  - teil: Hauptteil 2
+    uebung: torabschluss-2gegen1
     dauer_min: 25
-    organisation: 2 Stationen spiegelverkehrt auf ein Tor (je 7 Spieler), TW wechseln nach 6 min.
-    hinweis: Bälle vorher aufpumpen, mindestens 15 Bälle bereitlegen.
-  - phase: Abschlussspiel
-    uebung: abschlussspiel-grosstore
-    dauer_min: 25
-    organisation: 7 gegen 7 auf 50 x 40 m, Torregel "3 Kontakte = doppelt".
+    neu: true
+    aufteilung:
+      gruppen: 2 Startgruppen links/rechts à 5 Angreifer, 4 Verteidiger.
+      rollen: 2 Angreifer gegen 1 Verteidiger, Verteidiger kontert auf 2 Minitore.
+      wechsel: Verteidiger nach 3 Durchgängen tauschen, nach 12 min Seite tauschen.
+      torhueter: Integriert, TW-Wechsel nach 12 min.
+  - teil: Schlussteil 1
+    uebung: abschluss-4gegen4-joker
+    dauer_min: 20
+    neu: true
+    aufteilung:
+      gruppen: 4 gegen 4 + 2 Joker; 4 Spieler im Pausenteam (Bälle holen).
+      rollen: Team A aufs Großtor, Team B kontert auf 2 Minitore, Joker an den Seitenlinien.
+      wechsel: Alle 4 min Aufgaben tauschen, Pausenteam rotiert rein.
+      torhueter: TW 1 im Tor, TW 2 als Joker; nach 10 min tauschen.
+  - teil: Abschlussspiel
+    uebung: abschlussspiel-grosstor-minitore
+    dauer_min: 30
+    neu: true
+    aufteilung:
+      gruppen: 7 gegen 7 auf dem halben Platz.
+      rollen: Team A aufs Großtor, Team B auf 2 Minitore an der Mittellinie.
+      wechsel: Nach 15 min Aufgaben tauschen.
+      torhueter: TW 1 im Großtor, TW 2 spielt bei Team B im Feld; nach 15 min tauschen.
 hinweise:
-  - Trinkpause nach dem Rondo (2 min) ist in den Zeiten enthalten.
-  - Auslaufen 5 min locker nach dem Abschlussspiel.
+  - Trinkpausen sind in den Zeiten enthalten.
+  - Vor Hauptteil 1 Bälle prüfen – mindestens 15 aufgepumpt.

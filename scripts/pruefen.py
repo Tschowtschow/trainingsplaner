@@ -15,7 +15,7 @@ PHASEN = {"Lauf-ABC", "Erweitertes Aufwärmen", "Hauptteil", "Schlussteil", "Abs
 PFLICHT = ["name", "schwerpunkte", "phase", "spieler_min", "spieler_max", "torhueter", "feldgroesse",
            "material", "dauer_min", "intensitaet", "ablauf", "regeln", "coachingpunkte", "varianten",
            "quelle", "feedback", "diagramm"]
-OBJEKTE = {"spieler", "torhueter", "huetchen", "stange", "dummy", "ring", "ball", "balldepot",
+OBJEKTE = {"spieler", "torhueter", "huetchen", "stange", "ring", "ball", "balldepot",
            "leiter", "tor", "minitor", "text"}
 PFEILE = {"pass", "lauf", "dribbling", "schuss", "flanke"}
 
@@ -46,8 +46,8 @@ def pruefe(p: Path):
     for f in u.get("feedback") or []:
         if f.get("bewertung") is not None and f["bewertung"] not in range(1, 6):
             fehler.append(f"Feedback-Bewertung {f['bewertung']} nicht 1-5")
-    d = u.get("diagramm") or {}
-    if d:
+    liste = u.get("diagramm") or []
+    for d in liste if isinstance(liste, list) else [liste]:
         if not {"laenge", "breite"} <= set(d.get("feld", {})):
             fehler.append("diagramm.feld braucht laenge und breite")
         for o in d.get("objekte") or []:
@@ -58,6 +58,8 @@ def pruefe(p: Path):
         for pf in d.get("pfeile") or []:
             if pf.get("typ", "pass") not in PFEILE:
                 fehler.append(f"unbekannter Pfeiltyp {pf.get('typ')}")
+    if not isinstance(u.get("unsicher", []), list):
+        fehler.append("unsicher muss eine Liste sein")
     if not (p.parent / "diagramm.svg").exists():
         fehler.append("diagramm.svg fehlt (scripts/diagramm.py laufen lassen)")
     return fehler

@@ -8,13 +8,14 @@ Aufruf:
   python3 scripts/video_holen.py <kurzname> <url>
   python3 scripts/video_holen.py <kurzname> --datei /pfad/zum/video.mp4
 Optionen:
-  --frames N        ungefähre Anzahl Standbilder (Standard 24)
+  --frames N        Standbilder im Raster (Standard 24) – dazu kommen Bilder bei Szenenwechseln
   --whisper MODELL  tiny/base/small/medium (Standard small)
   --ohne-ton        keine Transkription
 """
 import argparse
 import json
 import math
+import re
 import shutil
 import subprocess
 import sys
@@ -59,22 +60,44 @@ def dauer(video: Path) -> float:
     return float(out or 0)
 
 
+def szenenwechsel(video: Path, schwelle: float = 0.3) -> list[float]:
+    """Zeitpunkte, an denen sich das Bild stark ändert (Schnitt, neue Einblendung, neue Übungsphase)."""
+    out = subprocess.run(
+        ["ffmpeg", "-i", str(video), "-vf", f"select='gt(scene,{schwelle})',showinfo", "-f", "null", "-"],
+        capture_output=True, text=True,
+    ).stderr
+    return [float(m.group(1)) for m in re.finditer(r"pts_time:([\d.]+)", out)]
+
+
+def zeitpunkte(video: Path, anzahl: int, laenge: float) -> list[float]:
+    """Gleichmäßiges Raster + Szenenwechsel, ohne Dopplungen, höchstens 1,5 x anzahl Bilder."""
+    abstand = max(1.0, laenge / anzahl)
+    raster = [min(0.5, laenge / 2) + i * abstand for i in range(anzahl) if i * abstand < laenge]
+    # kurz nach dem Schnitt, damit Einblendungen schon stehen
+    szenen = [min(t + 0.4, laenge - 0.1) for t in szenenwechsel(video)]
+    alle = sorted(raster + szenen)
+    zeiten = []
+    for t in alle:
+        if not zeiten or t - zeiten[-1] >= abstand / 2:
+            zeiten.append(t)
+    grenze = int(anzahl * 1.5)
+    if len(zeiten) > grenze:  # gleichmäßig ausdünnen
+        zeiten = [zeiten[round(i * (len(zeiten) - 1) / (grenze - 1))] for i in range(grenze)]
+    return zeiten
+
+
 def frames(video: Path, ziel: Path, anzahl: int, laenge: float) -> list[tuple[float, Path]]:
     fdir = ziel / "frames"
     shutil.rmtree(fdir, ignore_errors=True)
     fdir.mkdir()
-    abstand = max(1.0, laenge / anzahl)
     bilder = []
-    t = min(0.5, laenge / 2)
-    i = 0
-    while t < laenge:
+    for i, t in enumerate(zeitpunkte(video, anzahl, laenge)):
+        # 960 px breit, damit eingeblendeter Text lesbar bleibt
         p = fdir / f"f{i:03d}_{int(t // 60):02d}m{int(t % 60):02d}s.jpg"
         run(["ffmpeg", "-y", "-ss", f"{t:.2f}", "-i", str(video), "-frames:v", "1",
-             "-vf", "scale=640:-2", "-q:v", "4", str(p)])
+             "-vf", "scale=960:-2", "-q:v", "3", str(p)])
         if p.exists():
             bilder.append((t, p))
-        t += abstand
-        i += 1
     return bilder
 
 

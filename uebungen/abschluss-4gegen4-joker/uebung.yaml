@@ -1,0 +1,59 @@
+name: 4 gegen 4 plus 2 Joker auf Großtor und Minitore
+schwerpunkte: [Torabschluss, Umschalten]
+phase: [Schlussteil, Hauptteil]
+spieler_min: 10
+spieler_max: 16
+torhueter: ja
+feldgroesse: 30 x 35 m (Vorfeld + Strafraum)
+material: [2 Minitore, 8 Hütchen, Leibchen in 3 Farben, 15 Bälle]   # Großtor ist am Platz
+dauer_min: 18
+intensitaet: 4
+ablauf:
+  - Team A greift das Großtor mit Torhüter an, Team B verteidigt und kontert auf zwei Minitore.
+  - Zwei Joker spielen immer mit dem ballbesitzenden Team (an den Seitenlinien).
+  - Neuer Ball immer vom Trainer an der Mittellinie zu Team A.
+  - Nach 4 Minuten tauschen die Teams die Aufgaben, Joker wechseln.
+regeln:
+  - Joker spielen mit 2 Kontakten und dürfen nicht selbst abschließen.
+  - Tor ins Großtor nach maximal 3 Kontakten im Strafraum zählt doppelt.
+coachingpunkte:
+  - Nach Ballgewinn sofort Abschluss suchen, nicht erst sichern.
+  - Joker als Wandspieler nutzen, um die Abwehr zu verschieben.
+  - Nach Ballverlust 5 Sekunden Gegenpressing.
+varianten:
+  leichter: [Joker dürfen abschließen, 3 Kontakte für Joker]
+  schwerer: [Direktabschluss zählt dreifach, nur 1 Joker]
+  spielerzahl:
+    - 14 Feldspieler = 4 gegen 4 + 2 Joker, 4 Spieler pausieren aktiv (Bälle holen) und wechseln nach jeder Runde.
+    - 10 Feldspieler = 4 gegen 4 + 2 Joker ohne Pausenteam.
+    - 16 Feldspieler = 5 gegen 5 + 2 Joker + 4 Wechsler.
+quelle: eigene Übung (Beispiel, neu)
+unsicher: []
+feedback: []
+diagramm:
+  feld:
+    laenge: 40
+    breite: 35
+    linien: [strafraum_oben, fuenfer_oben]
+  objekte:
+    - {typ: tor, x: 20, y: 0, richtung: unten}
+    - {typ: torhueter, x: 20, y: 1.2}
+    - {typ: minitor, x: 10, y: 35, richtung: oben}
+    - {typ: minitor, x: 30, y: 35, richtung: oben}
+    - {typ: spieler, team: a, x: 12, y: 23}
+    - {typ: spieler, team: a, x: 26, y: 21}
+    - {typ: spieler, team: a, x: 17, y: 13}
+    - {typ: spieler, team: a, x: 28, y: 10}
+    - {typ: spieler, team: b, x: 14, y: 17}
+    - {typ: spieler, team: b, x: 24, y: 15}
+    - {typ: spieler, team: b, x: 18, y: 7}
+    - {typ: spieler, team: b, x: 26, y: 7}
+    - {typ: spieler, team: neutral, x: 0, y: 17, label: "J"}
+    - {typ: spieler, team: neutral, x: 40, y: 17, label: "J"}
+    - {typ: spieler, team: trainer, x: 20, y: 33, label: "T"}
+    - {typ: balldepot, x: 23, y: 33}
+  pfeile:
+    - {typ: pass, von: [20, 33], nach: [12, 23], nr: 1}
+    - {typ: pass, von: [26, 21], nach: [40, 17], nr: 2}
+    - {typ: pass, von: [40, 17], nach: [28, 10], nr: 3}
+    - {typ: schuss, von: [28, 10], nach: [22, 0], nr: 4}

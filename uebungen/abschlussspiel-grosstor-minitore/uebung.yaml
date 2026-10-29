@@ -1,0 +1,58 @@
+name: Abschlussspiel Großtor gegen 2 Minitore (halber Platz)
+schwerpunkte: [Torabschluss, Umschalten, Pressing]
+phase: [Abschlussspiel]
+spieler_min: 10
+spieler_max: 20
+torhueter: ja
+feldgroesse: halber Platz, ca. 50 x 60 m (Grundlinie bis Mittellinie)
+material: [2 Minitore, 8 Hütchen, Leibchen, 15 Bälle]   # Großtor ist am Platz
+dauer_min: 25
+intensitaet: 4
+ablauf:
+  - Zwei Teams spielen auf dem halben Platz. Team A greift das Großtor mit TW an, Team B die zwei Minitore auf der Mittellinie.
+  - Nach der Hälfte der Zeit Seiten- und Aufgabentausch.
+  - Neuer Ball vom TW oder von der Mittellinie (Trainer), damit kaum Pausen entstehen.
+regeln:
+  - Normales Spiel, kein Abseits.
+  - "Schwerpunktregel: Ein Tor nach Ballgewinn in der gegnerischen Hälfte zählt doppelt (anpassen an den Wochenschwerpunkt)."
+coachingpunkte:
+  - Schwerpunkt der Einheit sichtbar machen – an die Coachingpunkte aus dem Hauptteil erinnern.
+  - Wenig unterbrechen, nur kurze Hinweise in Spielpausen.
+  - Nach Ballverlust sofort Gegenpressing.
+varianten:
+  leichter: [Neutraler Joker für das ballbesitzende Team]
+  schwerer: [Max. 2 Kontakte in der eigenen Hälfte]
+  spielerzahl:
+    - 14 Feldspieler + 2 TW = 7 gegen 7, TW 1 im Großtor, TW 2 spielt als Feldspieler bei Team B (nach der Hälfte tauschen die TW).
+    - Ungerade Zahl = ein neutraler Joker.
+    - Ab 18 Feldspielern zweites Spiel 4 gegen 4 im DFB-Käfig, nach Hälfte tauschen.
+quelle: eigene Übung (Beispiel, neu)
+unsicher: []
+feedback: []
+diagramm:
+  feld:
+    laenge: 60
+    breite: 50
+    linien: [strafraum_oben, fuenfer_oben, elfmeter_oben]
+  objekte:
+    - {typ: tor, x: 30, y: 0, richtung: unten}
+    - {typ: torhueter, x: 30, y: 1.2}
+    - {typ: minitor, x: 15, y: 50, richtung: oben}
+    - {typ: minitor, x: 45, y: 50, richtung: oben}
+    - {typ: spieler, team: a, x: 20, y: 40}
+    - {typ: spieler, team: a, x: 40, y: 40}
+    - {typ: spieler, team: a, x: 30, y: 30}
+    - {typ: spieler, team: a, x: 14, y: 22}
+    - {typ: spieler, team: a, x: 45, y: 20}
+    - {typ: spieler, team: a, x: 27, y: 14}
+    - {typ: spieler, team: a, x: 37, y: 10}
+    - {typ: spieler, team: b, x: 22, y: 8}
+    - {typ: spieler, team: b, x: 40, y: 8}
+    - {typ: spieler, team: b, x: 32, y: 18}
+    - {typ: spieler, team: b, x: 20, y: 26}
+    - {typ: spieler, team: b, x: 42, y: 28}
+    - {typ: spieler, team: b, x: 30, y: 36}
+    - {typ: spieler, team: b, x: 52, y: 42}
+  pfeile:
+    - {typ: schuss, von: [27, 14], nach: [27.5, 0]}
+    - {typ: lauf, von: [37, 10], nach: [33, 5], kurve: 0.2}

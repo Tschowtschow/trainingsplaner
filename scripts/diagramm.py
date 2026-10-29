@@ -8,7 +8,9 @@ Vollständiges Format: siehe CLAUDE.md, Abschnitt "Diagramm-Format".
 Aufruf:
   python3 scripts/diagramm.py <kurzname> [<kurzname> ...]
   python3 scripts/diagramm.py --alle
-  python3 scripts/diagramm.py <kurzname> --png   # zusätzlich arbeit/vorschau/<kurzname>.png
+  python3 scripts/diagramm.py <kurzname> --png   # zusätzlich arbeit/vorschau/<kurzname>_diagramm*.png
+
+Mehrere Phasen einer Übung: `diagramm:` als Liste -> diagramm.svg, diagramm-2.svg, ...
 """
 import argparse
 import math
@@ -101,13 +103,18 @@ class Zeichner:
             self.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{self.m(9.15):.1f}" {stil}/>')
         elif art.startswith(("strafraum_", "fuenfer_")):
             tiefe, breite = (16.5, 40.32) if art.startswith("strafraum") else (5.5, 18.32)
-            breite = min(breite, B)
-            x = 0 if art.endswith("links") else L - tiefe
-            x0, y0 = self.px(x, (B - breite) / 2)
-            self.add(f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{self.m(tiefe):.1f}" height="{self.m(breite):.1f}" {stil}/>')
+            seite = art.split("_", 1)[1]
+            if seite in ("links", "rechts"):
+                breite = min(breite, B)
+                x, y, w, h = (0 if seite == "links" else L - tiefe), (B - breite) / 2, tiefe, breite
+            else:  # oben / unten
+                breite = min(breite, L)
+                x, y, w, h = (L - breite) / 2, (0 if seite == "oben" else B - tiefe), breite, tiefe
+            x0, y0 = self.px(x, y)
+            self.add(f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{self.m(w):.1f}" height="{self.m(h):.1f}" {stil}/>')
         elif art.startswith("elfmeter_"):
-            x = 11 if art.endswith("links") else L - 11
-            cx, cy = self.px(x, B / 2)
+            punkt = {"links": (11, B / 2), "rechts": (L - 11, B / 2), "oben": (L / 2, 11), "unten": (L / 2, B - 11)}
+            cx, cy = self.px(*punkt[art.split("_", 1)[1]])
             self.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{self.m(0.25):.1f}" fill="#ffffff"/>')
         elif art.startswith("linie:"):
             # frei: "linie: x1,y1,x2,y2"
@@ -158,10 +165,6 @@ class Zeichner:
             self.add(f'<rect x="{x - self.ms(0.15):.1f}" y="{y - self.ms(0.9):.1f}" width="{self.ms(0.3):.1f}" height="{self.ms(1.8):.1f}" '
                      f'fill="{farbe(o.get("farbe"), "gelb")}" stroke="#111827" stroke-width="{self.ms(0.06):.1f}"/>')
             self.legende[("stange",)] = "Stange"
-        elif typ == "dummy":
-            self.add(f'<rect x="{x - self.ms(0.35):.1f}" y="{y - self.ms(0.9):.1f}" width="{self.ms(0.7):.1f}" height="{self.ms(1.8):.1f}" '
-                     f'rx="{self.ms(0.3):.1f}" fill="#4b5563" stroke="#111827" stroke-width="{self.ms(0.06):.1f}"/>')
-            self.legende[("dummy",)] = "Dummy / Puppe"
         elif typ == "ring":
             self.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{self.ms(0.4):.1f}" fill="none" '
                      f'stroke="{farbe(o.get("farbe"), "orange")}" stroke-width="{self.ms(0.12):.1f}"/>')
@@ -306,7 +309,6 @@ class Zeichner:
         return {
             "huetchen": f'<polygon points="{x + 8:.1f},{y + 3:.1f} {x + 15:.1f},{y + 16:.1f} {x + 1:.1f},{y + 16:.1f}" fill="{FARBEN["orange"]}" stroke="#111827" stroke-width="0.8"/>',
             "stange": f'<rect x="{x + 6:.1f}" y="{y + 1:.1f}" width="4" height="18" fill="{FARBEN["gelb"]}" stroke="#111827" stroke-width="0.8"/>',
-            "dummy": f'<rect x="{x + 3:.1f}" y="{y + 1:.1f}" width="10" height="18" rx="4" fill="#4b5563"/>',
             "ring": f'<circle cx="{x + 8:.1f}" cy="{y + 10:.1f}" r="6" fill="none" stroke="{FARBEN["orange"]}" stroke-width="2"/>',
             "ball": f'<circle cx="{x + 8:.1f}" cy="{y + 10:.1f}" r="6" fill="#ffffff" stroke="#111827" stroke-width="1.2"/>',
             "leiter": f'<rect x="{x:.1f}" y="{y + 5:.1f}" width="22" height="10" fill="none" stroke="{FARBEN["gelb"]}" stroke-width="2"/>',
@@ -343,11 +345,18 @@ class Zeichner:
                 self.objekt(o)
         W, H = self.px(self.L + RAND_M, self.B + RAND_M)
         leg, hoehe = self.legende_svg(H + 8) if self.legende else ([], H)
-        gesamt_h = hoehe + 6
+        oben = 40 if d.get("titel") else 0
+        gesamt_h = hoehe + 6 + oben
         kopf = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W:.0f}" height="{gesamt_h:.0f}" '
                 f'viewBox="0 0 {W:.0f} {gesamt_h:.0f}">')
-        hinten = f'<rect x="0" y="{H:.1f}" width="{W:.1f}" height="{gesamt_h - H:.1f}" fill="#ffffff"/>'
-        return "\n".join([kopf, *self.teile, hinten, *leg, "</svg>"]) + "\n"
+        titel = []
+        if oben:
+            t = str(d["titel"]).replace("&", "&amp;").replace("<", "&lt;")
+            titel = [f'<rect x="0" y="0" width="{W:.1f}" height="{oben}" fill="#1f6f2b"/>',
+                     f'<text x="12" y="27" font-family="Helvetica" font-size="20" font-weight="bold" fill="#ffffff">{t}</text>']
+        hinten = f'<rect x="0" y="{H:.1f}" width="{W:.1f}" height="{hoehe + 6 - H:.1f}" fill="#ffffff"/>'
+        return "\n".join([kopf, *titel, f'<g transform="translate(0,{oben})">', *self.teile, hinten, *leg,
+                          "</g>", "</svg>"]) + "\n"
 
 
 def pruefen(d, name):
@@ -362,20 +371,36 @@ def pruefen(d, name):
                 print(f"  Warnung {name}: Pfeil-Punkt ({x}, {y}) außerhalb des Feldes", file=sys.stderr)
 
 
-def render(kurzname, png=False):
-    pfad = UEBUNGEN / kurzname / "uebung.yaml"
-    data = yaml.safe_load(pfad.read_text())
+def diagramme(data):
+    """`diagramm` darf ein einzelnes Diagramm oder eine Liste (mehrere Phasen) sein."""
     d = data.get("diagramm")
     if not d:
+        return []
+    return d if isinstance(d, list) else [d]
+
+
+def svg_namen(anzahl):
+    return ["diagramm.svg"] + [f"diagramm-{i}.svg" for i in range(2, anzahl + 1)]
+
+
+def render(kurzname, png=False):
+    pfad = UEBUNGEN / kurzname / "uebung.yaml"
+    liste = diagramme(yaml.safe_load(pfad.read_text()))
+    if not liste:
         print(f"{kurzname}: kein diagramm-Block", file=sys.stderr)
-        return None
-    pruefen(d, kurzname)
-    ziel = pfad.parent / "diagramm.svg"
-    ziel.write_text(Zeichner(d).svg(d))
-    print(f"{kurzname}: {ziel.relative_to(ROOT)}")
-    if png:
-        print(f"  Vorschau: {vorschau_png(ziel, kurzname)}")
-    return ziel
+        return []
+    for alt in pfad.parent.glob("diagramm-*.svg"):
+        alt.unlink()
+    ziele = []
+    for d, name in zip(liste, svg_namen(len(liste))):
+        pruefen(d, kurzname)
+        ziel = pfad.parent / name
+        ziel.write_text(Zeichner(d).svg(d))
+        print(f"{kurzname}: {ziel.relative_to(ROOT)}")
+        if png:
+            print(f"  Vorschau: {vorschau_png(ziel, f'{kurzname}_{ziel.stem}')}")
+        ziele.append(ziel)
+    return ziele
 
 
 def vorschau_png(svg: Path, kurzname: str) -> Path:

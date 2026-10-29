@@ -5,21 +5,12 @@ Aufruf (alle Filter optional, kombinierbar):
   python3 scripts/suche.py
   python3 scripts/suche.py --schwerpunkt Torabschluss --phase Hauptteil --spieler 14 --tw 2
   python3 scripts/suche.py --text rondo
-  python3 scripts/suche.py --details <kurzname>
+  python3 scripts/suche.py --details <übung>        # ungefährer Name reicht
 """
 import argparse
-from pathlib import Path
-
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
-
-
-def laden():
-    for p in sorted((ROOT / "uebungen").glob("*/uebung.yaml")):
-        u = yaml.safe_load(p.read_text())
-        u["_kurz"] = p.parent.name
-        yield u
+from datenbank import ROOT, alle, finde
 
 
 def als_liste(v):
@@ -58,11 +49,14 @@ def main():
     a = ap.parse_args()
 
     if a.details:
-        p = ROOT / "uebungen" / a.details / "uebung.yaml"
-        print(p.read_text())
+        treffer = finde(a.details)
+        if len(treffer) != 1:
+            print("Treffer:", ", ".join(u["_kurz"] for u in treffer) or "keine")
+            return
+        print((ROOT / "uebungen" / treffer[0]["_kurz"] / "uebung.yaml").read_text())
         return
 
-    treffer = [u for u in laden() if passt(u, a)]
+    treffer = [u for u in alle() if passt(u, a)]
     treffer.sort(key=lambda u: -(schnitt(u)[0] or 0))
     for u in treffer:
         s, n = schnitt(u)

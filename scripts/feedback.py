@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Hängt Feedback an eine Übung an (Kommentare/Formatierung der YAML bleiben erhalten).
 
+Die Übung darf ungefähr benannt sein ("Rondo 5v2", "rondo"). Bei mehreren Treffern
+wird nichts gespeichert, sondern die Kandidaten werden aufgelistet (Exit-Code 3).
+
 Aufruf:
-  python3 scripts/feedback.py <kurzname> --bewertung 4 --notiz "Lief gut, Feld war zu klein"
+  python3 scripts/feedback.py <übung> --bewertung 4 --notiz "Lief gut, Feld war zu klein"
   python3 scripts/feedback.py <kurzname> --bewertung 2 --datum 2026-10-28
 """
 import argparse
@@ -13,12 +16,14 @@ from pathlib import Path
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
+from datenbank import finde
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kurzname")
+    ap.add_argument("uebung", help="Kurzname oder ungefährer Name")
     ap.add_argument("--bewertung", type=int, choices=range(1, 6))
     ap.add_argument("--notiz", default="")
     ap.add_argument("--datum", default=dt.date.today().isoformat())
@@ -26,9 +31,15 @@ def main():
     if a.bewertung is None and not a.notiz:
         ap.error("--bewertung und/oder --notiz angeben")
 
-    pfad = ROOT / "uebungen" / a.kurzname / "uebung.yaml"
-    if not pfad.exists():
-        sys.exit(f"Übung '{a.kurzname}' nicht gefunden")
+    treffer = finde(a.uebung)
+    if not treffer:
+        sys.exit(f"Keine Übung passt zu '{a.uebung}'")
+    if len(treffer) > 1:
+        print(f"Mehrdeutig: '{a.uebung}' passt zu")
+        for u in treffer:
+            print(f"  {u['_kurz']}  ({u['name']})")
+        sys.exit(3)
+    pfad = ROOT / "uebungen" / treffer[0]["_kurz"] / "uebung.yaml"
     y = YAML()
     y.preserve_quotes = True
     y.width = 120
@@ -51,7 +62,7 @@ def main():
 
     werte = [e["bewertung"] for e in fb if e.get("bewertung")]
     schnitt = f"{sum(werte) / len(werte):.1f}" if werte else "–"
-    print(f"{data['name']}: Feedback gespeichert ({len(fb)} Einträge, Schnitt {schnitt}/5)")
+    print(f"{data['name']} [{pfad.parent.name}]: Feedback gespeichert ({len(fb)} Einträge, Schnitt {schnitt}/5)")
 
 
 if __name__ == "__main__":

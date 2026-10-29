@@ -24,7 +24,8 @@ varianten:
   schwerer: [Mit Ball in den Händen, Richtungswechsel auf Zuruf am Ende der Bahn]
   spielerzahl:
     - Bis 8 Spieler 2 Bahnen, ab 16 Spielern 5-6 Bahnen.
-quelle: eigene Übung (Beispiel)
+quelle: eigene Übung (Beispiel, neu)
+unsicher: []
 feedback: []
 diagramm:
   feld: {laenge: 24, breite: 16}

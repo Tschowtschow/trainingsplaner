@@ -5,7 +5,7 @@ Arbeitsanweisungen, Formate und Trainingsrahmen: siehe [CLAUDE.md](CLAUDE.md).
 
 ```
 uebungen/<kurzname>/uebung.yaml    Übungskarte
-uebungen/<kurzname>/diagramm.svg   Grafik (aus den Daten in uebung.yaml erzeugt)
+uebungen/<kurzname>/diagramm.svg   Grafik (aus den Daten in uebung.yaml erzeugt; weitere Phasen: diagramm-2.svg, ...)
 plaene/<datum>_<schwerpunkt>.yaml  Auswahl für einen Trainingstag
 plaene/<datum>_<schwerpunkt>.pdf   Plan für den Co-Trainer
 scripts/video_holen.py             Download, Transkript (faster-whisper), Standbilder
@@ -14,6 +14,7 @@ scripts/plan_pdf.py                Plan-YAML -> PDF
 scripts/feedback.py                Feedback an eine Übung anhängen
 scripts/suche.py                   Übungen filtern
 scripts/pruefen.py                 Übungskarten prüfen
+scripts/datenbank.py               Laden + Übungen über ungefähre Namen finden
 setup.sh                           Installiert alle Werkzeuge
 arbeit/                            Videos, Frames, Audio, Vorschauen (nicht im Repo)
 ```
