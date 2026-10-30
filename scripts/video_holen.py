@@ -2,12 +2,13 @@
 """Lädt ein Übungsvideo, transkribiert den Ton und zieht Standbilder.
 
 Alles landet in arbeit/<kurzname>/ (nicht im Repo):
-  video.mp4, info.json, audio.wav, transkript.txt, frames/*.jpg, uebersicht_*.jpg
+  video.mp4, info.json, beschreibung.txt, audio.wav, transkript.txt, frames/*.jpg, uebersicht_*.jpg
 
 Aufruf:
   python3 scripts/video_holen.py <kurzname> <url>
-  python3 scripts/video_holen.py <kurzname> --datei /pfad/zum/video.mp4
+  python3 scripts/video_holen.py <kurzname> --datei /pfad/zum/video.mp4 [--beschreibung "Text" | datei.txt]
 Optionen:
+  --beschreibung T  Videobeschreibung/Caption von Hand (Text oder Pfad), z. B. bei hochgeladenen Dateien
   --frames N        Standbilder im Raster (Standard 24) – dazu kommen Bilder bei Szenenwechseln
   --whisper MODELL  tiny/base/small/medium (Standard small)
   --ohne-ton        keine Transkription
@@ -35,8 +36,12 @@ def run(cmd):
 def download(url, ziel: Path) -> dict:
     import yt_dlp
 
+    youtube = "youtu" in url
     opts = {
         "outtmpl": str(ziel / "video.%(ext)s"),
+        # bei YouTube Kommentare mitladen: Ergänzungen des Kanals stehen oft im (angepinnten) Kommentar
+        "getcomments": youtube,
+        "extractor_args": {"youtube": {"max_comments": ["100"]}},
         "format": "bv*[height<=720]+ba/b[height<=720]/bv*+ba/b",
         "merge_output_format": "mp4",
         "quiet": True,
@@ -46,6 +51,8 @@ def download(url, ziel: Path) -> dict:
     with yt_dlp.YoutubeDL(opts) as ydl:
         info = ydl.extract_info(url, download=True)
     meta = {k: info.get(k) for k in ("title", "uploader", "description", "duration", "webpage_url", "tags")}
+    meta["kanal_kommentare"] = [c.get("text", "") for c in info.get("comments") or []
+                                if c.get("author_is_uploader") or c.get("is_pinned")]
     (ziel / "info.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2))
     # yt-dlp kann je nach Quelle .mp4/.webm/.mkv liefern
     for f in ziel.glob("video.*"):
@@ -151,6 +158,21 @@ def transkribieren(video: Path, ziel: Path, modell: str) -> str:
     return text
 
 
+def beschreibung_schreiben(ziel: Path, meta: dict, hand: str | None) -> str:
+    """Beschreibung, Kanal-Kommentare und Hand-Eingabe vollständig in beschreibung.txt."""
+    teile = []
+    if meta.get("description"):
+        teile.append(meta["description"].strip())
+    for k in meta.get("kanal_kommentare") or []:
+        teile.append(f"[Kommentar des Kanals] {k.strip()}")
+    if hand:
+        p = Path(hand)
+        teile.append((p.read_text() if len(hand) < 300 and p.is_file() else hand).strip())
+    text = "\n\n".join(t for t in teile if t)
+    (ziel / "beschreibung.txt").write_text(text + "\n" if text else "")
+    return text
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("kurzname")
@@ -160,6 +182,7 @@ def main():
     ap.add_argument("--whisper", default="small")
     ap.add_argument("--ohne-ton", action="store_true")
     ap.add_argument("--trotzdem", action="store_true")
+    ap.add_argument("--beschreibung", help="Beschreibung/Caption von Hand (Text oder Pfad zu einer Textdatei)")
     a = ap.parse_args()
     if not a.url and not a.datei:
         ap.error("URL oder --datei angeben")
@@ -183,6 +206,8 @@ def main():
             print(f"DOWNLOAD FEHLGESCHLAGEN: {e}", file=sys.stderr)
             sys.exit(2)
 
+    beschreibung = beschreibung_schreiben(ziel, meta, a.beschreibung)
+
     video = ziel / "video.mp4"
     laenge = dauer(video)
     bilder = frames(video, ziel, a.frames, laenge)
@@ -202,8 +227,8 @@ def main():
         print(f"Quelle:  {meta.get('webpage_url')}")
     if a.url:
         print(f"quelle für die Karte: {quelle_normal(a.url)}")
-        if meta.get("description"):
-            print(f"Beschreibung:\n{meta['description'][:1500]}")
+    print("Beschreibung (vollständig, auch in beschreibung.txt):")
+    print(beschreibung or "(keine – bei Unklarheiten den Trainer nach der Caption fragen)")
     print(f"Länge:   {laenge:.0f} s, {len(bilder)} Standbilder")
     print("Kontaktbögen:")
     for p in blaetter:

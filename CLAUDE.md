@@ -16,7 +16,7 @@ Fehlt etwas: `bash setup.sh` (idempotent). Rohmaterial (Videos, Frames, Audio, V
 | Nachricht (Beispiel) | Aktion |
 |---|---|
 | Ein oder mehrere Links (YouTube, TikTok, Instagram) | **Übungen aus Videos anlegen** |
-| Hochgeladene Video-Datei | **Übung anlegen** mit `--datei` |
+| Hochgeladene Video-Datei (+ evtl. eingefügte Caption) | **Übung anlegen** mit `--datei` (+ `--beschreibung "<Caption>"`) |
 | „Rondo 5v2: Feld zu groß, mit 12 Leuten besser, 4/5“ | **Feedback** |
 | „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“ | **Trainingsplan** |
 | „Liste“, „Welche Übungen für Pressing?“ | `scripts/suche.py` mit Filtern, kurz zusammenfassen |
@@ -36,8 +36,11 @@ Mehrere Links → **nacheinander** abarbeiten, jeden komplett (inkl. Commit/Push
 2. `python3 scripts/video_holen.py <kurzname> <url>` (oder `--datei <pfad>`).
    - **Exit-Code 4 = Video schon in der Datenbank** (Link wird normalisiert, Tracking-Parameter egal): dem Trainer die vorhandene Übung nennen, nicht doppelt anlegen.
    - **Exit-Code 2 = Download gescheitert** (Bot-Sperre, Login, Netzwerksperre 403): dem Trainer in einem Satz Bescheid geben („Link X ging nicht: Instagram verlangt Login – schick mir die Datei“) und mit dem nächsten Link weitermachen. Nichts erfinden.
-   - Ergebnis in `arbeit/<kurzname>/`: Titel/Beschreibung, `transkript.txt` (faster-whisper), Kontaktbögen `uebersicht_*.jpg` (je 9 Standbilder mit Zeitstempel; Raster + Szenenwechsel), Einzelbilder `frames/*.jpg` (960 px).
-3. **Alle Kontaktbögen ansehen** (Read auf die JPGs). **Eingeblendeten Text** (Übungsname, Regeln, Maße, Spielerzahlen, Pfeile/Grafiken im Video) auswerten – dafür die betreffenden Einzelbilder in voller Größe öffnen. Transkript und Beschreibung lesen.
+   - Ergebnis in `arbeit/<kurzname>/`: Titel, **`beschreibung.txt`** (vollständige Videobeschreibung/Caption, bei YouTube zusätzlich angepinnte und eigene Kommentare des Kanals, dazu von Hand übergebener Text), `transkript.txt` (faster-whisper), Kontaktbögen `uebersicht_*.jpg` (je 9 Standbilder mit Zeitstempel; Raster + Szenenwechsel), Einzelbilder `frames/*.jpg` (960 px).
+3. **Beschreibung zuerst lesen** – sie enthält oft genau das, was im Video fehlt (Feldmaße, Spielerzahl, Regeln, Zeiten, Varianten, Coachingpunkte). Angaben aus der Beschreibung gelten als gesichert und gehen in die Karte, Werbung/Hashtags ignorieren.
+   Dann **alle Kontaktbögen ansehen** (Read auf die JPGs) und **eingeblendeten Text** (Übungsname, Regeln, Maße, Spielerzahlen, Pfeile/Grafiken im Video) auswerten – dafür die betreffenden Einzelbilder in voller Größe öffnen. Danach das Transkript.
+   Widersprechen sich Beschreibung und Video, gilt was im Video zu sehen ist; den Widerspruch unter `unsicher` notieren.
+   Lädt der Trainer eine Datei hoch, ist keine Beschreibung dabei: hat er die Caption mitgeschickt, per `--beschreibung` übergeben; sonst nur dann einmal danach fragen, wenn ohne sie wesentliche Punkte unklar bleiben.
 4. `uebungen/<kurzname>/uebung.yaml` nach dem Format unten schreiben (`quelle` = die von `video_holen.py` ausgegebene „quelle für die Karte“) – in eigenen Worten, auf Deutsch, so konkret, dass ein Co-Trainer die Übung **ohne Video** aufbauen kann. Auf unser Niveau (Kreisliga C) und unser Material einordnen (Material, das wir nicht haben, z. B. Dummies → Stangen; Profi-Varianten in `varianten.schwerer`).
    **Unsicheres kennzeichnen:** Alles, was du nicht sicher erkennst (geschätzte Maße, Spielerzahl, Regel nur vermutet), im Text mit „(unsicher)“ markieren **und** in der Liste `unsicher:` kurz aufführen.
 5. Diagramm(e) im YAML anlegen. Mehrere Phasen der Übung → mehrere Diagramme (Liste mit `titel`).
