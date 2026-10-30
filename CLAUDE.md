@@ -39,6 +39,7 @@ Mehrere Links → **nacheinander** abarbeiten, jeden komplett (inkl. Commit/Push
    - Ergebnis in `arbeit/<kurzname>/`: Titel/Beschreibung, `transkript.txt` (faster-whisper), Kontaktbögen `uebersicht_*.jpg` (je 9 Standbilder mit Zeitstempel; Raster + Szenenwechsel), Einzelbilder `frames/*.jpg` (960 px).
 3. **Alle Kontaktbögen ansehen** (Read auf die JPGs). **Eingeblendeten Text** (Übungsname, Regeln, Maße, Spielerzahlen, Pfeile/Grafiken im Video) auswerten – dafür die betreffenden Einzelbilder in voller Größe öffnen. Transkript und Beschreibung lesen.
 4. `uebungen/<kurzname>/uebung.yaml` nach dem Format unten schreiben (`quelle` = die von `video_holen.py` ausgegebene „quelle für die Karte“) – in eigenen Worten, auf Deutsch, so konkret, dass ein Co-Trainer die Übung **ohne Video** aufbauen kann. Auf unser Niveau (Kreisliga C) und unser Material einordnen (Material, das wir nicht haben, z. B. Dummies → Stangen; Profi-Varianten in `varianten.schwerer`).
+   Phase `Schlussteil` nur für Spielformen ohne festen Ablauf (siehe Trainingsrahmen).
    **Unsicheres kennzeichnen:** Alles, was du nicht sicher erkennst (geschätzte Maße, Spielerzahl, Regel nur vermutet), im Text mit „(unsicher)“ markieren **und** in der Liste `unsicher:` kurz aufführen.
 5. Diagramm(e) im YAML anlegen. Mehrere Phasen der Übung → mehrere Diagramme (Liste mit `titel`).
    `python3 scripts/diagramm.py <kurzname> --png` und **jede Vorschau** `arbeit/vorschau/<kurzname>_diagramm*.png` ansehen. Das Skript warnt bei überlappenden Spielern, zu kurzen Pfeilen und Objekten außerhalb – alle Warnungen beheben; dann auch selbst auf falsche Pfeile achten.
@@ -66,7 +67,7 @@ Eingabe z. B. „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“. Datum = näch
 2. Den Entwurf **fachlich prüfen und verbessern** – das Skript ist nur der Ausgangspunkt. Kriterien **strikt nach dem Trainingsrahmen** (unten):
    - genau die 6 Teile in der Reihenfolge, Minuten wie vorgegeben verteilen;
    - **nur Übungen aus der Datenbank**, passend zu Phase, Spielerzahl, TW und Schwerpunkt;
-   - Hauptteil 1 → Hauptteil 2 als Steigerung zum Schwerpunkt (z. B. ohne → mit Gegner, Unterzahl → Gleichzahl), Schlussteil 1 führt zum Abschlussspiel hin;
+   - Hauptteil 1 → Hauptteil 2 als Steigerung zum Schwerpunkt (z. B. ohne → mit Gegner, Unterzahl → Gleichzahl), Schlussteil 1 ist eine Spielform ohne festen Ablauf und führt zum Abschlussspiel hin;
    - Tagescharakter beachten (Di technisch/athletisch, Do spielerisch);
    - gut bewertete bevorzugen, Schnitt ≤ 2 meiden, Feedback-Notizen berücksichtigen (z. B. Feldgröße/Spielerzahl, die sich bewährt hat);
    - Übungen aus den letzten 2–3 Plänen (`plaene/*.yaml`) möglichst nicht wiederholen;
@@ -91,6 +92,7 @@ Eingabe z. B. „Donnerstag, Umschalten, 14 Feldspieler + 2 TW“. Datum = näch
 
   Die übrigen Minuten sinnvoll auf Teil 2–5 verteilen und im Plan ausweisen (Richtwert: Aufwärmen 15, Hauptteil 1 20, Hauptteil 2 25, Schlussteil 1 20, Abschlussspiel 30; Trinkpausen sind in den Zeiten enthalten).
   Hauptteil 1 und 2 bauen aufeinander auf (Steigerung zum Schwerpunkt). Schlussteil 1 führt zum Abschlussspiel hin.
+- **Schlussteil und Abschlussspiel nur spielerisch:** Spielformen mit Gegenspielern, ohne festen Ablauf. Übungen mit festem Ablauf/Pattern (Passmuster, Torschuss-Reihen) gehören in den Hauptteil (bzw. Aufwärmen). Technisch: Phase `Schlussteil`/`Abschlussspiel` nur mit Gegenspielern als `team: b` im Diagramm – `pruefen.py`, `plan_vorschlag.py` und `plan_pdf.py` setzen das durch.
 - **Dienstag** eher technisch/athletisch, **Donnerstag** eher spielerisch. Dazu ein Wochenfokus, den der Trainer nennt.
 - **Platz:** meist halber Kunstrasenplatz (ca. 50 x 64 m, ein Großtor), dazu theoretisch 2 DFB-Käfige (Minispielfelder ca. 20 x 13 m mit kleinen Toren). Großtore sind fest am Platz, nur eins pro halbem Platz.
 - **Material** (nur damit planen): Hütchen, Leibchen, Bälle, Minitore, Stangen, Koordinationsleiter, Ringe.
@@ -146,7 +148,7 @@ diagramm:                # eine Phase; bei mehreren: Liste von solchen Blöcken,
   zonen:
     - {x: 0, y: 0, b: 10, h: 35, label: "Zone 1", farbe: gelb}   # gelb|blau|rot|weiss|grau|orange|lila
   objekte:
-    - {typ: spieler, team: a, x: 30, y: 31, label: "A"}  # team: a rot | b blau | c lila | neutral gelb | trainer schwarz
+    - {typ: spieler, team: a, x: 30, y: 31, label: "A"}  # team: a rot | b blau (= Gegenspieler) | c lila | neutral gelb | trainer schwarz
     - {typ: torhueter, x: 23, y: 1.2}                    # grün, "TW"
     - {typ: huetchen, x: 0, y: 0, farbe: orange}
     - {typ: stange, x: 14.5, y: 19}

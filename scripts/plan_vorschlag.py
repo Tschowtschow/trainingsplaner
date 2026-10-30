@@ -19,8 +19,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from aufteilung import fuer_uebung, teams_text  # noqa: E402
-from datenbank import ROOT, alle, bewertung, historie  # noqa: E402
-from rahmen import BEGINN, MINUTEN, PHASE_ZU_TEIL, TAGE, TEILE, WOCHENTAGE  # noqa: E402
+from datenbank import ROOT, alle, bewertung, historie, ist_spielform  # noqa: E402
+from rahmen import BEGINN, MINUTEN, NUR_SPIELFORM, PHASE_ZU_TEIL, TAGE, TEILE, WOCHENTAGE  # noqa: E402
 
 TECHNISCH = {"passspiel", "athletik", "koordination", "technik", "torabschluss", "ballkontrolle", "dribbling"}
 
@@ -46,15 +46,6 @@ def slug(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
 
 
-def ist_spielform(u) -> bool:
-    """Übung mit Gegenspielern (Team B im Diagramm) gilt als spielerisch."""
-    d = u.get("diagramm") or []
-    for dia in d if isinstance(d, list) else [d]:
-        if any(o.get("team") == "b" for o in dia.get("objekte") or []):
-            return True
-    return False
-
-
 def ist_neu(u) -> bool:
     return "neu" in str(u.get("quelle", "")).lower() and not u.get("feedback")
 
@@ -65,6 +56,8 @@ def punkte(u, teil, plan, hist, vorher=None) -> float | None:
     if phase not in (u.get("phase") or []):
         return None
     if plan["feldspieler"] < u.get("spieler_min", 0):
+        return None
+    if phase in NUR_SPIELFORM and not ist_spielform(u):
         return None
     if u.get("torhueter") == "ja" and plan["torhueter"] == 0:
         return None

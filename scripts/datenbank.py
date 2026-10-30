@@ -105,6 +105,15 @@ def historie() -> dict[str, list]:
     return h
 
 
+def ist_spielform(u) -> bool:
+    """Übung mit Gegenspielern (Team B im Diagramm) gilt als spielerisch."""
+    d = u.get("diagramm") or []
+    for dia in d if isinstance(d, list) else [d]:
+        if any(o.get("team") == "b" for o in dia.get("objekte") or []):
+            return True
+    return False
+
+
 def bewertung(u) -> tuple[float | None, int]:
     """(Durchschnitt, Anzahl) der Feedback-Bewertungen."""
     w = [f["bewertung"] for f in u.get("feedback") or [] if f.get("bewertung")]

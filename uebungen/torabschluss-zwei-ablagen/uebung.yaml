@@ -1,6 +1,6 @@
 name: Torabschluss nach zwei Ablagen (2 Seiten, 2 TW)
 schwerpunkte: [Torabschluss, Passspiel]
-phase: [Hauptteil, Schlussteil]
+phase: [Hauptteil]
 spieler_min: 6
 spieler_max: 12
 torhueter: ja
@@ -9,7 +9,7 @@ material: [4 Stangen, 6 Hütchen, 15 Bälle, Leibchen in 2 Farben]
 dauer_min: 15
 intensitaet: 3
 ablauf:
-  - Zwei Gruppen à 4 Spieler, links (A) und rechts (B) vom Tor, spiegelverkehrt. Je Seite 2 Stangen, eine ca. 26 m und eine ca. 20 m vor dem Tor (Maße unsicher).
+  - Zwei Gruppen à 4 Spieler (keine Gegner), links (A) und rechts (B) vom Tor, spiegelverkehrt. Je Seite 2 Stangen, eine ca. 26 m und eine ca. 20 m vor dem Tor (Maße unsicher).
   - Pro Seite 4 Positionen - A1 Start ca. 38 m vor dem Tor, A2 vor der hinteren Stange, A3 seitlich versetzt dahinter, A4 vor der vorderen Stange an der Strafraumgrenze.
   - A1 spielt flach nach vorne auf A2, A2 legt ab auf A3.
   - A3 spielt nach vorne auf A4 und startet, A4 legt in den Lauf von A3 ab.
@@ -64,10 +64,10 @@ diagramm:
     - {typ: spieler, team: a, x: 12, y: 28.5, label: "A2"}
     - {typ: spieler, team: a, x: 18, y: 32, label: "A3"}
     - {typ: spieler, team: a, x: 16, y: 22.5, label: "A4"}
-    - {typ: spieler, team: b, x: 44, y: 37, label: "B1"}
-    - {typ: spieler, team: b, x: 38, y: 28.5, label: "B2"}
-    - {typ: spieler, team: b, x: 32, y: 32, label: "B3"}
-    - {typ: spieler, team: b, x: 34, y: 22.5, label: "B4"}
+    - {typ: spieler, team: c, x: 44, y: 37, label: "B1"}
+    - {typ: spieler, team: c, x: 38, y: 28.5, label: "B2"}
+    - {typ: spieler, team: c, x: 32, y: 32, label: "B3"}
+    - {typ: spieler, team: c, x: 34, y: 22.5, label: "B4"}
   pfeile:
     - {typ: pass, von: [8, 37], nach: [12, 28.5], nr: 1}
     - {typ: pass, von: [12, 28.5], nach: [18, 32], nr: 2}

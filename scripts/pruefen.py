@@ -11,7 +11,9 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from datenbank import ist_spielform  # noqa: E402
 from diagramm import diagramme, pruefen as diagramm_pruefen  # noqa: E402
+from rahmen import NUR_SPIELFORM  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 PHASEN = {"Lauf-ABC", "Erweitertes Aufwärmen", "Hauptteil", "Schlussteil", "Abschlussspiel"}
@@ -41,6 +43,10 @@ def pruefe(p: Path):
     for ph in u.get("phase") or []:
         if ph not in PHASEN:
             fehler.append(f"unbekannte Phase '{ph}' (erlaubt: {', '.join(sorted(PHASEN))})")
+    for ph in set(u.get("phase") or []) & set(NUR_SPIELFORM):
+        if not ist_spielform(u):
+            fehler.append(f"Phase '{ph}' nur für Spielformen mit Gegenspielern (team: b im Diagramm), "
+                          "Übungen mit festem Ablauf -> Hauptteil")
     if u.get("torhueter") not in ("ja", "nein", "optional"):
         fehler.append("torhueter muss ja/nein/optional sein")
     if not isinstance(u.get("intensitaet"), int) or not 1 <= u["intensitaet"] <= 5:

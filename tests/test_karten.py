@@ -30,3 +30,13 @@ def test_ueberlappung_wird_erkannt():
          "objekte": [{"typ": "spieler", "x": 5, "y": 5}, {"typ": "spieler", "x": 5.5, "y": 5}],
          "pfeile": []}
     assert any("überlappen" in w for w in diagramm_pruefen(d))
+
+
+def test_schlussteil_nur_spielform(tmp_path):
+    karte = yaml.safe_load((ROOT / "uebungen" / "torabschluss-zwei-ablagen" / "uebung.yaml").read_text())
+    karte["phase"] = ["Hauptteil", "Schlussteil"]          # fester Ablauf, keine Gegenspieler
+    p = tmp_path / "x" / "uebung.yaml"
+    p.parent.mkdir()
+    p.write_text(yaml.safe_dump(karte, allow_unicode=True))
+    (p.parent / "diagramm.svg").write_text("<svg/>")
+    assert any("Schlussteil" in f for f in pruefe(p))

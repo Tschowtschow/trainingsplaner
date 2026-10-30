@@ -29,9 +29,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from datenbank import ROOT, UEBUNGEN  # noqa: E402
 from diagramm import diagramme, svg_namen  # noqa: E402
 
-from datenbank import historie  # noqa: E402
-from rahmen import (BEGINN, GESAMT_MIN, MATERIAL, MATERIAL_KATEGORIEN, PHASE_ZU_TEIL, PLATZ,  # noqa: E402
-                    TAGE, TEILE, WOCHENTAGE)
+from datenbank import historie, ist_spielform  # noqa: E402
+from rahmen import (BEGINN, GESAMT_MIN, MATERIAL, MATERIAL_KATEGORIEN, NUR_SPIELFORM, PHASE_ZU_TEIL,  # noqa: E402
+                    PLATZ, TAGE, TEILE, WOCHENTAGE)
 
 # ---------- Stil ----------
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
@@ -120,6 +120,8 @@ def pruefe(plan, uebungen):
         phase = PHASE_ZU_TEIL.get(e.get("teil"))
         if phase and phase not in (u.get("phase") or []):
             warnungen.append(f"{e['uebung']}: Phase '{phase}' steht nicht in der Karte")
+        if phase in NUR_SPIELFORM and not ist_spielform(u):
+            fehler.append(f"{e['uebung']}: im {e['teil']} nur Spielformen mit Gegenspielern, kein fester Ablauf")
         for m in u.get("material") or []:
             if not any(w in m.lower() for w in MATERIAL):
                 warnungen.append(f"{e['uebung']}: Material '{m}' gehört nicht zum Vereinsmaterial")

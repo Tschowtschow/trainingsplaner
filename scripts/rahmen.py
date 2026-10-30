@@ -4,6 +4,8 @@ TEILE = ["Lauf-ABC", "Erweitertes Aufwärmen", "Hauptteil 1", "Hauptteil 2", "Sc
 PHASE_ZU_TEIL = {"Lauf-ABC": "Lauf-ABC", "Erweitertes Aufwärmen": "Erweitertes Aufwärmen",
                  "Hauptteil 1": "Hauptteil", "Hauptteil 2": "Hauptteil",
                  "Schlussteil 1": "Schlussteil", "Abschlussspiel": "Abschlussspiel"}
+# Schlussteil (und Abschlussspiel): nur Spielformen mit Gegenspielern, kein fester Ablauf/Pattern
+NUR_SPIELFORM = ["Schlussteil", "Abschlussspiel"]
 GESAMT_MIN = 120
 BEGINN = "19:45"
 PLATZ = "Halber Kunstrasenplatz (+ 2 DFB-Käfige)"
