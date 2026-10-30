@@ -2,7 +2,7 @@
 
 _Automatisch erzeugt von `scripts/uebersicht.py` – nicht von Hand bearbeiten._
 
-**6 Übungen** · Bewertung = Schnitt aus Feedback (Anzahl) · NEU = eigene, ungetestete Übung
+**7 Übungen** · Bewertung = Schnitt aus Feedback (Anzahl) · NEU = eigene, ungetestete Übung
 
 ## Lauf-ABC (1)
 
@@ -16,19 +16,21 @@ _Automatisch erzeugt von `scripts/uebersicht.py` – nicht von Hand bearbeiten._
 |---|---|---|---|---|---|---|---|
 | [Rondo 5 gegen 2](uebungen/rondo-5gegen2/uebung.yaml) ([Grafik](uebungen/rondo-5gegen2/diagramm.svg)) | Passspiel, Pressing | 7–21 | nein | 12 | 3 | – | – |
 
-## Hauptteil (3)
+## Hauptteil (4)
 
 | Übung | Schwerpunkte | Spieler | TW | Min | Int. | Bewertung | zuletzt geplant |
 |---|---|---|---|---|---|---|---|
 | [4 gegen 4 plus 2 Joker auf Großtor und Minitore](uebungen/abschluss-4gegen4-joker/uebung.yaml) **NEU** ([Grafik](uebungen/abschluss-4gegen4-joker/diagramm.svg)) | Torabschluss, Umschalten | 10–16 | ja | 18 | 4 | – | – |
 | [Torabschluss 2 gegen 1 nach Doppelpass](uebungen/torabschluss-2gegen1/uebung.yaml) **NEU** ([Grafik](uebungen/torabschluss-2gegen1/diagramm.svg)) | Torabschluss, Passspiel, Umschalten | 8–18 | ja | 20 | 4 | – | – |
 | [Torabschluss nach Doppelpass](uebungen/torabschluss-doppelpass/uebung.yaml) **NEU** ([Grafik](uebungen/torabschluss-doppelpass/diagramm.svg)) | Torabschluss, Passspiel | 6–18 | ja | 15 | 3 | – | – |
+| [Torabschluss nach zwei Ablagen (2 Seiten, 2 TW)](uebungen/torabschluss-zwei-ablagen/uebung.yaml) ([Grafik](uebungen/torabschluss-zwei-ablagen/diagramm.svg)) | Torabschluss, Passspiel | 6–12 | ja | 15 | 3 | – | – |
 
-## Schlussteil (1)
+## Schlussteil (2)
 
 | Übung | Schwerpunkte | Spieler | TW | Min | Int. | Bewertung | zuletzt geplant |
 |---|---|---|---|---|---|---|---|
 | [4 gegen 4 plus 2 Joker auf Großtor und Minitore](uebungen/abschluss-4gegen4-joker/uebung.yaml) **NEU** ([Grafik](uebungen/abschluss-4gegen4-joker/diagramm.svg)) | Torabschluss, Umschalten | 10–16 | ja | 18 | 4 | – | – |
+| [Torabschluss nach zwei Ablagen (2 Seiten, 2 TW)](uebungen/torabschluss-zwei-ablagen/uebung.yaml) ([Grafik](uebungen/torabschluss-zwei-ablagen/diagramm.svg)) | Torabschluss, Passspiel | 6–12 | ja | 15 | 3 | – | – |
 
 ## Abschlussspiel (1)
 

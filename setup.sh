@@ -14,6 +14,7 @@ echo "==> Python-Pakete"
 python3 -m pip install -q --upgrade \
   yt-dlp \
   faster-whisper \
+  "av<14" \
   pyyaml \
   ruamel.yaml \
   reportlab \

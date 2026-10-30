@@ -1,0 +1,78 @@
+name: Torabschluss nach zwei Ablagen (2 Seiten, 2 TW)
+schwerpunkte: [Torabschluss, Passspiel]
+phase: [Hauptteil, Schlussteil]
+spieler_min: 6
+spieler_max: 12
+torhueter: ja
+feldgroesse: ca. 50 x 40 m vor dem Großtor (Strafraum + Vorfeld)
+material: [4 Stangen, 6 Hütchen, 15 Bälle, Leibchen in 2 Farben]
+dauer_min: 15
+intensitaet: 3
+ablauf:
+  - Zwei Gruppen à 4 Spieler, links (A) und rechts (B) vom Tor, spiegelverkehrt. Je Seite 2 Stangen, eine ca. 26 m und eine ca. 20 m vor dem Tor (Maße unsicher).
+  - Pro Seite 4 Positionen - A1 Start ca. 38 m vor dem Tor, A2 vor der hinteren Stange, A3 seitlich versetzt dahinter, A4 vor der vorderen Stange an der Strafraumgrenze.
+  - A1 spielt flach nach vorne auf A2, A2 legt ab auf A3.
+  - A3 spielt nach vorne auf A4 und startet, A4 legt in den Lauf von A3 ab.
+  - A3 schließt direkt oder mit 2 Kontakten aus ca. 18-20 m ab (unsicher).
+  - Sobald der Schuss raus ist, wirft der zweite Torhüter neben dem Tor einen neuen Ball zu B1 - jetzt startet die rechte Seite. So geht es ohne Pause abwechselnd links/rechts.
+  - Nach jeder Aktion rücken die Spieler ihrer Seite eine Position weiter (A1 -> A2 -> A3 -> A4 -> A1).
+regeln:
+  - Pässe und Ablagen flach, maximal 2 Kontakte.
+  - Abschluss vor dem Strafraum bzw. spätestens an der Strafraumgrenze.
+  - Die Torhüter wechseln sich ab - einer im Tor, einer wirft den nächsten Ball ein (Wechsel nach jedem Schuss oder alle 2 Minuten, unsicher).
+  - Wer verschießt, muss den Ball holen, alle anderen machen weiter.
+coachingpunkte:
+  - Ablagen mit der Innenseite, Ball mit leichtem Druck in den Lauf, nicht stoppen.
+  - Vor dem Anspiel Schulterblick und anbieten, Körper offen zum Spiel.
+  - Nach dem Pass sofort Tempo aufnehmen, Timing zum Ball finden.
+  - Abschluss flach und platziert, Standbein neben den Ball, Oberkörper über den Ball.
+  - Torhüter - nach dem Schuss sofort Ball holen und einwerfen, damit kein Leerlauf entsteht.
+varianten:
+  leichter:
+    - Abschluss aus 16 m, vordere Stange an die Strafraumgrenze.
+    - Ohne Direktspiel-Vorgabe, Ball zuerst mitnehmen.
+  schwerer:
+    - Alles direkt, Abschluss nur mit dem ersten Kontakt.
+    - Ein Verteidiger startet beim Pass auf A4 von der Torlinie und stört den Abschluss.
+    - Wettkampf - Seite A gegen Seite B, wer zuerst 10 Tore hat.
+  spielerzahl:
+    - Mit 6 Spielern 3 pro Seite - A1 übernimmt beide Pässe nach vorne, nur eine Ablage.
+    - Mit 10-12 Spielern Startposition doppelt besetzen (5-6 pro Seite).
+    - Ab 14 Spielern zweite Gruppe parallel im DFB-Käfig (z. B. 2-gegen-1 auf Minitore) und nach 7 Minuten tauschen.
+    - Nur 1 Torhüter - Bälle als Depot neben dem Tor, ein Spieler aus der wartenden Gruppe spielt den Ball ein.
+quelle: https://www.instagram.com/reel/DbkvnV8SVYW
+unsicher:
+  - Genaue Abstände der Stangen zum Tor (aus der Luftaufnahme geschätzt)
+  - Genaue Laufwege und wer welche Ablage spielt (nur Muster Pass-Ablage-Pass-Ablage-Abschluss beschrieben)
+  - Wie oft die Torhüter tauschen
+feedback: []
+diagramm:
+  feld:
+    laenge: 50
+    breite: 40
+    linien: [strafraum_oben, fuenfer_oben, elfmeter_oben]
+  objekte:
+    - {typ: tor, x: 25, y: 0, richtung: unten}
+    - {typ: torhueter, x: 25, y: 1.2}
+    - {typ: torhueter, x: 31, y: 1.5}
+    - {typ: balldepot, x: 34, y: 1.5}
+    - {typ: stange, x: 12, y: 26}
+    - {typ: stange, x: 16, y: 20}
+    - {typ: stange, x: 38, y: 26}
+    - {typ: stange, x: 34, y: 20}
+    - {typ: spieler, team: a, x: 8, y: 37, label: "A1"}
+    - {typ: spieler, team: a, x: 12, y: 28.5, label: "A2"}
+    - {typ: spieler, team: a, x: 18, y: 32, label: "A3"}
+    - {typ: spieler, team: a, x: 16, y: 22.5, label: "A4"}
+    - {typ: spieler, team: b, x: 44, y: 37, label: "B1"}
+    - {typ: spieler, team: b, x: 38, y: 28.5, label: "B2"}
+    - {typ: spieler, team: b, x: 32, y: 32, label: "B3"}
+    - {typ: spieler, team: b, x: 34, y: 22.5, label: "B4"}
+  pfeile:
+    - {typ: pass, von: [8, 37], nach: [12, 28.5], nr: 1}
+    - {typ: pass, von: [12, 28.5], nach: [18, 32], nr: 2}
+    - {typ: pass, von: [18, 32], nach: [16, 22.5], nr: 3}
+    - {typ: lauf, von: [18, 32], nach: [24, 21], kurve: 0.3}
+    - {typ: pass, von: [16, 22.5], nach: [24, 21], nr: 4}
+    - {typ: schuss, von: [24, 21], nach: [28, 0], nr: 5, ab_spieler: false}
+    - {typ: pass, von: [31, 1.5], nach: [44, 37], nr: 6, kurve: -0.2, farbe: gelb}
