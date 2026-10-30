@@ -1,0 +1,68 @@
+name: Passform im Viereck mit Ablage (Follow your pass)
+schwerpunkte: [Passspiel]
+phase: [Erweitertes Aufwärmen, Hauptteil]
+spieler_min: 8
+spieler_max: 24
+torhueter: nein
+feldgroesse: Viereck ca. 20 x 20 m pro Gruppe (unsicher)
+gruppengroesse: [8, 12]
+material: [4 Stangen pro Gruppe, 2-3 Bälle pro Gruppe]
+dauer_min: 12
+intensitaet: 2
+ablauf:
+  - Viereck aus 4 Stangen, ca. 20 x 20 m (unsicher). An jeder Stange stehen 2-3 Spieler, der vorderste etwas nach innen versetzt. Ball startet an Stange A.
+  - A spielt scharf und flach zu B an der nächsten Stange und läuft dem Pass hinterher.
+  - B kommt dem Ball entgegen und legt mit dem ersten Kontakt weich in den Lauf von A ab.
+  - A spielt direkt weiter zur übernächsten Stange C. Der Ablauf beginnt dort von vorne (C passt zu D, D legt ab ...).
+  - Jeder folgt seinem Pass - A stellt sich bei B an, B dreht ab und stellt sich bei C an (unsicher, im Video nicht eindeutig).
+regeln:
+  - Alles direkt (1 Kontakt).
+  - Pässe scharf, Ablagen weich und mitspielfreundlich.
+  - Nach jedem Pass sofort nachlaufen.
+coachingpunkte:
+  - Pass scharf und flach in den Fuß, der vom Gegner weg zeigt.
+  - Ablage weich mit der Innenseite, Ball in den Lauf vorlegen, nicht an den Körper.
+  - Anlaufen vor der Ablage - dem Ball entgegenkommen, nicht stehen bleiben.
+  - Kommunikation - Name rufen, Blickkontakt vor dem Pass.
+varianten:
+  leichter:
+    - 2 Kontakte erlaubt.
+    - Viereck kleiner (15 x 15 m).
+  schwerer:
+    - Richtung wechseln (Uhrzeigersinn / Gegenuhrzeigersinn) auf Pfiff.
+    - Zweiter Ball startet gleichzeitig an der gegenüberliegenden Stange.
+    - Nur schwacher Fuß.
+  spielerzahl:
+    - Mit 8 Spielern 2 pro Stange.
+    - Mit 10-12 Spielern 3 pro Stange, ab 10 mit 2 Bällen gleichzeitig (diagonal gegenüber starten).
+    - Ab 16 Spielern zwei Vierecke nebeneinander, Wettkampf - welche Gruppe schafft mehr Durchgänge in 2 Minuten.
+quelle: https://www.instagram.com/reel/DdLgOekx0TK
+unsicher:
+  - Größe des Vierecks (aus der Luftaufnahme geschätzt)
+  - Genaue Rotation der Spieler (wer läuft wohin)
+  - Ob mit einem oder zwei Bällen gleichzeitig gespielt wurde
+feedback: []
+diagramm:
+  feld:
+    laenge: 28
+    breite: 26
+  objekte:
+    - {typ: stange, x: 3, y: 23}
+    - {typ: stange, x: 3, y: 3}
+    - {typ: stange, x: 25, y: 3}
+    - {typ: stange, x: 25, y: 23}
+    - {typ: spieler, team: a, x: 5, y: 21, label: "A"}
+    - {typ: spieler, team: a, x: 1.5, y: 25}
+    - {typ: spieler, team: a, x: 5, y: 5.5, label: "B"}
+    - {typ: spieler, team: a, x: 1.5, y: 1.5}
+    - {typ: spieler, team: a, x: 23, y: 5, label: "C"}
+    - {typ: spieler, team: a, x: 26.5, y: 1.5}
+    - {typ: spieler, team: a, x: 23, y: 21, label: "D"}
+    - {typ: spieler, team: a, x: 26.5, y: 25}
+    - {typ: ball, x: 6.5, y: 20}
+    - {typ: text, x: 14, y: 13, text: "ca. 20 x 20 m", groesse: 1.1}
+  pfeile:
+    - {typ: pass, von: [5, 21], nach: [5, 5.5], nr: 1}
+    - {typ: lauf, von: [5, 21], nach: [9, 11.5], kurve: 0.15}
+    - {typ: pass, von: [5, 5.5], nach: [9, 11.5], nr: 2}
+    - {typ: pass, von: [9, 11.5], nach: [23, 5], nr: 3, ab_spieler: false}
