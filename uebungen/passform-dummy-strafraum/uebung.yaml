@@ -1,0 +1,68 @@
+name: Passform um den Dummy im Strafraum
+schwerpunkte: [Passspiel, Koordination]
+phase: [Erweitertes Aufwärmen]
+spieler_min: 6
+spieler_max: 16
+torhueter: nein
+feldgroesse: ca. 26 x 24 m (Strafraum + Vorfeld) (unsicher)
+gruppengroesse: [6, 8]
+material: [1 Stange pro Gruppe, 4 Hütchen pro Gruppe, 6-8 Bälle pro Gruppe]
+dauer_min: 12
+intensitaet: 2
+ablauf:
+  - "Aufbau im Strafraum: zwei Starthütchen ca. 22 m vor der Grundlinie links und rechts (A), eine Stange etwa 12 m vor dem Tor in der Mitte (B steht daneben), Position C rechts an der Strafraumecke an der Grundlinie, Position D mittig vor dem Tor."
+  - A (rechts, mit Ball) passt flach zu B, der sich von der Stange löst.
+  - B nimmt offen mit und spielt diagonal zu C an die Grundlinie (unsicher).
+  - C passt flach in die Mitte zu D, der vom Tor entgegenkommt (unsicher).
+  - D spielt zurück zu B an der Stange, B spielt zum Starthütchen links – dort startet die nächste Runde spiegelverkehrt (unsicher).
+  - Jeder läuft seinem Pass hinterher auf die nächste Position.
+regeln:
+  - Möglichst mit 2 Kontakten (Annahme + Pass).
+  - Bälle immer flach spielen.
+  - Nach jedem Pass sofort auf die nächste Position laufen.
+coachingpunkte:
+  - Vor der Annahme schulterblicken, offen zur nächsten Station stellen.
+  - Erster Kontakt weg von der Stange in die Spielrichtung.
+  - Pass in den richtigen (fernen) Fuß des Mitspielers.
+  - Entgegenkommen und ansagen („Hier!“), nicht auf den Ball warten.
+varianten:
+  leichter: [Mehr Kontakte erlaubt, Abstände auf 10-12 m verkürzen]
+  schwerer:
+    - Nur direkt spielen (wo möglich).
+    - Am Ende Abschluss aufs Großtor durch D nach Pass von B (dann mit Torhüter).
+    - Zwei Bälle gleichzeitig im Umlauf (von links und rechts starten).
+  spielerzahl:
+    - Mit 6 Spielern 2 Spieler je Starthütchen, je 1 auf B, C, D.
+    - Ab 12 Spielern zweite Gruppe parallel im anderen Strafraum oder im Vorfeld mit Hütchen statt Tor.
+quelle: https://www.instagram.com/reel/Dc5W64yo1ly
+unsicher:
+  - Video nur 10 s, ohne Ton-Erklärung; Caption enthält nur allgemeine Gedanken zur Jugendarbeit, keine Regeln.
+  - Genaue Passfolge nach dem Anspiel auf B (über C und D) nur aus Laufwegen vermutet.
+  - Ob am Ende aufs Tor geschossen wird, ist nicht zu sehen – im Video keine Torschüsse erkennbar.
+  - Maße geschätzt; im Video ein orangefarbener Dummy/Fahne, bei uns Stange.
+feedback: []
+diagramm:
+  feld:
+    laenge: 26
+    breite: 24
+    linien: ["linie: 0,0,26,0"]
+  objekte:
+    - {typ: tor, x: 13, y: 0, richtung: unten}
+    - {typ: huetchen, x: 4, y: 22, farbe: orange}
+    - {typ: huetchen, x: 22, y: 22, farbe: orange}
+    - {typ: spieler, team: a, x: 22, y: 20, label: "A"}
+    - {typ: spieler, team: a, x: 4, y: 20, label: "A"}
+    - {typ: balldepot, x: 24.5, y: 22.5}
+    - {typ: stange, x: 13, y: 12}
+    - {typ: spieler, team: a, x: 15, y: 13.5, label: "B"}
+    - {typ: huetchen, x: 21, y: 1.5, farbe: orange}
+    - {typ: spieler, team: a, x: 21, y: 3.5, label: "C"}
+    - {typ: huetchen, x: 13, y: 3.5, farbe: orange}
+    - {typ: spieler, team: a, x: 11, y: 5.5, label: "D"}
+  pfeile:
+    - {typ: pass, von: [22, 20], nach: [15, 13.5], nr: 1}
+    - {typ: pass, von: [15, 13.5], nach: [21, 3.5], nr: 2}
+    - {typ: pass, von: [21, 3.5], nach: [11, 5.5], nr: 3}
+    - {typ: pass, von: [11, 5.5], nach: [15, 13.5], nr: 4, kurve: 0.2}
+    - {typ: pass, von: [15, 13.5], nach: [4, 20], nr: 5}
+    - {typ: lauf, von: [22, 20], nach: [17, 15], kurve: 0.15}

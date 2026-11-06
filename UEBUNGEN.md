@@ -2,7 +2,7 @@
 
 _Automatisch erzeugt von `scripts/uebersicht.py` – nicht von Hand bearbeiten._
 
-**6 Übungen** · Bewertung = Schnitt aus Feedback (Anzahl) · NEU = eigene, ungetestete Übung
+**7 Übungen** · Bewertung = Schnitt aus Feedback (Anzahl) · NEU = eigene, ungetestete Übung
 
 ## Lauf-ABC (1)
 
@@ -10,10 +10,11 @@ _Automatisch erzeugt von `scripts/uebersicht.py` – nicht von Hand bearbeiten._
 |---|---|---|---|---|---|---|---|
 | [Lauf-ABC Grundform](uebungen/lauf-abc-grundform/uebung.yaml) **NEU** ([Grafik](uebungen/lauf-abc-grundform/diagramm.svg)) | Koordination, Athletik | 4–24 | optional | 10 | 2 | – | – |
 
-## Erweitertes Aufwärmen (1)
+## Erweitertes Aufwärmen (2)
 
 | Übung | Schwerpunkte | Spieler | TW | Min | Int. | Bewertung | zuletzt geplant |
 |---|---|---|---|---|---|---|---|
+| [Passform um den Dummy im Strafraum](uebungen/passform-dummy-strafraum/uebung.yaml) ([Grafik](uebungen/passform-dummy-strafraum/diagramm.svg)) | Passspiel, Koordination | 6–16 | nein | 12 | 2 | – | – |
 | [Rondo 5 gegen 2](uebungen/rondo-5gegen2/uebung.yaml) ([Grafik](uebungen/rondo-5gegen2/diagramm.svg)) | Passspiel, Pressing | 7–21 | nein | 12 | 3 | – | – |
 
 ## Hauptteil (3)
