@@ -1,0 +1,59 @@
+name: Passform Raute mit Klatschen und Diagonalpass
+schwerpunkte: [Passspiel, Koordination]
+phase: [Hauptteil]
+spieler_min: 6
+spieler_max: 20
+torhueter: nein
+feldgroesse: Raute ca. 20 x 12 m pro Station (Hütchen A links, B oben, C unten, D rechts)
+gruppengroesse: [6, 10]
+material: [4 Hütchen pro Station, 2-3 Bälle pro Gruppe]
+dauer_min: 25
+intensitaet: 3
+ablauf:
+  - "Pro Station 4 Hütchen als Raute: A links (Start, 2-3 Spieler mit Bällen), B oben, C unten, D rechts (je 1-2 Spieler)."
+  - A spielt flach auf B, startet nach vorn und bekommt den Ball von B direkt zurückgeklatscht.
+  - A spielt diagonal in den Lauf von C, der sich vom Hütchen nach innen löst.
+  - C spielt auf D, D nimmt in die Laufrichtung mit und dribbelt zurück zur Startposition A.
+  - Jeder läuft seinem Pass hinterher (A nach B, B nach C, C nach D), der nächste Ball startet, sobald der Klatschpass von B gespielt ist.
+  - Nach 10-12 Minuten Richtung wechseln (Start über C unten, Klatschen über C, Diagonalpass zu B) – damit kommt der andere Fuß dran.
+regeln:
+  - Klatschpass von B immer direkt.
+  - Diagonalpass flach und in den Lauf, nicht auf den Fuß.
+  - Ballannahme bei D mit dem ersten Kontakt nach vorn.
+coachingpunkte:
+  - Vor der Annahme Schulterblick, offene Stellung (Körper Richtung nächster Passempfänger).
+  - "Pass mit der Innenseite, Standbein neben dem Ball, Fußspitze hoch."
+  - "Timing: C startet erst, wenn A den Klatschpass annimmt – nicht zu früh."
+  - Laut ansagen (Name, „Klatsch!“), Tempo der Pässe hoch halten.
+varianten:
+  leichter: [2 Kontakte bei B erlaubt, Raute kleiner (15 x 10 m)]
+  schwerer: [Alle Pässe direkt, nur mit dem schwachen Fuß, Raute größer (25 x 15 m) mit scharfen Pässen]
+  spielerzahl:
+    - 6-10 Spieler pro Station, ab 12 Spielern zwei Stationen nebeneinander.
+    - Bei 16 Spielern 2 Stationen à 8 (A 3, B 2, C 1, D 2).
+    - Mit Wettkampf - welche Station schafft in 2 Minuten mehr fehlerfreie Durchgänge?
+quelle: eigene Übung (neu)
+unsicher: []
+feedback: []
+diagramm:
+  feld: {laenge: 24, breite: 16}
+  objekte:
+    - {typ: huetchen, x: 2, y: 8}
+    - {typ: huetchen, x: 12, y: 2}
+    - {typ: huetchen, x: 12, y: 14}
+    - {typ: huetchen, x: 22, y: 8}
+    - {typ: spieler, team: a, x: 2, y: 9.5, label: "A"}
+    - {typ: spieler, team: a, x: 0.8, y: 11.5}
+    - {typ: spieler, team: a, x: 12, y: 3.5, label: "B"}
+    - {typ: spieler, team: a, x: 12, y: 12.5, label: "C"}
+    - {typ: spieler, team: a, x: 22, y: 9.5, label: "D"}
+    - {typ: ball, x: 3.2, y: 10.2}
+    - {typ: text, x: 2, y: 15, text: "Start", groesse: 0.9}
+  pfeile:
+    - {typ: pass, von: [2, 9.5], nach: [12, 3.5], nr: 1}
+    - {typ: lauf, von: [2, 9.5], nach: [6.5, 8], kurve: 0.1}
+    - {typ: pass, von: [12, 3.5], nach: [6.5, 8], nr: 2, kurve: -0.35}
+    - {typ: pass, von: [6.5, 8], nach: [15.5, 11], nr: 3, ab_spieler: false}
+    - {typ: lauf, von: [12, 12.5], nach: [15.5, 11], kurve: 0.2}
+    - {typ: pass, von: [15.5, 11], nach: [22, 9.5], nr: 4, ab_spieler: false}
+    - {typ: dribbling, von: [22, 9.5], nach: [16, 15], kurve: -0.1}

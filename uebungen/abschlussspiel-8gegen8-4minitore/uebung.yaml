@@ -1,0 +1,72 @@
+name: Abschlussspiel 8 gegen 8 auf 4 Minitore (ohne Torhüter)
+schwerpunkte: [Passspiel, Spielaufbau, Umschalten]
+phase: [Abschlussspiel]
+spieler_min: 10
+spieler_max: 20
+torhueter: nein
+feldgroesse: halber Platz quer, ca. 60 x 50 m (Spielrichtung über die Platzbreite)
+material: [4 Minitore, 8 Hütchen, Leibchen, 15 Bälle]
+dauer_min: 25
+intensitaet: 4
+ablauf:
+  - Zwei Teams spielen quer auf dem halben Platz. Jedes Team verteidigt 2 Minitore auf seiner Grundlinie (ca. 25 m auseinander) und greift die 2 Minitore des Gegners an.
+  - Vor jedem Minitor eine 3-m-Zone mit Hütchen, die kein Spieler betreten darf (Abschluss von außerhalb).
+  - Neuer Ball immer vom Trainer an der Seitenlinie, damit kaum Pausen entstehen.
+  - 2 Halbzeiten à 11-12 Minuten, dazwischen Trinkpause und kurze Ansprache.
+regeln:
+  - Normales Spiel, kein Abseits, Einwurf als Einpass oder Eindribbeln.
+  - Schwerpunktregel - Tor nach mindestens 6 Pässen in Folge zählt doppelt.
+  - Tor nach Seitenverlagerung (Angriff auf das eine Tor, Abschluss auf das andere) zählt doppelt.
+coachingpunkte:
+  - Passspiel aus dem Hauptteil sichtbar machen - Dreiecke, offene Stellung, schnelle Verlagerung.
+  - Wenn ein Tor zugestellt ist, das andere angreifen (Spiel breit machen).
+  - Wenig unterbrechen, nur kurze Hinweise in Spielpausen.
+  - Nach Ballverlust sofort Gegenpressing, die eigenen Tore sind ohne TW offen.
+varianten:
+  leichter: [Neutraler Joker für das ballbesitzende Team, Zone vor den Toren weglassen]
+  schwerer: [Maximal 2 Kontakte in der eigenen Hälfte, Tor zählt nur nach mindestens 4 Pässen]
+  spielerzahl:
+    - 16 Spieler = 8 gegen 8; 14 Spieler = 7 gegen 7.
+    - Ungerade Zahl - ein neutraler Joker.
+    - Ab 18 Spielern zweites Spiel 4 gegen 4 im DFB-Käfig, nach der Halbzeit tauschen.
+    - Mit Torhütern - stattdessen abschlussspiel-grosstor-minitore spielen.
+quelle: eigene Übung (neu)
+unsicher: []
+feedback: []
+diagramm:
+  feld:
+    laenge: 60
+    breite: 50
+    linien: ["linie: 30,0,30,50"]
+  zonen:
+    - {x: 0, y: 9.5, b: 3, h: 5, farbe: grau}
+    - {x: 0, y: 35.5, b: 3, h: 5, farbe: grau}
+    - {x: 57, y: 9.5, b: 3, h: 5, farbe: grau}
+    - {x: 57, y: 35.5, b: 3, h: 5, farbe: grau}
+  objekte:
+    - {typ: minitor, x: 0, y: 12, richtung: rechts}
+    - {typ: minitor, x: 0, y: 38, richtung: rechts}
+    - {typ: minitor, x: 60, y: 12, richtung: links}
+    - {typ: minitor, x: 60, y: 38, richtung: links}
+    - {typ: spieler, team: a, x: 8, y: 25}
+    - {typ: spieler, team: a, x: 15, y: 10}
+    - {typ: spieler, team: a, x: 15, y: 40}
+    - {typ: spieler, team: a, x: 24, y: 20}
+    - {typ: spieler, team: a, x: 26, y: 33}
+    - {typ: spieler, team: a, x: 36, y: 8}
+    - {typ: spieler, team: a, x: 38, y: 27}
+    - {typ: spieler, team: a, x: 44, y: 42}
+    - {typ: spieler, team: b, x: 52, y: 25}
+    - {typ: spieler, team: b, x: 46, y: 12}
+    - {typ: spieler, team: b, x: 47, y: 34}
+    - {typ: spieler, team: b, x: 41, y: 19}
+    - {typ: spieler, team: b, x: 33, y: 15}
+    - {typ: spieler, team: b, x: 32, y: 40}
+    - {typ: spieler, team: b, x: 20, y: 28}
+    - {typ: spieler, team: b, x: 21, y: 13}
+    - {typ: ball, x: 25.3, y: 33.6}
+  pfeile:
+    - {typ: pass, von: [26, 33], nach: [38, 27], nr: 1}
+    - {typ: pass, von: [38, 27], nach: [44, 42], nr: 2}
+    - {typ: schuss, von: [44, 42], nach: [59.5, 38.5], nr: 3}
+    - {typ: lauf, von: [36, 8], nach: [48, 6], kurve: -0.1}

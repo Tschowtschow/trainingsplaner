@@ -1,0 +1,71 @@
+datum: 2026-11-10
+trainingstag: Dienstag
+schwerpunkt: Passspiel
+feldspieler: 16
+torhueter: 0
+beginn: "19:45"
+ziel: Sauberes, schnelles Passspiel – erst als Passform ohne Gegner, dann unter Druck im Positionsspiel und am Ende im Spiel auf Minitore ohne Torhüter.
+teile:
+  - teil: Lauf-ABC
+    uebung: lauf-abc-grundform
+    dauer_min: 10
+    neu: true
+    aufteilung:
+      gruppen: 4 Bahnen à 4 Spieler
+      anzahl_gruppen: 1
+      rollen: Alle laufen gleichzeitig, der Erste jeder Bahn gibt das Tempo vor.
+      wechsel: Nach jeder Übung hinten anstellen, auf dem Rückweg locker traben.
+      torhueter: Keine Torhüter dabei.
+  - teil: Erweitertes Aufwärmen
+    uebung: rondo-5gegen2
+    dauer_min: 20
+    neu: false
+    aufteilung:
+      gruppen: 2 Gruppen à 8 – je 6 gegen 2 im Quadrat 12 x 12 m
+      anzahl_gruppen: 2
+      rollen: 6 Außenspieler mit max. 2 Kontakten, 2 Verteidiger in der Mitte.
+      wechsel: Fehlerspieler geht für den Verteidiger rein, der den Ball erobert hat. Nach 10 min 2 Spieler zwischen den Gruppen tauschen und auf Direktspiel steigern.
+      torhueter: Keine Torhüter dabei.
+  - teil: Hauptteil 1
+    uebung: passform-raute-klatschen
+    dauer_min: 25
+    neu: true
+    aufteilung:
+      gruppen: 2 Stationen à 8 nebeneinander (A 3, B 2, C 1, D 2)
+      anzahl_gruppen: 2
+      rollen: A startet mit Ball, B klatscht direkt, C löst sich für den Diagonalpass, D nimmt mit und dribbelt zurück.
+      wechsel: Jeder läuft seinem Pass hinterher. Nach 12 min Richtung wechseln (anderer Fuß), die letzten 3 min Wettkampf zwischen den Stationen.
+      torhueter: Keine Torhüter dabei.
+  - teil: Hauptteil 2
+    uebung: positionsspiel-6gegen6-plus4
+    dauer_min: 25
+    neu: true
+    aufteilung:
+      gruppen: 6 gegen 6 im Feld + 4 Außenjoker, Feld 35 x 30 m
+      anzahl_gruppen: 1
+      rollen: Innenspieler max. 3 Kontakte, Joker max. 2 Kontakte und spielen immer mit dem Team in Ballbesitz.
+      wechsel: 4 Durchgänge à 5 min, nach jedem Durchgang gehen 2 Spieler aus jedem Team auf die Jokerpositionen – jeder ist einmal Joker.
+      torhueter: Keine Torhüter dabei.
+  - teil: Schlussteil 1
+    uebung: minitore-4gegen4-kaefig
+    dauer_min: 15
+    neu: true
+    aufteilung:
+      gruppen: 4 Teams à 4, 2 Felder (DFB-Käfige) mit je 4 gegen 4
+      anzahl_gruppen: 2
+      rollen: Tor zählt erst nach 3 Pässen in Folge, kein Spieler in der 2-m-Zone vor dem eigenen Tor.
+      wechsel: 3 Runden à 4 min, Gewinner wechseln ins Feld 1, Verlierer ins Feld 2.
+      torhueter: Keine Torhüter dabei.
+  - teil: Abschlussspiel
+    uebung: abschlussspiel-8gegen8-4minitore
+    dauer_min: 25
+    neu: true
+    aufteilung:
+      gruppen: 8 gegen 8 quer auf dem halben Platz, je 2 Minitore pro Team
+      anzahl_gruppen: 1
+      rollen: Normales Spiel, Tor nach 6 Pässen in Folge oder nach Seitenverlagerung zählt doppelt.
+      wechsel: 2 Halbzeiten à 12 min, in der Pause Seitenwechsel und kurze Ansprache.
+      torhueter: Keine Torhüter – Minitore statt Großtor, 3-m-Zone vor den Toren.
+hinweise:
+  - Kein Torhüter da – deshalb heute komplett ohne Großtor, alle Spielformen auf Minitore.
+  - Für Schlussteil 1 die DFB-Käfige vorher prüfen, sonst zwei Felder 25 x 15 m mit Hütchen abstecken.

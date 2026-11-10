@@ -1,0 +1,58 @@
+name: 4 gegen 4 auf 2 Minitore (Käfig-Turnier)
+schwerpunkte: [Passspiel, Torabschluss, Umschalten]
+phase: [Schlussteil]
+spieler_min: 8
+spieler_max: 20
+torhueter: nein
+feldgroesse: DFB-Käfig ca. 20 x 13 m, ersatzweise mit Hütchen markiert 25 x 15 m
+gruppengroesse: [8, 10]
+material: [2 Minitore pro Feld, 4 Hütchen pro Feld, Leibchen in 4 Farben, 2-3 Bälle pro Gruppe]
+dauer_min: 15
+intensitaet: 4
+ablauf:
+  - Pro Feld spielen 2 Teams à 4 gegeneinander auf je ein Minitor an der Grundlinie, ohne Torhüter.
+  - "Turniermodus: 3 Runden à 4 Minuten, nach jeder Runde wechseln die Gewinner ein Feld weiter (Käfig 1 = „Champions-Feld“)."
+  - Ball im Aus - Einpass oder Eindribbeln, im Käfig läuft der Ball über die Bande weiter.
+  - Ersatzbälle liegen hinter den Toren, damit es sofort weitergeht.
+regeln:
+  - Tor zählt nur, wenn vorher mindestens 3 Pässe in Folge im eigenen Team gespielt wurden.
+  - Kein Spieler darf sich direkt vor das eigene Minitor stellen (2-m-Zone, keine Torblockade).
+  - Tor nach Direktpass zählt doppelt.
+coachingpunkte:
+  - Erst Ball sichern, dann Tempo – die 3 Pässe zügig und mit Breite spielen.
+  - Nach Ballverlust sofort Gegenpressing, damit der Gegner nicht auf 3 Pässe kommt.
+  - Tor-Abschluss flach und präzise, aus der Bewegung.
+  - An die Passtechnik aus dem Hauptteil erinnern (offene Stellung, Annahme nach vorn).
+varianten:
+  leichter: [Tor zählt nach 2 Pässen, ein neutraler Joker pro Feld]
+  schwerer: [Mindestens 5 Pässe, maximal 2 Kontakte]
+  spielerzahl:
+    - 16 Spieler = 2 Felder mit je 4 gegen 4; 8 Spieler = 1 Feld.
+    - 18-20 Spieler - 5 gegen 5 oder pro Feld 1-2 Wechselspieler, die jede Minute rein rotieren.
+    - Ohne Käfige - Felder mit Hütchen auf dem halben Platz abstecken, Minitore an die Stirnseiten.
+quelle: eigene Übung (neu)
+unsicher: []
+feedback: []
+diagramm:
+  feld: {laenge: 20, breite: 13}
+  zonen:
+    - {x: 0, y: 4.5, b: 2, h: 4, farbe: grau}
+    - {x: 18, y: 4.5, b: 2, h: 4, farbe: grau}
+  objekte:
+    - {typ: minitor, x: 0, y: 6.5, richtung: rechts, breite: 2}
+    - {typ: minitor, x: 20, y: 6.5, richtung: links, breite: 2}
+    - {typ: spieler, team: a, x: 4, y: 3}
+    - {typ: spieler, team: a, x: 5, y: 10}
+    - {typ: spieler, team: a, x: 10, y: 6.5}
+    - {typ: spieler, team: a, x: 14, y: 2.5}
+    - {typ: spieler, team: b, x: 7, y: 5}
+    - {typ: spieler, team: b, x: 12, y: 9.5}
+    - {typ: spieler, team: b, x: 15, y: 6}
+    - {typ: spieler, team: b, x: 8, y: 11.5}
+    - {typ: ball, x: 4.9, y: 3.5}
+    - {typ: text, x: 3, y: 12.4, text: "2-m-Zone", groesse: 0.6}
+  pfeile:
+    - {typ: pass, von: [4, 3], nach: [5, 10], nr: 1}
+    - {typ: pass, von: [5, 10], nach: [10, 6.5], nr: 2}
+    - {typ: pass, von: [10, 6.5], nach: [14, 2.5], nr: 3}
+    - {typ: schuss, von: [14, 2.5], nach: [19.6, 6.2], nr: 4}

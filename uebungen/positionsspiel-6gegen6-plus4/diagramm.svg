@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="828" viewBox="0 0 900 828">
+<g transform="translate(0,0)">
+<rect x="0" y="0" width="900.0" height="787.5" fill="#2f7d32"/>
+<rect x="0.0" y="0" width="128.6" height="787.5" fill="#358a38"/>
+<rect x="257.1" y="0" width="128.6" height="787.5" fill="#358a38"/>
+<rect x="514.3" y="0" width="128.6" height="787.5" fill="#358a38"/>
+<rect x="771.4" y="0" width="128.6" height="787.5" fill="#358a38"/>
+<rect x="56.2" y="56.2" width="787.5" height="675.0" fill="none" stroke="#ffffff" stroke-width="3.4"/>
+<polygon points="56.2,43.6 68.9,66.4 43.6,66.4" fill="#f97316" stroke="#111827" stroke-width="1.4"/>
+<polygon points="843.8,43.6 856.4,66.4 831.1,66.4" fill="#f97316" stroke="#111827" stroke-width="1.4"/>
+<polygon points="56.2,718.6 68.9,741.4 43.6,741.4" fill="#f97316" stroke="#111827" stroke-width="1.4"/>
+<polygon points="843.8,718.6 856.4,741.4 831.1,741.4" fill="#f97316" stroke="#111827" stroke-width="1.4"/>
+<circle cx="83.2" cy="416.2" r="9.8" fill="#ffffff" stroke="#111827" stroke-width="2.2"/>
+<circle cx="83.2" cy="416.2" r="3.4" fill="#111827"/>
+<polyline points="74.1,411.6 77.3,414.8 80.4,417.9 83.5,421.0 86.6,424.1 89.8,427.3 92.9,430.4 96.0,433.5 99.1,436.6 102.2,439.7 105.4,442.9 108.5,446.0 111.6,449.1 114.7,452.2 117.8,455.3 121.0,458.5 124.1,461.6 127.2,464.7 130.3,467.8 133.4,470.9 136.6,474.1 139.7,477.2 142.8,480.3 145.9,483.4 149.0,486.5 152.2,489.7 155.3,492.8 158.4,495.9 161.5,499.0 164.6,502.1 167.8,505.3 170.9,508.4 174.0,511.5 177.1,514.6 180.2,517.7 183.4,520.9 186.5,524.0 189.6,527.1 192.7,530.2 195.9,533.4" fill="none" stroke="#111827" stroke-width="5.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="195.9,533.4 184.9,504.5 167.0,522.4" fill="#111827"/>
+<circle cx="135.0" cy="472.5" r="16.9" fill="#ffffff" stroke="#111827" stroke-width="2.2"/>
+<text x="135.0" y="480.9" font-family="Helvetica" font-size="23.9" font-weight="bold" fill="#111827" text-anchor="middle">1</text>
+<polyline points="231.6,533.4 235.0,530.0 238.4,526.6 241.8,523.2 245.2,519.8 248.5,516.5 251.9,513.1 255.3,509.7 258.7,506.3 262.1,502.9 265.4,499.6 268.8,496.2 272.2,492.8 275.6,489.4 278.9,486.1 282.3,482.7 285.7,479.3 289.1,475.9 292.5,472.5 295.8,469.2 299.2,465.8 302.6,462.4 306.0,459.0 309.4,455.6 312.7,452.3 316.1,448.9 319.5,445.5 322.9,442.1 326.2,438.8 329.6,435.4 333.0,432.0 336.4,428.6 339.8,425.2 343.1,421.9 346.5,418.5 349.9,415.1 353.3,411.7 356.7,408.3 360.0,405.0 363.4,401.6 366.8,398.2 370.2,394.8 373.6,391.4 376.9,388.1 380.3,384.7 383.7,381.3 387.1,377.9 390.4,374.6 393.8,371.2 397.2,367.8 400.6,364.4 404.0,361.0 407.3,357.7 410.7,354.3 414.1,350.9 417.5,347.5 420.9,344.1" fill="none" stroke="#111827" stroke-width="5.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="420.9,344.1 392.0,355.1 409.9,373.0" fill="#111827"/>
+<circle cx="326.2" cy="438.8" r="16.9" fill="#ffffff" stroke="#111827" stroke-width="2.2"/>
+<text x="326.2" y="447.2" font-family="Helvetica" font-size="23.9" font-weight="bold" fill="#111827" text-anchor="middle">2</text>
+<polyline points="463.7,330.4 468.6,331.2 473.6,332.1 478.5,332.9 483.4,333.7 488.4,334.5 493.3,335.3 498.2,336.2 503.2,337.0 508.1,337.8 513.0,338.6 518.0,339.5 522.9,340.3 527.8,341.1 532.8,341.9 537.7,342.7 542.6,343.6 547.6,344.4 552.5,345.2 557.4,346.0 562.3,346.8 567.3,347.7 572.2,348.5 577.1,349.3 582.1,350.1 587.0,351.0 591.9,351.8 596.9,352.6 601.8,353.4 606.7,354.2 611.7,355.1 616.6,355.9 621.5,356.7 626.5,357.5 631.4,358.4 636.3,359.2 641.2,360.0 646.2,360.8 651.1,361.6 656.0,362.5 661.0,363.3 665.9,364.1 670.8,364.9 675.8,365.8 680.7,366.6 685.6,367.4 690.6,368.2 695.5,369.0 700.4,369.9 705.4,370.7 710.3,371.5 715.2,372.3 720.2,373.2 725.1,374.0 730.0,374.8 734.9,375.6 739.9,376.4 744.8,377.3 749.7,378.1 754.7,378.9 759.6,379.7 764.5,380.5 769.5,381.4 774.4,382.2 779.3,383.0 784.3,383.8 789.2,384.7 794.1,385.5 799.1,386.3 804.0,387.1 808.9,387.9 813.9,388.8 818.8,389.6" fill="none" stroke="#111827" stroke-width="5.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="818.8,389.6 793.1,372.5 789.0,397.4" fill="#111827"/>
+<circle cx="641.2" cy="360.0" r="16.9" fill="#ffffff" stroke="#111827" stroke-width="2.2"/>
+<text x="641.2" y="368.4" font-family="Helvetica" font-size="23.9" font-weight="bold" fill="#111827" text-anchor="middle">3</text>
+<polyline points="356.1,504.3 353.1,504.4 350.1,504.5 347.2,504.7 344.2,505.0 341.3,505.3 338.3,505.8 335.4,506.2 332.5,506.8 329.6,507.4 326.8,508.0 323.9,508.8 321.1,509.6 318.2,510.5 315.4,511.4 312.6,512.4 309.8,513.5 307.1,514.6 304.3,515.8" fill="none" stroke="#111827" stroke-width="3.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16.9,11.2"/>
+<polygon points="304.3,515.8 335.1,516.4 325.2,493.1" fill="#111827"/>
+<polyline points="528.0,268.7 525.8,269.6 523.7,270.6 521.5,271.5 519.4,272.4 517.2,273.3 515.1,274.2 512.9,275.2 510.8,276.1 508.7,277.0 506.5,277.9 504.4,278.8 502.2,279.8 500.1,280.7 497.9,281.6 495.8,282.5" fill="none" stroke="#111827" stroke-width="3.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16.9,11.2"/>
+<polygon points="495.8,282.5 526.6,283.1 516.6,259.8" fill="#111827"/>
+<circle cx="450.0" cy="56.2" r="25.3" fill="#facc15" stroke="#111827" stroke-width="3.4"/>
+<text x="450.0" y="68.1" font-family="Helvetica" font-size="30.9" font-weight="bold" fill="#111827" text-anchor="middle">J</text>
+<circle cx="450.0" cy="731.2" r="25.3" fill="#facc15" stroke="#111827" stroke-width="3.4"/>
+<text x="450.0" y="743.1" font-family="Helvetica" font-size="30.9" font-weight="bold" fill="#111827" text-anchor="middle">J</text>
+<circle cx="56.2" cy="393.8" r="25.3" fill="#facc15" stroke="#111827" stroke-width="3.4"/>
+<text x="56.2" y="405.6" font-family="Helvetica" font-size="30.9" font-weight="bold" fill="#111827" text-anchor="middle">J</text>
+<circle cx="843.8" cy="393.8" r="25.3" fill="#facc15" stroke="#111827" stroke-width="3.4"/>
+<text x="843.8" y="405.6" font-family="Helvetica" font-size="30.9" font-weight="bold" fill="#111827" text-anchor="middle">J</text>
+<circle cx="236.2" cy="213.8" r="25.3" fill="#d62828" stroke="#111827" stroke-width="3.4"/>
+<circle cx="641.2" cy="191.2" r="25.3" fill="#d62828" stroke="#111827" stroke-width="3.4"/>
+<circle cx="438.8" cy="326.2" r="25.3" fill="#d62828" stroke="#111827" stroke-width="3.4"/>
+<circle cx="213.8" cy="551.2" r="25.3" fill="#d62828" stroke="#111827" stroke-width="3.4"/>
+<circle cx="686.2" cy="551.2" r="25.3" fill="#d62828" stroke="#111827" stroke-width="3.4"/>
+<circle cx="461.2" cy="596.2" r="25.3" fill="#d62828" stroke="#111827" stroke-width="3.4"/>
+<circle cx="326.2" cy="281.2" r="25.3" fill="#1d4ed8" stroke="#111827" stroke-width="3.4"/>
+<circle cx="551.2" cy="258.8" r="25.3" fill="#1d4ed8" stroke="#111827" stroke-width="3.4"/>
+<circle cx="382.5" cy="506.2" r="25.3" fill="#1d4ed8" stroke="#111827" stroke-width="3.4"/>
+<circle cx="573.8" cy="438.8" r="25.3" fill="#1d4ed8" stroke="#111827" stroke-width="3.4"/>
+<circle cx="303.8" cy="618.8" r="25.3" fill="#1d4ed8" stroke="#111827" stroke-width="3.4"/>
+<circle cx="641.2" cy="663.8" r="25.3" fill="#1d4ed8" stroke="#111827" stroke-width="3.4"/>
+<rect x="0" y="787.5" width="900.0" height="40.0" fill="#ffffff"/>
+<polygon points="18.0,798.5 25.0,811.5 11.0,811.5" fill="#f97316" stroke="#111827" stroke-width="0.8"/>
+<text x="42.0" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Hütchen</text>
+<circle cx="120.5" cy="805.5" r="6" fill="#ffffff" stroke="#111827" stroke-width="1.2"/>
+<text x="144.5" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Ball</text>
+<line x1="192.5" y1="805.5" x2="214.5" y2="805.5" stroke="#111827" stroke-width="2.5"/><polygon points="220.5,805.5 213.5,801.5 213.5,809.5" fill="#111827"/>
+<text x="224.5" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Pass</text>
+<line x1="272.5" y1="805.5" x2="294.5" y2="805.5" stroke="#111827" stroke-width="2.5" stroke-dasharray="5,3"/><polygon points="300.5,805.5 293.5,801.5 293.5,809.5" fill="#111827"/>
+<text x="304.5" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Laufweg ohne Ball</text>
+<circle cx="458.0" cy="805.5" r="7" fill="#facc15" stroke="#111827" stroke-width="1"/>
+<text x="482.0" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Neutral / Joker</text>
+<circle cx="620.5" cy="805.5" r="7" fill="#d62828" stroke="#111827" stroke-width="1"/>
+<text x="644.5" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Team A</text>
+<circle cx="715.5" cy="805.5" r="7" fill="#1d4ed8" stroke="#111827" stroke-width="1"/>
+<text x="739.5" y="810.5" font-family="Helvetica" font-size="15" fill="#111827">Team B</text>
+</g>
+</svg>
